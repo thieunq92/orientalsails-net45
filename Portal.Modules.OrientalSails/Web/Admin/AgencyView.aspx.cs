@@ -38,6 +38,8 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                     }
                     litName1.Text = agency.Name;
                     litName.Text = agency.Name;
+                    litTenTiengViet.Text = agency.TenTiengViet;
+                    litGiamDoc.Text = agency.GiamDoc;
                     if (agency.Role != null)
                         litRole.Text = agency.Role.Name;
                     else
@@ -92,9 +94,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                     hplAddContract.Attributes.Add("onclick", CMS.ServerControls.Popup.OpenPopupScript(url, "Contract", 300, 400));
 
                     hplBookingList.NavigateUrl = string.Format(
-                        "BookingList.aspx?NodeId={0}&SectionId={1}&agencyid={2}", Node.Id, Section.Id, agency.Id);
+                        "BookingList.aspx?NodeId={0}&SectionId={1}&ai={2}", Node.Id, Section.Id, agency.Id);
                     hplReceivable.NavigateUrl =
-                        string.Format("PaymentReport.aspx?NodeId={0}&SectionId={1}&agencyid={2}&from={3}&to={4}",
+                        string.Format("PaymentReport.aspx?NodeId={0}&SectionId={1}&ai={2}&from={3}&to={4}",
                                       Node.Id, Section.Id, agency.Id, DateTime.Today.AddMonths(-3).ToOADate(), DateTime.Today.ToOADate());
 
                     rptActivities.DataSource = Module.GetObject<Activity>(Expression.And(Expression.Eq("ObjectType", "MEETING"),Expression.Eq("Params",Convert.ToString(agency.Id))), 0, 0,

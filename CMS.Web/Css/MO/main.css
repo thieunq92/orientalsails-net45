@@ -260,4 +260,18 @@ article {
 .table-agency.table > tbody > tr > td,
 .table-agency.table > tfoot > tr > td {
     padding: 3px !important;
+    vertical-align:middle !important;
+    text-align:center !important;
 }
+
+.table-common.table > thead > tr > th,
+.table-common.table > tbody > tr > th,
+.table-common.table > tfoot > tr > th,
+.table-common.table > thead > tr > td,
+.table-common.table > tbody > tr > td,
+.table-common.table > tfoot > tr > td {
+    padding: 3px !important;
+    vertical-align:middle !important;
+    text-align:center !important;
+}
+

@@ -54,8 +54,7 @@
                         </table>
                     </div>
                 </div>
-            </div>
-            
+            </div>    
          <%--   <div class="basicinfo">
                 <table>
                     <tr>

@@ -139,8 +139,7 @@
                                 </td>
                                 <td>
                                     <asp:HyperLink ID="hplEdit" runat="server">
-                                        <asp:Image ID="imageEdit" runat="server" ImageAlign="AbsMiddle" AlternateText="Edit"
-                                            CssClass="image_button16" ImageUrl="../Images/edit.gif" />
+                                        <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Edit"></i>
                                     </asp:HyperLink>
                                 </td>
                             </tr>
