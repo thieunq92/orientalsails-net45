@@ -252,3 +252,12 @@ article {
 .document-table.table > tfoot > tr > td {
     padding: 3px !important;
 }
+
+.table-agency.table > thead > tr > th,
+.table-agency.table > tbody > tr > th,
+.table-agency.table > tfoot > tr > th,
+.table-agency.table > thead > tr > td,
+.table-agency.table > tbody > tr > td,
+.table-agency.table > tfoot > tr > td {
+    padding: 3px !important;
+}

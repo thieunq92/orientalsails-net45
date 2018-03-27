@@ -602,7 +602,7 @@
         <asp:Button ID="btnNewProvisional" runat="server" Text="New Provisional Register"
             OnClick="btnNewProvisional_Click" CssClass="button" />
     </fieldset>
-    <script>
+ <%--   <script>
         $(document).ready(function () {
             $("ul.tabbutton li a").each(function (i, e) {
                 if ($(e).html().indexOf("Transfer") >= 0
@@ -612,5 +612,14 @@
                 }
             })
         })
+    </script>--%>
+      <script>
+          $(document).ready(function () {
+              $("ul.tabbutton li a").each(function (i, e) {
+                  if ($(e).html().indexOf("Limousine") >= 0) {
+                      $(e).parent().hide();
+                  }
+              })
+          })
     </script>
 </asp:Content>

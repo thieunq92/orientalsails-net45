@@ -337,15 +337,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.Repeater rptExtraServices;
         
         /// <summary>
-        /// chkLimousine control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chkLimousine;
-        
-        /// <summary>
         /// litInform control.
         /// </summary>
         /// <remarks>

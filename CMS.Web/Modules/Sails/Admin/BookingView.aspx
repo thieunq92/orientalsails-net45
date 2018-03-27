@@ -242,12 +242,6 @@
                         </asp:Repeater>
                     </asp:PlaceHolder>
                 </div>
-                <div class="col-xs-1">
-                    <div class="checkbox">
-                        <label>
-                            <input id="chkLimousine" runat="server" type="checkbox" />Limousine</label>
-                    </div>
-                </div>
                 <div class="col-xs-offset-5 col-xs-3">
                     <asp:Literal runat="server" ID="litInform" Visible="true" />
                 </div>

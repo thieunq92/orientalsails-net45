@@ -282,7 +282,6 @@ namespace Portal.Modules.OrientalSails.Repository
                     ), startDate.Value.Date));
             }
 
-            query = query.Where(x => x.Limousine == isLimousine);
             return query.Future<Booking>().ToList();
         }
     }

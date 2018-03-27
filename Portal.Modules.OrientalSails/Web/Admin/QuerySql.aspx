@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <%  Module.CommonDao.OpenSession().CreateSQLQuery("UPDATE [dbo].[os_Nationality] SET [Deleted] = 1 WHERE Id = 267")
+            <%  Module.CommonDao.OpenSession().CreateSQLQuery(" ALTER TABLE os_Agency ADD TenTiengViet nvarchar(MAX), GiamDoc nvarchar(MAX); ")
                 .ExecuteUpdate();%>
         </div>
     </form>

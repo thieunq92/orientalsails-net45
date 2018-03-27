@@ -22,6 +22,8 @@
     <property name="ModifiedDate"/>
     <property name="SaleStart"/>
     <property name="Deleted"/>
+    <property name="TenTiengViet"/>
+    <property name="GiamDoc"/>
 
     <many-to-one name="Role" column="RoleId" class="CMS.Core.Domain.Role, CMS.Core"/>
     <many-to-one name="Sale" column="SaleId" class="CMS.Core.Domain.User, CMS.Core"/>

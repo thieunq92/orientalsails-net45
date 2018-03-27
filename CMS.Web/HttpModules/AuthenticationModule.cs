@@ -32,7 +32,7 @@ namespace CMS.Web.HttpModules
 				{
 					FormsAuthenticationTicket userAuthTicket =
 						new FormsAuthenticationTicket(1, userId, DateTime.Now,
-						DateTime.MaxValue, true, password, FormsAuthentication.FormsCookiePath);
+                        DateTime.MaxValue, true, password, FormsAuthentication.FormsCookiePath);
 					string encUserAuthTicket = FormsAuthentication.Encrypt(userAuthTicket);
 					HttpCookie userAuthCookie = new HttpCookie
 						(FormsAuthentication.FormsCookieName, encUserAuthTicket);
@@ -138,6 +138,8 @@ namespace CMS.Web.HttpModules
                 User cuyahogaUser = (User)cr.GetObjectById(typeof(User), userId);
 				cuyahogaUser.IsAuthenticated = true;
 				app.Context.User = new BitPortalPrincipal(cuyahogaUser);
+                if (cuyahogaUser.IsActive == false)
+                    Logout();
 			}
 		}
 	}

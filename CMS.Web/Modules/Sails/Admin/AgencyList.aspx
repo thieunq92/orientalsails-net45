@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="MO-NoScriptManager.Master" AutoEventWireup="true"
+﻿ <%@ Page Language="C#" MasterPageFile="MO-NoScriptManager.Master" AutoEventWireup="true"
     CodeBehind="AgencyList.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.AgencyList"
     Title="Agency Manager" %>
 
@@ -70,7 +70,7 @@
     <div class="agency-panel">
         <div class="row">
             <div class="col-xs-12">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover table-agency">
                     <asp:Repeater ID="rptAgencies" runat="server" OnItemDataBound="rptAgencies_ItemDataBound"
                         OnItemCommand="rptAgencies_ItemCommand">
                         <HeaderTemplate>

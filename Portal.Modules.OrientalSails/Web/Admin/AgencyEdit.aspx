@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-2">a
+                        <div class="col-xs-2">
                             Tên tiếng việt
                         </div>
                         <div class="col-xs-10">
@@ -36,7 +36,7 @@
                 </div>
                   <div class="form-group">
                     <div class="row">
-                        <div class="col-xs-2">a
+                        <div class="col-xs-2">
                             Giám đốc
                         </div>
                         <div class="col-xs-10">

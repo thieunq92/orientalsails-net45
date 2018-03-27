@@ -52,7 +52,6 @@
     <property name="IsCommissionUsd"/>
     <property name="CancelledReason"/>
     <property name="Group" column="`Group`"/>
-    <property name="Limousine"/>
 
     <many-to-one name="CreatedBy" column="CreatedBy" class="CMS.Core.Domain.User, CMS.Core" not-found="ignore"/>
     <many-to-one name="ModifiedBy" column="ModifiedBy" class="CMS.Core.Domain.User, CMS.Core" not-found="ignore"/>
