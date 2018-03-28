@@ -27,20 +27,20 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-xs-2">
-                            Tên tiếng việt
+                            Tên giao dịch
                         </div>
                         <div class="col-xs-10">
-                            <asp:TextBox ID="txtTenTiengViet" runat="server" CssClass="form-control" placeholder="Tên tiếng việt"></asp:TextBox>
+                            <asp:TextBox ID="txtTenTiengViet" runat="server" CssClass="form-control" placeholder="Tên giao dịch"></asp:TextBox>
                         </div>
                     </div>
                 </div>
                   <div class="form-group">
                     <div class="row">
                         <div class="col-xs-2">
-                            Giám đốc
+                            Người đại diện
                         </div>
                         <div class="col-xs-10">
-                            <asp:TextBox ID="txtGiamDoc" runat="server" CssClass="form-control" placeholder="Giám đốc"></asp:TextBox>
+                            <asp:TextBox ID="txtGiamDoc" runat="server" CssClass="form-control" placeholder="Người đại diện"></asp:TextBox>
                         </div>
                     </div>
                 </div>

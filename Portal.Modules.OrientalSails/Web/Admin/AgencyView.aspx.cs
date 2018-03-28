@@ -7,6 +7,9 @@ using CMS.Web.Util;
 using NHibernate.Criterion;
 using Portal.Modules.OrientalSails.Domain;
 using Portal.Modules.OrientalSails.Web.UI;
+using Aspose.Words;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Portal.Modules.OrientalSails.Web.Admin
 {
@@ -19,14 +22,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         private bool _contractsPermission;
 
         protected void Page_Load(object sender, EventArgs e)
-        {                  
+        {
             if (!IsPostBack)
             {
                 _editPermission = Module.PermissionCheck(Permission.ACTION_EDITAGENCY, UserIdentity);
                 _viewBookingPermission = Module.PermissionCheck("VIEWBOOKINGBYAGENCY", UserIdentity);
                 _contactsPermission = Module.PermissionCheck("CONTACTS", UserIdentity);
-                _recentActivitiesPermission = Module.PermissionCheck("RECENTACTIVITIES",UserIdentity);
-                _contractsPermission = Module.PermissionCheck("CONTRACTS",UserIdentity);
+                _recentActivitiesPermission = Module.PermissionCheck("RECENTACTIVITIES", UserIdentity);
+                _contractsPermission = Module.PermissionCheck("CONTRACTS", UserIdentity);
 
                 if (Request.QueryString["agencyid"] != null)
                 {
@@ -89,9 +92,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
                     url = string.Format("AgencyContractEdit.aspx?NodeId={0}&SectionId={1}&agencyid={2}",
                                                     Node.Id, Section.Id, agency.Id);
-                    hplAddContract.Visible = _editPermission;
-                    hplAddContract.NavigateUrl = "javascript:";
-                    hplAddContract.Attributes.Add("onclick", CMS.ServerControls.Popup.OpenPopupScript(url, "Contract", 300, 400));
 
                     hplBookingList.NavigateUrl = string.Format(
                         "BookingList.aspx?NodeId={0}&SectionId={1}&ai={2}", Node.Id, Section.Id, agency.Id);
@@ -99,7 +99,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                         string.Format("PaymentReport.aspx?NodeId={0}&SectionId={1}&ai={2}&from={3}&to={4}",
                                       Node.Id, Section.Id, agency.Id, DateTime.Today.AddMonths(-3).ToOADate(), DateTime.Today.ToOADate());
 
-                    rptActivities.DataSource = Module.GetObject<Activity>(Expression.And(Expression.Eq("ObjectType", "MEETING"),Expression.Eq("Params",Convert.ToString(agency.Id))), 0, 0,
+                    rptActivities.DataSource = Module.GetObject<Activity>(Expression.And(Expression.Eq("ObjectType", "MEETING"), Expression.Eq("Params", Convert.ToString(agency.Id))), 0, 0,
                                                                           Order.Desc("DateMeeting"));
                     rptActivities.DataBind();
                 }
@@ -118,9 +118,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 hplBookingList.Attributes["href"] = "javascript:";
                 var script = @"<script type = 'text/javascript'>";
                 script = script +
-                         @"$('#"+hplBookingList.ClientID+"').click(function(){$('#disableInform').dialog({resiable:false,modal:true,draggable:false})})";
+                         @"$('#" + hplBookingList.ClientID + "').click(function(){$('#disableInform').dialog({resiable:false,modal:true,draggable:false})})";
                 script = script + "</script>";
-                Page.ClientScript.RegisterStartupScript(this.GetType(),"disableInform",script);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "disableInform", script);
             }
         }
 
@@ -159,7 +159,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
                 ValueBinder.BindLiteral(e.Item, "litName", contract.ContractName);
                 ValueBinder.BindLiteral(e.Item, "litExpired", contract.ExpiredDate.ToString("dd/MM/yyyy"));
-                if(contract.CreateDate != null)
+                if (contract.CreateDate != null)
                     ValueBinder.BindLiteral(e.Item, "litCreatedDate", contract.CreateDate.Value.ToString("dd/MM/yyyy"));
 
                 if (contract.Received == true)
@@ -196,12 +196,12 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 {
                     e.Item.Visible = false;
                     return;
-                }         
+                }
 
-                var ltrName = (Literal) e.Item.FindControl("ltrName");
+                var ltrName = (Literal)e.Item.FindControl("ltrName");
                 ltrName.Text = contact.Name;
 
-                var hplName = (HyperLink) e.Item.FindControl("hplName");
+                var hplName = (HyperLink)e.Item.FindControl("hplName");
                 hplName.NavigateUrl = "javascript:";
 
                 if (_editPermission)
@@ -256,14 +256,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var position = e.Item.FindControl("ltrPosition") as Literal;
             var dateMeeting = e.Item.FindControl("ltrDateMeeting") as Literal;
             if (activity != null)
-            { 
+            {
                 if (dateMeeting != null) dateMeeting.Text = activity.DateMeeting.ToString("dd/MM/yyyy");
                 if (name != null) name.Text = Module.GetObject<AgencyContact>(activity.ObjectId).Name;
                 if (position != null) position.Text = Module.GetObject<AgencyContact>(activity.ObjectId).Position;
 
                 var note = e.Item.FindControl("ltrNote") as Literal;
                 var strBuilder = new StringBuilder();
-                string[] noteWord = activity.Note.Split(new char[]{' '});
+                string[] noteWord = activity.Note.Split(new char[] { ' ' });
                 bool isLessWords = false;
                 for (int i = 0; i <= 50; i++)
                 {
@@ -272,7 +272,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                         strBuilder.Append(noteWord[i] + " ");
                     }
                     catch (IndexOutOfRangeException ex)
-                    {               
+                    {
                         isLessWords = true;
                         break;
                     }
@@ -282,7 +282,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
                 var lbtEditActivity = (LinkButton)e.Item.FindControl("lbtEditActivity");
 
-                var ltrSale = (Literal) e.Item.FindControl("ltrSale");
+                var ltrSale = (Literal)e.Item.FindControl("ltrSale");
                 ltrSale.Text = activity.User.FullName;
 
                 lbtEditActivity.PostBackUrl = "javascript:";
@@ -290,7 +290,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                                            Node.Id, Section.Id, activity.Id);
                 lbtEditActivity.Attributes.Add("onclick",
                                              CMS.ServerControls.Popup.OpenPopupScript(url, "Contract", 300, 400));
-            }  
+            }
         }
 
         protected void lbtDeleteActivity_Click(object sender, EventArgs e)
@@ -299,6 +299,41 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             Activity activity = Module.GetObject<Activity>(Convert.ToInt32(btn.CommandArgument));
             Module.Delete(activity);
             PageRedirect(Request.RawUrl);
+        }
+
+        protected void btnExportContractPreviewWord_Click(object sender, EventArgs e)
+        {
+            ExportContract();
+        }
+
+        protected void btnExportContractPreviewPdf_Click(object sender, EventArgs e)
+        {
+            ExportContract();
+        }
+
+        public void ExportContract()
+        {
+            var doc = new Document(Server.MapPath("/Modules/Sails/Admin/ExportTemplates/Contract.doc"));
+            doc.Range.Replace(new Regex("(\\[ValidFromDate\\])"),"1");
+            Response.Clear();
+            Response.Buffer = true;
+            //Response.ContentType = "application/pdf";
+            Response.ContentType = "application/msword";
+            Response.AppendHeader("content-disposition",
+                //"attachment; filename=" + string.Format("{0}.pdf", "voucher" + batch.Id));
+                                  "attachment; filename=" + string.Format("{0}.doc", "voucher"));
+
+            var m = new MemoryStream();
+
+            doc.Save(m, SaveFormat.Doc);
+
+            Response.OutputStream.Write(m.GetBuffer(), 0, m.GetBuffer().Length);
+            Response.OutputStream.Flush();
+            Response.OutputStream.Close();
+
+            m.Close();
+            Response.End();
+
         }
     }
 

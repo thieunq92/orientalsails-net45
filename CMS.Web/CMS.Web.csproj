@@ -1362,6 +1362,7 @@
     <None Include="Modules\Sails\Admin\ExportTemplates\Danh_sach_dai_ly.xls" />
     <None Include="Modules\Sails\Admin\ExportTemplates\Feedback.xls" />
     <None Include="Modules\Sails\Admin\ExportTemplates\FormTamTru2.xls" />
+    <Content Include="Modules\Sails\Admin\ExportTemplates\Contract.doc" />
     <None Include="Modules\Sails\Admin\ExportTemplates\ImportTemplate.xls" />
     <None Include="Modules\Sails\Admin\ExportTemplates\IncomeDate.xls" />
     <None Include="Modules\Sails\Admin\ExportTemplates\KhaiBaoTamTru.xls" />
@@ -1413,6 +1414,9 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\lib\net45\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\lib\net45\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

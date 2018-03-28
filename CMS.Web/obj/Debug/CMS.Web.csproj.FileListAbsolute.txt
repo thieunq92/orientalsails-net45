@@ -1726,3 +1726,4 @@ E:\Workspace\Visual Studio 2013 Projects\orientalsails-net45\CMS.Web\obj\Debug\n
 E:\Workspace\Visual Studio 2013 Projects\orientalsails-net45\CMS.Web\obj\Debug\sv\CMS.Web.resources.dll
 E:\Workspace\Visual Studio 2013 Projects\orientalsails-net45\CMS.Web\obj\Debug\CMS.Web.dll
 E:\Workspace\Visual Studio 2013 Projects\orientalsails-net45\CMS.Web\obj\Debug\CMS.Web.pdb
+E:\Workspace\Visual Studio 2013 Projects\orientalsails-net45\CMS.Web\bin\Aspose.Words.dll

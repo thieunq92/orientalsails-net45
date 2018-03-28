@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-xs-1">
-                <label>Tên tiếng việt</label>
+                <label>Tên giao dịch</label>
             </div>
             <div class="col-xs-11">
                 <asp:Literal runat="server" ID="litTenTiengViet"></asp:Literal>
@@ -27,7 +27,7 @@
         </div>
         <div class="row">
             <div class="col-xs-1">
-                <label>Giam đốc</label>
+                <label>Người đại diện</label>
             </div>
             <div class="col-xs-11">
                 <asp:Literal runat="server" ID="litGiamDoc"></asp:Literal>
@@ -304,10 +304,105 @@
                 </asp:Repeater>
             </table>
             <div class="btn-toolbar">
-                <asp:HyperLink runat="server" ID="hplAddContract" CssClass="btn btn-primary">Issue contract</asp:HyperLink>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-issuecontract">Issue contract</button>
             </div>
         </asp:PlaceHolder>
         <asp:Label runat="server" ID="lblContracts" Text="You don't have permission to use this function. If you want to use this function please contact administrator"
             Visible="False" />
     </div>
+    <div class="modal fade modal-issuecontract" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title" id="gridSystemModalLabel">Issue Contract</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-xs-11">
+                                <input type="text" class="form-control" placeholder="Name" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label>Valid from</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="text" class="form-control" placeholder="Valid from (dd/mm/yyyy)" data-type="datetimepicker" />
+                            </div>
+                            <div class="col-xs-2">
+                                <label>Valid to</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="text" class="form-control" placeholder="Valid to (dd/mm/yyyy)" data-type="datetimepicker" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <label>Select quotation</label>
+                            </div>
+                            <div class="col-xs-9">
+                                <select class="form-control">
+                                    <option>Quotation lv1</option>
+                                    <option>Quotation lv2</option>
+                                    <option>Quotation lv3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <label>Upload</label>
+                            </div>
+                            <div class="col-xs-11">
+                                <input type="text" class="form-control" placeholder="File upload"></input>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-1">
+                                <label>Preview</label>
+                            </div>
+                            <div class="col-xs-11">
+                                <div class="btn-toolbar">
+                                    <button type="button" class="btn btn-primary">Send email</button>
+                                    <asp:Button runat ="server" ID ="btnExportContractPreviewWord" class="btn btn-primary" Text="Export to Word" OnClick="btnExportContractPreviewWord_Click"></asp:Button>
+                                    <asp:Button runat ="server" ID ="btnExportContractPreviewPdf" class="btn btn-primary" Text="Export to Word" OnClick="btnExportContractPreviewPdf_Click"></asp:Button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Issue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</asp:Content>
+<asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
+    <script type="text/javascript">
+        $("[data-type='datetimepicker']").datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y',
+            scrollInput: false,
+            scrollMonth: false
+        });
+    </script>
 </asp:Content>
