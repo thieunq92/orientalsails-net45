@@ -141,8 +141,8 @@
         </div>
     </div>
     <div class="panel-contacts">
+        <h4>CONTACTS</h4>
         <asp:PlaceHolder runat="server" ID="plhContacts">
-            <h4>CONTACTS</h4>
             <table class="table table-bordered table-hover table-common">
                 <tr class="active">
                     <th>Name
@@ -209,9 +209,9 @@
             Visible="False" />
     </div>
     <div class="panel-recentactivities">
+        <h4>RECENT ACTIVITIES
+        </h4>
         <asp:PlaceHolder runat="server" ID="plhActivities">
-            <h4>RECENT ACTIVITIES
-            </h4>
             <table class="table table-bordered table-hover table-common">
                 <tr class="active">
                     <th>Date meeting
@@ -310,7 +310,7 @@
         <asp:Label runat="server" ID="lblContracts" Text="You don't have permission to use this function. If you want to use this function please contact administrator"
             Visible="False" />
     </div>
-    <div class="modal fade modal-issuecontract" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <div class="modal fade modal-issuecontract" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -324,7 +324,7 @@
                                 <label>Name</label>
                             </div>
                             <div class="col-xs-11">
-                                <input type="text" class="form-control" placeholder="Name" />
+                                <asp:TextBox runat="server" ID="txtContractName" CssClass="form-control" placeholder="name"> </asp:TextBox>
                             </div>
 
                         </div>
@@ -336,13 +336,13 @@
                                 <label>Valid from</label>
                             </div>
                             <div class="col-xs-4">
-                                <input type="text" class="form-control" placeholder="Valid from (dd/mm/yyyy)" data-type="datetimepicker" />
+                                <asp:TextBox runat="server" ID="txtValidFromDate" CssClass="form-control" placeholder="Valid from (dd/mm/yyyy)" data-type="datetimepicker"></asp:TextBox>
                             </div>
                             <div class="col-xs-2">
                                 <label>Valid to</label>
                             </div>
                             <div class="col-xs-4">
-                                <input type="text" class="form-control" placeholder="Valid to (dd/mm/yyyy)" data-type="datetimepicker" />
+                                <asp:TextBox runat="server" ID="txtValidToDate" CssClass="form-control" placeholder="Valid to (dd/mm/yyyy)" data-type="datetimepicker"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -381,8 +381,8 @@
                             <div class="col-xs-11">
                                 <div class="btn-toolbar">
                                     <button type="button" class="btn btn-primary">Send email</button>
-                                    <asp:Button runat ="server" ID ="btnExportContractPreviewWord" class="btn btn-primary" Text="Export to Word" OnClick="btnExportContractPreviewWord_Click"></asp:Button>
-                                    <asp:Button runat ="server" ID ="btnExportContractPreviewPdf" class="btn btn-primary" Text="Export to Word" OnClick="btnExportContractPreviewPdf_Click"></asp:Button>
+                                    <asp:Button runat="server" ID="btnExportContractPreviewWord" class="btn btn-primary" Text="Export to Word" OnClick="btnExportContractPreviewWord_Click"></asp:Button>
+                                    <asp:Button runat="server" ID="btnExportContractPreviewPdf" class="btn btn-primary" Text="Export to Pdf" OnClick="btnExportContractPreviewPdf_Click"></asp:Button>
                                 </div>
                             </div>
                         </div>

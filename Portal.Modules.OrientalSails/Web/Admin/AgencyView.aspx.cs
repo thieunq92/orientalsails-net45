@@ -10,6 +10,10 @@ using Portal.Modules.OrientalSails.Web.UI;
 using Aspose.Words;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Globalization;
+using Portal.Modules.OrientalSails.BusinessLogic;
+using Aspose.Words.Rendering;
+using Microsoft.Office.Interop.Word;
 
 namespace Portal.Modules.OrientalSails.Web.Admin
 {
@@ -20,6 +24,31 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         private bool _contactsPermission;
         private bool _recentActivitiesPermission;
         private bool _contractsPermission;
+        private AgencyViewBLL agencyViewBLL;
+        public AgencyViewBLL AgencyViewBLL
+        {
+            get
+            {
+                if (agencyViewBLL == null)
+                    agencyViewBLL = new AgencyViewBLL();
+                return agencyViewBLL;
+            }
+        }
+
+        public Agency Agency
+        {
+            get
+            {
+                Agency agency = null;
+                try
+                {
+                    if (Request.QueryString["AgencyId"] != null)
+                        agency = AgencyViewBLL.AgencyGetById(Convert.ToInt32(Request.QueryString["AgencyId"]));
+                }
+                catch (Exception) { }
+                return agency;
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -110,6 +139,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             RenderContracts();
         }
 
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+            if (agencyViewBLL != null)
+            {
+                agencyViewBLL.Dispose();
+                agencyViewBLL = null;
+            }
+        }
         public void RenderViewBookingByThisAgency()
         {
             if (!_viewBookingPermission)
@@ -303,36 +340,142 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
         protected void btnExportContractPreviewWord_Click(object sender, EventArgs e)
         {
-            ExportContract();
+            ExportContractToWord();
         }
 
         protected void btnExportContractPreviewPdf_Click(object sender, EventArgs e)
         {
-            ExportContract();
+            ExportContractToPdf();
         }
 
-        public void ExportContract()
+        public void ExportContractToWord()
         {
-            var doc = new Document(Server.MapPath("/Modules/Sails/Admin/ExportTemplates/Contract.doc"));
-            doc.Range.Replace(new Regex("(\\[ValidFromDate\\])"),"1");
+            var doc = GetGeneratedContract();
+            var contractName = txtContractName.Text;
             Response.Clear();
             Response.Buffer = true;
-            //Response.ContentType = "application/pdf";
             Response.ContentType = "application/msword";
             Response.AppendHeader("content-disposition",
-                //"attachment; filename=" + string.Format("{0}.pdf", "voucher" + batch.Id));
-                                  "attachment; filename=" + string.Format("{0}.doc", "voucher"));
-
+                                  "attachment; filename=" + string.Format("{0}.doc", contractName));
             var m = new MemoryStream();
-
             doc.Save(m, SaveFormat.Doc);
 
             Response.OutputStream.Write(m.GetBuffer(), 0, m.GetBuffer().Length);
             Response.OutputStream.Flush();
             Response.OutputStream.Close();
-
             m.Close();
             Response.End();
+        }
+
+        public void ExportContractToPdf()
+        {
+            var doc = GetGeneratedContract();
+            var contractName = txtContractName.Text;
+            var m = new MemoryStream();
+            doc.Save(m, SaveFormat.Doc);
+            byte[] wordContent = m.GetBuffer();
+            var tmpFile = Path.GetTempFileName();
+            var tmpFileStream = File.OpenWrite(tmpFile);
+            tmpFileStream.Write(wordContent, 0, wordContent.Length);
+            tmpFileStream.Close();
+
+            Microsoft.Office.Interop.Word.Application appWord = new Microsoft.Office.Interop.Word.Application();
+            var wordDocument = appWord.Documents.Open(tmpFile);
+            wordDocument.ExportAsFixedFormat(@"C:\test.pdf", WdExportFormat.wdExportFormatPDF);
+
+        }
+
+        public Aspose.Words.Document GetGeneratedContract()
+        {
+            DateTime? validFromDate = null;
+
+            try
+            {
+                validFromDate = DateTime.ParseExact(txtValidFromDate.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+            }
+            catch (Exception) { }
+
+            var validFromDay = validFromDate != null ? validFromDate.Value.Day.ToString() : "";
+            var validFromMonth = validFromDate != null ? validFromDate.Value.Month.ToString() : "";
+            var validFromYear = validFromDate != null ? validFromDate.Value.Year.ToString() : "";
+
+            var doc = new Aspose.Words.Document(Server.MapPath("/Modules/Sails/Admin/ExportTemplates/Contract.doc"));
+            var agencyName = "";
+            var agencyTenGiaoDich = "";
+            var agencyNguoiDaiDien = "";
+            var agencyAddress = "";
+            var agencyPhone = "";
+            var agencyFax = "";
+            var agencyTaxCode = "";
+            try
+            {
+                agencyName = !String.IsNullOrEmpty(Agency.Name) ? Agency.Name : "";
+            }
+            catch { }
+
+            try
+            {
+                agencyTenGiaoDich = !String.IsNullOrEmpty(Agency.TenTiengViet) ? Agency.TenTiengViet : "";
+            }
+            catch { }
+
+            try
+            {
+                agencyNguoiDaiDien = !String.IsNullOrEmpty(Agency.GiamDoc) ? Agency.GiamDoc : "";
+            }
+            catch { }
+
+            try
+            {
+                agencyAddress = !String.IsNullOrEmpty(Agency.Address) ? Agency.Address : "";
+            }
+            catch { }
+
+            try
+            {
+                agencyPhone = !String.IsNullOrEmpty(Agency.Phone) ? Agency.Phone : "";
+            }
+            catch { }
+
+            try
+            {
+                agencyFax = !String.IsNullOrEmpty(Agency.Fax) ? Agency.Fax : "";
+            }
+            catch { }
+
+            try
+            {
+                agencyTaxCode = !String.IsNullOrEmpty(Agency.TaxCode) ? Agency.TaxCode : "";
+            }
+            catch { }
+
+            DateTime? validToDate = null;
+            try
+            {
+                validToDate = DateTime.ParseExact(txtValidToDate.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+            }
+            catch { }
+
+            var textValidToDate = "";
+            try
+            {
+                textValidToDate = validToDate.Value.ToString("dd/mm/yyyy");
+            }
+            catch { }
+
+            doc.Range.Replace(new Regex("(\\[ValidFromDay\\])"), validFromDay);
+            doc.Range.Replace(new Regex("(\\[ValidFromMonth\\])"), validFromMonth);
+            doc.Range.Replace(new Regex("(\\[ValidFromYear\\])"), validFromYear);
+            doc.Range.Replace(new Regex("(\\[AgencyName\\])"), agencyName);
+            doc.Range.Replace(new Regex("(\\[TenGiaoDich\\])"), agencyTenGiaoDich);
+            doc.Range.Replace(new Regex("(\\[NguoiDaiDien\\])"), agencyNguoiDaiDien);
+            doc.Range.Replace(new Regex("(\\[AgencyAddress\\])"), agencyAddress);
+            doc.Range.Replace(new Regex("(\\[AgencyPhone\\])"), agencyPhone);
+            doc.Range.Replace(new Regex("(\\[AgencyFax\\])"), agencyFax);
+            doc.Range.Replace(new Regex("(\\[AgencyTaxCode\\])"), agencyTaxCode);
+            doc.Range.Replace(new Regex("(\\[ValidToDate\\])"), textValidToDate);
+            return doc;
+
 
         }
     }
