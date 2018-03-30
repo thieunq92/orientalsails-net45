@@ -1,9 +1,13 @@
-﻿<%@ Page Language="C#" MasterPageFile="MO.Master" AutoEventWireup="true"
+﻿<%@ Page Language="C#" MasterPageFile="MO-NoScriptManager.Master" AutoEventWireup="true"
     CodeBehind="AgencyView.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.AgencyView"
     Title="Agency View" %>
 
 <%@ Register Assembly="CMS.ServerControls" Namespace="CMS.ServerControls" TagPrefix="svc" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="AdminContent" runat="server">
+<asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
+    <link rel="stylesheet" type="text/css" href="/css/jqueryfileupload/v9.21.0/jquery.fileupload.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jqueryfileupload/v9.21.0/jquery.fileupload-ui.css" />
+</asp:Content>
+<asp:Content ID="AdminContent" ContentPlaceHolderID="AdminContent" runat="server">
     <svc:Popup ID="popupManager" runat="server">
     </svc:Popup>
     <h2 class="page-header">
@@ -324,7 +328,7 @@
                                 <label>Name</label>
                             </div>
                             <div class="col-xs-11">
-                                <asp:TextBox runat="server" ID="txtContractName" CssClass="form-control" placeholder="name"> </asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtContractName" CssClass="form-control" placeholder="Name"> </asp:TextBox>
                             </div>
 
                         </div>
@@ -368,7 +372,17 @@
                                 <label>Upload</label>
                             </div>
                             <div class="col-xs-11">
-                                <input type="text" class="form-control" placeholder="File upload"></input>
+                                <div class="row">
+                                    </div>
+                                <span class="btn btn-success fileinput-button">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                    <span>Add files...</span>
+                                    <input id="btnFileUpload" name="file" multiple="" type="file">
+                                </span>
+                                <div id="progressbar" style="width: 100px; display: none;">
+                                    <div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -397,6 +411,9 @@
     </div>
 </asp:Content>
 <asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
+    <script type="text/javascript" src="/scripts/jqueryfileupload/v9.21.0/jquery.fileupload.js"></script>
+    <script type="text/javascript" src="/scripts/jqueryfileupload/v9.21.0/jquery.fileupload-ui.js"></script>
+    <script type="text/javascript" src="/scripts/jqueryfileupload/v9.21.0/jquery.iframe-transport.js"></script>
     <script type="text/javascript">
         $("[data-type='datetimepicker']").datetimepicker({
             timepicker: false,

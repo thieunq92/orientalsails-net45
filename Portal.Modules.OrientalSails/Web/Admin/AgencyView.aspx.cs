@@ -352,14 +352,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             var doc = GetGeneratedContract();
             var contractName = txtContractName.Text;
+            var m = new MemoryStream();
+            doc.Save(m, SaveFormat.Doc);
+
             Response.Clear();
             Response.Buffer = true;
             Response.ContentType = "application/msword";
             Response.AppendHeader("content-disposition",
                                   "attachment; filename=" + string.Format("{0}.doc", contractName));
-            var m = new MemoryStream();
-            doc.Save(m, SaveFormat.Doc);
-
             Response.OutputStream.Write(m.GetBuffer(), 0, m.GetBuffer().Length);
             Response.OutputStream.Flush();
             Response.OutputStream.Close();
@@ -381,8 +381,23 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
             Microsoft.Office.Interop.Word.Application appWord = new Microsoft.Office.Interop.Word.Application();
             var wordDocument = appWord.Documents.Open(tmpFile);
-            wordDocument.ExportAsFixedFormat(@"C:\test.pdf", WdExportFormat.wdExportFormatPDF);
-
+            var tmpFileExport = Path.GetTempFileName();
+            wordDocument.ExportAsFixedFormat(tmpFileExport, WdExportFormat.wdExportFormatPDF);
+            var fileStream = new FileStream(tmpFileExport, FileMode.Open, FileAccess.ReadWrite);
+            var mtest = new MemoryStream();
+            fileStream.CopyTo(mtest);
+            fileStream.Close();
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("content-disposition",
+                                  "attachment; filename=" + string.Format("{0}.pdf", contractName));
+            Response.OutputStream.Write(mtest.GetBuffer(), 0, mtest.GetBuffer().Length);
+            Response.OutputStream.Flush();
+            Response.OutputStream.Close();
+            mtest.Close();
+            m.Close();
+            Response.End();
         }
 
         public Aspose.Words.Document GetGeneratedContract()
@@ -395,8 +410,8 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             }
             catch (Exception) { }
 
-            var validFromDay = validFromDate != null ? validFromDate.Value.Day.ToString() : "";
-            var validFromMonth = validFromDate != null ? validFromDate.Value.Month.ToString() : "";
+            var validFromDay = validFromDate != null ? validFromDate.Value.Day.ToString("#00") : "";
+            var validFromMonth = validFromDate != null ? (validFromDate.Value.Month + 2).ToString("#00") : "";
             var validFromYear = validFromDate != null ? validFromDate.Value.Year.ToString() : "";
 
             var doc = new Aspose.Words.Document(Server.MapPath("/Modules/Sails/Admin/ExportTemplates/Contract.doc"));

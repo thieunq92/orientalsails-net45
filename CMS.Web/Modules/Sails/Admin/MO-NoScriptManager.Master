@@ -251,6 +251,7 @@
     </footer>
     <script type="text/javascript" src="/scripts/jquery/v3.1.1/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="/scripts/jqueryui/v1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/scripts/jqueryui/v1.12.1/jquery.ui.widget.js"></script>
     <script type="text/javascript" src="/scripts/bootstrap/v3.3.7/bootstrap.min.js"></script>
     <script type="text/javascript" src="/scripts/datetimepicker/v2.5.4/jquery.datetimepicker.full.min.js"></script>
     <script type="text/javascript" src="/scripts/colorbox/v1.6.4/jquery.colorbox-min.js"></script>

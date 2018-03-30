@@ -70,7 +70,7 @@
     <DebugType>full</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
     <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
@@ -537,6 +537,13 @@
       <SubType>UserControl</SubType>
     </Content>
     <Content Include="Css\DataTable\v1.10.16\dataTables.bootstrap.min.css" />
+    <Content Include="Css\JqueryFileUpload\v9.21.0\jquery-ui-demo-ie8.css" />
+    <Content Include="Css\JqueryFileUpload\v9.21.0\jquery-ui-demo.css" />
+    <Content Include="Css\JqueryFileUpload\v9.21.0\jquery.fileupload-noscript.css" />
+    <Content Include="Css\JqueryFileUpload\v9.21.0\jquery.fileupload-ui-noscript.css" />
+    <Content Include="Css\JqueryFileUpload\v9.21.0\jquery.fileupload-ui.css" />
+    <Content Include="Css\JqueryFileUpload\v9.21.0\jquery.fileupload.css" />
+    <Content Include="Css\JqueryFileUpload\v9.21.0\style.css" />
     <Content Include="Css\MO\non-responsive.css" />
     <Content Include="Modules\Sails\Admin\EmailTemplate\CancelSeriesTemplate.htm" />
     <Content Include="Scripts\AngularJS\v1.6.6\angular.js" />
@@ -736,6 +743,10 @@
     <Content Include="Scripts\InputMask\v3.3.6\inputmask.binding.js" />
     <Content Include="Scripts\InputMask\v3.3.6\jquery.inputmask.bundle.min.js" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\JqueryFileUpload\v9.21.0\jquery.fileupload-ui.js" />
+    <Content Include="Scripts\JqueryFileUpload\v9.21.0\jquery.fileupload.js" />
+    <Content Include="Scripts\JqueryFileUpload\v9.21.0\jquery.iframe-transport.js" />
+    <Content Include="Scripts\JqueryUI\v1.12.1\jquery.ui.widget.js" />
     <Content Include="Scripts\JqueryUI\v1.12.1\jquery-ui.min.js" />
     <Content Include="Scripts\JqueryValidation\v1.17.0\additional-methods.min.js" />
     <Content Include="Scripts\JqueryValidation\v1.17.0\jquery.validate.min.js" />
@@ -1475,6 +1486,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\lib\net45\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
       <Private>True</Private>
