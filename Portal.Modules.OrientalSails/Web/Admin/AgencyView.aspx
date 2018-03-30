@@ -354,13 +354,13 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-3">
-                                <label>Select quotation</label>
+                                <label>Select contract</label>
                             </div>
                             <div class="col-xs-9">
                                 <select class="form-control">
-                                    <option>Quotation lv1</option>
-                                    <option>Quotation lv2</option>
-                                    <option>Quotation lv3</option>
+                                    <option>Contract lv1</option>
+                                    <option>Contract lv2</option>
+                                    <option>Contract lv3</option>
                                 </select>
                             </div>
                         </div>
@@ -373,16 +373,23 @@
                             </div>
                             <div class="col-xs-11">
                                 <div class="row">
-                                    </div>
-                                <span class="btn btn-success fileinput-button">
-                                    <i class="glyphicon glyphicon-plus"></i>
-                                    <span>Add files...</span>
-                                    <input id="btnFileUpload" name="file" multiple="" type="file">
-                                </span>
-                                <div id="progressbar" style="width: 100px; display: none;">
-                                    <div>
+                                    <div class="col-xs-12">
+                                        <span class="btn btn-success fileinput-button">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                            <span>Add file</span>
+                                            <input id="btnFileUpload" name="file" multiple="" type="file">
+                                        </span>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div id="progressbar" style="width: 100px; display: none;">
+                                            <div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -537,13 +537,8 @@
       <SubType>UserControl</SubType>
     </Content>
     <Content Include="Css\DataTable\v1.10.16\dataTables.bootstrap.min.css" />
-    <Content Include="Css\JqueryFileUpload\v9.21.0\jquery-ui-demo-ie8.css" />
-    <Content Include="Css\JqueryFileUpload\v9.21.0\jquery-ui-demo.css" />
-    <Content Include="Css\JqueryFileUpload\v9.21.0\jquery.fileupload-noscript.css" />
-    <Content Include="Css\JqueryFileUpload\v9.21.0\jquery.fileupload-ui-noscript.css" />
     <Content Include="Css\JqueryFileUpload\v9.21.0\jquery.fileupload-ui.css" />
     <Content Include="Css\JqueryFileUpload\v9.21.0\jquery.fileupload.css" />
-    <Content Include="Css\JqueryFileUpload\v9.21.0\style.css" />
     <Content Include="Css\MO\non-responsive.css" />
     <Content Include="Modules\Sails\Admin\EmailTemplate\CancelSeriesTemplate.htm" />
     <Content Include="Scripts\AngularJS\v1.6.6\angular.js" />

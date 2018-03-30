@@ -4,8 +4,8 @@
 
 <%@ Register Assembly="CMS.ServerControls" Namespace="CMS.ServerControls" TagPrefix="svc" %>
 <asp:Content ID="Head" ContentPlaceHolderID="Head" runat="server">
-    <link rel="stylesheet" type="text/css" href="/css/jqueryfileupload/v9.21.0/jquery.fileupload.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/jqueryfileupload/v9.21.0/jquery.fileupload-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jqueryfileupload/v9.21.0/jquery.fileupload.css" />
+    <link rel="stylesheet" type="text/css" href="/css/jqueryfileupload/v9.21.0/jquery.fileupload-ui.css" />
 </asp:Content>
 <asp:Content ID="AdminContent" ContentPlaceHolderID="AdminContent" runat="server">
     <svc:Popup ID="popupManager" runat="server">
@@ -354,13 +354,13 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-3">
-                                <label>Select quotation</label>
+                                <label>Select contract</label>
                             </div>
                             <div class="col-xs-9">
                                 <select class="form-control">
-                                    <option>Quotation lv1</option>
-                                    <option>Quotation lv2</option>
-                                    <option>Quotation lv3</option>
+                                    <option>Contract lv1</option>
+                                    <option>Contract lv2</option>
+                                    <option>Contract lv3</option>
                                 </select>
                             </div>
                         </div>
@@ -372,26 +372,24 @@
                                 <label>Upload</label>
                             </div>
                             <div class="col-xs-11">
-                                <table align="center" style="padding-top: 200px;">
-                                    <tr>
-                                        <td>
-                                            <span class="btn btn-success fileinput-button">
-                                                <i class="glyphicon glyphicon-plus"></i>
-                                                <span>Add files...</span>
-                                                <!-- The file input field used as target for the file upload widget -->
-                                                <input id="fileupload" name="files[]" multiple="" type="file">
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div id="progressbar" style="width: 100px; display: none;">
-                                                <div>
-                                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <span class="btn btn-success fileinput-button">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                            <span>Add file</span>
+                                            <input id="btnFileUpload" name="file" multiple="" type="file">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div id="progressbar" style="width: 100px; display: none;">
+                                            <div>
                                             </div>
-                                        </td>
-                                    </tr>
-                                </table>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
