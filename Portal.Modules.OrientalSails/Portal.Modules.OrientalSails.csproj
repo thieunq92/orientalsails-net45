@@ -230,27 +230,6 @@
     <Compile Include="Web\Admin\AddSeriesBookings.aspx.designer.cs">
       <DependentUpon>AddSeriesBookings.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web\Admin\BO\VPCIPN.aspx.cs">
-      <DependentUpon>VPCIPN.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\Admin\BO\VPCIPN.aspx.designer.cs">
-      <DependentUpon>VPCIPN.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Web\Admin\BO\TransactionResult.aspx.cs">
-      <DependentUpon>TransactionResult.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\Admin\BO\TransactionResult.aspx.designer.cs">
-      <DependentUpon>TransactionResult.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Web\Admin\BO\BookingTour.aspx.cs">
-      <DependentUpon>BookingTour.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\Admin\BO\BookingTour.aspx.designer.cs">
-      <DependentUpon>BookingTour.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Web\Admin\AgencyContactEdit.aspx.cs">
       <DependentUpon>AgencyContactEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -391,35 +370,6 @@
     <Compile Include="Web\Admin\BookingHistories.aspx.designer.cs">
       <DependentUpon>BookingHistories.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web\Admin\BO\BookingOnline.Master.cs">
-      <DependentUpon>BookingOnline.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\Admin\BO\BookingOnline.Master.designer.cs">
-      <DependentUpon>BookingOnline.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Web\Admin\BO\Confirmation.aspx.cs">
-      <DependentUpon>Confirmation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\Admin\BO\Confirmation.aspx.designer.cs">
-      <DependentUpon>Confirmation.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Web\Admin\BO\VPCRequest.cs" />
-    <Compile Include="Web\Admin\BO\ResultPayment.aspx.cs">
-      <DependentUpon>ResultPayment.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\Admin\BO\ResultPayment.aspx.designer.cs">
-      <DependentUpon>ResultPayment.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Web\Admin\BO\vpc_queryDR.aspx.cs">
-      <DependentUpon>vpc_queryDR.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Web\Admin\BO\vpc_queryDR.aspx.designer.cs">
-      <DependentUpon>vpc_queryDR.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Web\Admin\CheckVoucher.aspx.cs">
       <DependentUpon>CheckVoucher.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -447,6 +397,9 @@
     </Compile>
     <Compile Include="Web\Admin\HaiPhongExpenses.aspx.designer.cs">
       <DependentUpon>HaiPhongExpenses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Admin\Handler\FileUploadHandler.ashx.cs">
+      <DependentUpon>FileUploadHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Web\Admin\MO-NoScriptManager.Master.cs">
       <DependentUpon>MO-NoScriptManager.Master</DependentUpon>
@@ -1100,16 +1053,10 @@
     <EmbeddedResource Include="Domain\HaiPhongExpenseType.hbm.xml" />
     <EmbeddedResource Include="Domain\HaiPhongExpenseTypeHaiPhongExpenseCustomerType.hbm.xml" />
     <EmbeddedResource Include="Domain\HaiPhongReduceExpense.hbm.xml" />
-    <Content Include="Web\Admin\BO\VPCIPN.aspx" />
-    <Content Include="Web\Admin\BO\TransactionResult.aspx" />
-    <Content Include="Web\Admin\BO\BookingTour.aspx" />
     <Content Include="Web\Admin\AgencyContractEdit.aspx" />
     <Content Include="Web\Admin\AgencyLocations.aspx" />
     <Content Include="Web\Admin\AgencyView.aspx" />
     <Content Include="Web\Admin\BookingHistories.aspx" />
-    <Content Include="Web\Admin\BO\Confirmation.aspx" />
-    <Content Include="Web\Admin\BO\ResultPayment.aspx" />
-    <Content Include="Web\Admin\BO\vpc_queryDR.aspx" />
     <Content Include="Web\Admin\CheckVoucher.aspx" />
     <Content Include="Web\Admin\HaiPhongContracts.aspx" />
     <Content Include="Web\Admin\HaiPhongExpenseReport.aspx" />
@@ -1304,7 +1251,6 @@
     <Content Include="Web\Images\roomplan.gif" />
     <Content Include="Web\Images\subcategory.gif" />
     <Content Include="Web\Admin\Blank.Master" />
-    <Content Include="Web\Admin\BO\BookingOnline.Master" />
     <Content Include="Web\Admin\MO.Master" />
     <Content Include="Web\Admin\NewPopup.Master" />
     <Content Include="web.config">
@@ -1317,6 +1263,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
     <Content Include="Web\Admin\MO-NoScriptManager.Master" />
+    <Content Include="Web\Admin\Handler\FileUploadHandler.ashx" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -1509,6 +1456,8 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>xcopy /s /y "$(ProjectDir)"Web\Admin\*.as?x "$(SolutionDir)"CMS.Web\Modules\Sails\Admin
+xcopy /s /y "$(ProjectDir)"Web\Admin\Handler\*.ashx "$(SolutionDir)"CMS.Web\Modules\Sails\Admin\Handler
+xcopy /s /y "$(ProjectDir)"Web\Admin\WebMethod\*.asmx "$(SolutionDir)"CMS.Web\Modules\Sails\Admin\WebMethod
 xcopy /s /y "$(ProjectDir)"Web\Admin\*.js "$(SolutionDir)"CMS.Web\Modules\Sails\Admin
 xcopy /s /y "$(ProjectDir)"Web\*.Master "$(SolutionDir)"CMS.Web\Modules\Sails\
 xcopy /s /y "$(ProjectDir)"Web\Images\*.* "$(SolutionDir)"CMS.Web\Modules\Sails\Images\

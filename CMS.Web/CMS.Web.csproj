@@ -692,20 +692,6 @@
     <Content Include="Images\table_bg.jpg" />
     <Content Include="Images\title_bg.png" />
     <Content Include="Images\vn.png" />
-    <Content Include="Modules\Sails\Admin\BO\Billing.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\BookingComfimation.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\BookingConfimation.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\BookingConfirmation.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\BookingTour.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\BookingTours.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\BookingTours1.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\Comfirmation.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\Confirmation.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\ResultPayment.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\Success.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\TransactionResult.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\VPCIPN.aspx" />
-    <Content Include="Modules\Sails\Admin\BO\vpc_queryDR.aspx" />
     <Content Include="Modules\Sails\Controls\CruisePriceTable.ascx" />
     <Content Include="Modules\Sails\Controls\CruisePriceTableCharter.ascx" />
     <Content Include="Modules\Sails\Controls\CustomerInfoInput.ascx" />
@@ -1347,7 +1333,6 @@
     </Content>
     <Content Include="Config\services.config" />
     <Content Include="Modules\Sails\Admin\Blank.Master" />
-    <Content Include="Modules\Sails\Admin\BO\BookingOnline.Master" />
     <Content Include="Css\Bootstrap\v3.3.7\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Css\Bootstrap\v3.3.7\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Css\Bootstrap\v3.3.7\fonts\glyphicons-halflings-regular.woff" />

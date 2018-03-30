@@ -228,9 +228,9 @@
                     </th>
                     <th>Note
                     </th>
-                    <th>Edit
+                    <th>
                     </th>
-                    <th>Delete
+                    <th>
                     </th>
                 </tr>
                 <asp:Repeater runat="server" ID="rptActivities" OnItemDataBound="rptActivities_ItemDataBound">
@@ -279,7 +279,7 @@
                     <th>Received</th>
                     <th>Download
                     </th>
-                    <th>Edit
+                    <th>
                     </th>
                 </tr>
                 <asp:Repeater runat="server" ID="rptContracts" OnItemDataBound="rptContracts_ItemDataBound">
@@ -373,7 +373,7 @@
                             </div>
                             <div class="col-xs-11">
                                 <div class="row">
-                                    <div class="col-xs-12">
+                                    <div class="col-xs-12" style="margin-bottom:10px">
                                         <span class="btn btn-success fileinput-button">
                                             <i class="glyphicon glyphicon-plus"></i>
                                             <span>Add file</span>
@@ -383,13 +383,13 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-12">
-                                        <div id="progressbar" style="width: 100px; display: none;">
-                                            <div>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="sr-only"></span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -427,6 +427,23 @@
             format: 'd/m/Y',
             scrollInput: false,
             scrollMonth: false
+        });
+    </script>
+    <script type="text/javascript">
+        $('#btnFileUpload').fileupload({
+            url: 'Handler/FileUploadHandler.ashx?upload=start',
+            add: function (e, data) {
+                $('.progress-bar').css('width', 0 + '%');
+                data.submit();
+            },
+            progress: function (e, data) {               
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('.progress-bar').css('width', progress + '%');
+            },
+            success: function (response, status) {
+            },
+            error: function (error) {
+            }
         });
     </script>
 </asp:Content>
