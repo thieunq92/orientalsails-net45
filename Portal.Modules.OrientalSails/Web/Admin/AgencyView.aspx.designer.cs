@@ -283,22 +283,31 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.Label lblContracts;
         
         /// <summary>
-        /// txtValidFromDate control.
+        /// txtContractValidFromDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValidFromDate;
+        protected global::System.Web.UI.WebControls.TextBox txtContractValidFromDate;
         
         /// <summary>
-        /// txtValidToDate control.
+        /// txtContractValidToDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValidToDate;
+        protected global::System.Web.UI.WebControls.TextBox txtContractValidToDate;
+        
+        /// <summary>
+        /// ddlContractTemplate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlContractTemplate;
         
         /// <summary>
         /// btnExportContractPreviewWord control.
@@ -319,22 +328,31 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.Button btnExportContractPreviewPdf;
         
         /// <summary>
-        /// txtValidFromQuotation control.
+        /// btnIssueContract control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValidFromQuotation;
+        protected global::System.Web.UI.WebControls.Button btnIssueContract;
         
         /// <summary>
-        /// txtValidToQuotation control.
+        /// txtQuotationValidFromDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtValidToQuotation;
+        protected global::System.Web.UI.WebControls.TextBox txtQuotationValidFromDate;
+        
+        /// <summary>
+        /// txtQuotationValidToDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtQuotationValidToDate;
         
         /// <summary>
         /// ddlQuotationTemplate control.
@@ -346,21 +364,30 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.DropDownList ddlQuotationTemplate;
         
         /// <summary>
-        /// Button1 control.
+        /// btnExportQuotationPreviewWord control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnExportQuotationPreviewWord;
         
         /// <summary>
-        /// Button2 control.
+        /// btnExportQuotationPreviewPdf control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnExportQuotationPreviewPdf;
+        
+        /// <summary>
+        /// btnIssueQuotation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnIssueQuotation;
     }
 }

@@ -21,7 +21,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                     var contract = Module.ContractGetById(Convert.ToInt32(Request.QueryString["contractid"]));
 
                     txtName.Text = contract.FileName;
-                    txtExpiredDate.Text = contract.ExpiredDate.ToString("dd/MM/yyyy");
+                    txtExpiredDate.Text = contract.ExpiredDate.Value.ToString("dd/MM/yyyy");
 
                     if (!string.IsNullOrEmpty(contract.FilePath))
                     {

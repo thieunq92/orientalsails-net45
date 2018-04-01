@@ -14,6 +14,12 @@
     <property name="FilePath"/>
     <property name="CreateDate"/>
     <property name="Received"/>
+    <property name="ContractTemplate"/>
+    <property name="ContractValidFromDate"/>
+    <property name="ContractValidToDate"/>
+    <property name="QuotationTemplate"/>
+    <property name="QuotationValidFromDate"/>
+    <property name="QuotationValidToDate"/>
 
     <many-to-one name="Agency" column="AgencyId" class="Agency"/>
   </class>

@@ -326,38 +326,39 @@
                                 <label>Valid from</label>
                             </div>
                             <div class="col-xs-4">
-                                <asp:TextBox runat="server" ID="txtValidFromDate" CssClass="form-control" placeholder="Valid from (dd/mm/yyyy)" data-type="datetimepicker"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtContractValidFromDate" CssClass="form-control" placeholder="Valid from (dd/mm/yyyy)" data-type="datetimepicker"></asp:TextBox>
                             </div>
                             <div class="col-xs-2">
                                 <label>Valid to</label>
                             </div>
                             <div class="col-xs-4">
-                                <asp:TextBox runat="server" ID="txtValidToDate" CssClass="form-control" placeholder="Valid to (dd/mm/yyyy)" data-type="datetimepicker"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtContractValidToDate" CssClass="form-control" placeholder="Valid to (dd/mm/yyyy)" data-type="datetimepicker"></asp:TextBox>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-xs-3">
+                            <div class="col-xs-2">
                                 <label>Select contract</label>
                             </div>
-                            <div class="col-xs-9">
-                                <select class="form-control">
-                                    <option>Contract lv1</option>
-                                    <option>Contract lv2</option>
-                                    <option>Contract lv3</option>
-                                </select>
+                            <div class="col-xs-10">
+                                <asp:DropDownList runat="server" ID="ddlContractTemplate" CssClass="form-control">
+                                    <asp:ListItem Text="-- Select contract --" Value="-1"></asp:ListItem>
+                                    <asp:ListItem Text="Contract lv1" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="Contract lv2" Value="2"></asp:ListItem>
+                                    <asp:ListItem Text="Contract lv3" Value="2"></asp:ListItem>
+                                </asp:DropDownList>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-xs-1">
+                            <div class="col-xs-2">
                                 <label>Upload</label>
                             </div>
-                            <div class="col-xs-11">
+                            <div class="col-xs-10">
                                 <div class="row">
                                     <div class="col-xs-12" style="margin-bottom: 10px">
                                         <span class="btn btn-success fileinput-button">
@@ -381,10 +382,10 @@
                     </div>
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-xs-1">
+                            <div class="col-xs-2">
                                 <label>Preview</label>
                             </div>
-                            <div class="col-xs-11">
+                            <div class="col-xs-10">
                                 <div class="btn-toolbar">
                                     <button type="button" class="btn btn-primary">Send email</button>
                                     <asp:Button runat="server" ID="btnExportContractPreviewWord" class="btn btn-primary" Text="Export to Word" OnClick="btnExportContractPreviewWord_Click"></asp:Button>
@@ -396,7 +397,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Issue</button>
+                    <asp:Button runat="server" ID="btnIssueContract" CssClass="btn btn-primary" Text="Issue" OnClick="btnIssueContract_Click"></asp:Button>
                 </div>
             </div>
         </div>
@@ -416,13 +417,13 @@
                                 <label>Valid from</label>
                             </div>
                             <div class="col-xs-4">
-                                <asp:TextBox runat="server" ID="txtValidFromQuotation" CssClass="form-control" placeholder="Valid from (dd/mm/yyyy)" data-type="datetimepicker"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtQuotationValidFromDate" CssClass="form-control" placeholder="Valid from (dd/mm/yyyy)" data-type="datetimepicker"></asp:TextBox>
                             </div>
                             <div class="col-xs-2">
                                 <label>Valid to</label>
                             </div>
                             <div class="col-xs-4">
-                                <asp:TextBox runat="server" ID="txtValidToQuotation" CssClass="form-control" placeholder="Valid to (dd/mm/yyyy)" data-type="datetimepicker"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtQuotationValidToDate" CssClass="form-control" placeholder="Valid to (dd/mm/yyyy)" data-type="datetimepicker"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -477,8 +478,8 @@
                             <div class="col-xs-10">
                                 <div class="btn-toolbar">
                                     <button type="button" class="btn btn-primary">Send email</button>
-                                    <asp:Button runat="server" ID="Button1" class="btn btn-primary" Text="Export to Word" OnClick="btnExportQuotationPreviewWord_Click"></asp:Button>
-                                    <asp:Button runat="server" ID="Button2" class="btn btn-primary" Text="Export to Pdf" OnClick="btnExportQuotationPreviewPdf_Click"></asp:Button>
+                                    <asp:Button runat="server" ID="btnExportQuotationPreviewWord" class="btn btn-primary" Text="Export to Word" OnClick="btnExportQuotationPreviewWord_Click"></asp:Button>
+                                    <asp:Button runat="server" ID="btnExportQuotationPreviewPdf" class="btn btn-primary" Text="Export to Pdf" OnClick="btnExportQuotationPreviewPdf_Click"></asp:Button>
                                 </div>
                             </div>
                         </div>
@@ -486,7 +487,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Issue</button>
+                    <asp:Button runat="server" ID="btnIssueQuotation" CssClass="btn btn-primary" Text="Issue" OnClick="btnIssueQuotation_Click"></asp:Button>
                 </div>
             </div>
         </div>

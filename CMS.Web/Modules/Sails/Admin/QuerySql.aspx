@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <%  Module.CommonDao.OpenSession().CreateSQLQuery(" ALTER TABLE os_Agency ADD TenTiengViet nvarchar(MAX), GiamDoc nvarchar(MAX); ")
+            <%  Module.CommonDao.OpenSession().CreateSQLQuery(" ALTER TABLE os_AgencyContract ADD ContractTemplate int, ContractValidFromDate datetime, ContractValidTodate datetime, QuotationTemplate int, QuotationValidFromDate datetime, QuotationValidToDate datetime ")
                 .ExecuteUpdate();%>
         </div>
     </form>

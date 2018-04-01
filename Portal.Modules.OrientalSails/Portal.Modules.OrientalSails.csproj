@@ -183,6 +183,7 @@
     </Compile>
     <Compile Include="Repository\ActivityRepository.cs" />
     <Compile Include="Repository\AgencyContactRepository.cs" />
+    <Compile Include="Repository\AgencyContractRepository.cs" />
     <Compile Include="Repository\AgencyLocationRepository.cs" />
     <Compile Include="Repository\AgencyRepository.cs" />
     <Compile Include="Repository\BookingHistoryRepository.cs" />
