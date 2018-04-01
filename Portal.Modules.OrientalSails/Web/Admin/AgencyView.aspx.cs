@@ -348,10 +348,19 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             ExportContractToPdf();
         }
 
+        protected void btnExportQuotationPreviewWord_Click(object sender, EventArgs e)
+        {
+            ExportQuotationToWord();
+        }
+
+        protected void btnExportQuotationPreviewPdf_Click(object sender, EventArgs e)
+        {
+            ExportQuotationToPdf();
+        }
+
         public void ExportContractToWord()
         {
             var doc = GetGeneratedContract();
-            var contractName = txtContractName.Text;
             var m = new MemoryStream();
             doc.Save(m, SaveFormat.Doc);
 
@@ -359,7 +368,25 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             Response.Buffer = true;
             Response.ContentType = "application/msword";
             Response.AppendHeader("content-disposition",
-                                  "attachment; filename=" + string.Format("{0}.doc", contractName));
+                                  "attachment; filename=" + string.Format("{0}.doc", "contract"));
+            Response.OutputStream.Write(m.GetBuffer(), 0, m.GetBuffer().Length);
+            Response.OutputStream.Flush();
+            Response.OutputStream.Close();
+            m.Close();
+            Response.End();
+        }
+
+        public void ExportQuotationToWord()
+        {
+            var doc = GetGeneratedQuotation();
+            var m = new MemoryStream();
+            doc.Save(m, SaveFormat.Doc);
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ContentType = "application/msword";
+            Response.AppendHeader("content-disposition",
+                                  "attachment; filename=" + string.Format("{0}.doc", "quotation"));
             Response.OutputStream.Write(m.GetBuffer(), 0, m.GetBuffer().Length);
             Response.OutputStream.Flush();
             Response.OutputStream.Close();
@@ -370,7 +397,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         public void ExportContractToPdf()
         {
             var doc = GetGeneratedContract();
-            var contractName = txtContractName.Text;
             var m = new MemoryStream();
             doc.Save(m, SaveFormat.Doc);
             byte[] wordContent = m.GetBuffer();
@@ -391,7 +417,39 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             Response.Buffer = true;
             Response.ContentType = "application/pdf";
             Response.AppendHeader("content-disposition",
-                                  "attachment; filename=" + string.Format("{0}.pdf", contractName));
+                                  "attachment; filename=" + string.Format("{0}.pdf", "contract"));
+            Response.OutputStream.Write(mtest.GetBuffer(), 0, mtest.GetBuffer().Length);
+            Response.OutputStream.Flush();
+            Response.OutputStream.Close();
+            mtest.Close();
+            m.Close();
+            Response.End();
+        }
+
+        public void ExportQuotationToPdf()
+        {
+            var doc = GetGeneratedQuotation();
+            var m = new MemoryStream();
+            doc.Save(m, SaveFormat.Doc);
+            byte[] wordContent = m.GetBuffer();
+            var tmpFile = Path.GetTempFileName();
+            var tmpFileStream = File.OpenWrite(tmpFile);
+            tmpFileStream.Write(wordContent, 0, wordContent.Length);
+            tmpFileStream.Close();
+
+            Microsoft.Office.Interop.Word.Application appWord = new Microsoft.Office.Interop.Word.Application();
+            var wordDocument = appWord.Documents.Open(tmpFile);
+            var tmpFileExport = Path.GetTempFileName();
+            wordDocument.ExportAsFixedFormat(tmpFileExport, WdExportFormat.wdExportFormatPDF);
+            var fileStream = new FileStream(tmpFileExport, FileMode.Open, FileAccess.ReadWrite);
+            var mtest = new MemoryStream();
+            fileStream.CopyTo(mtest);
+            fileStream.Close();
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("content-disposition",
+                                  "attachment; filename=" + string.Format("{0}.pdf", "contract"));
             Response.OutputStream.Write(mtest.GetBuffer(), 0, mtest.GetBuffer().Length);
             Response.OutputStream.Flush();
             Response.OutputStream.Close();
@@ -490,9 +548,64 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             doc.Range.Replace(new Regex("(\\[AgencyTaxCode\\])"), agencyTaxCode);
             doc.Range.Replace(new Regex("(\\[ValidToDate\\])"), textValidToDate);
             return doc;
-
-
         }
-    }
 
+        public Aspose.Words.Document GetGeneratedQuotation()
+        {
+            var selectedQuotationTemplate = -1;
+            try
+            {
+                selectedQuotationTemplate = Int32.Parse(ddlQuotationTemplate.SelectedValue);
+            }
+            catch { }
+
+            var templatePath = "";
+            switch (selectedQuotationTemplate)
+            {
+                case 1:
+                    templatePath = "/Modules/Sails/Admin/ExportTemplates/QuotationLv1.doc";
+                    break;
+                case 2:
+                    templatePath = "/Modules/Sails/Admin/ExportTemplates/QuotationLv2.doc";
+                    break;
+                case 3:
+                    templatePath = "/Modules/Sails/Admin/ExportTemplates/QuotationLv3.doc";
+                    break;
+            }
+            var doc = new Aspose.Words.Document(Server.MapPath(templatePath));
+
+            DateTime? validFromDate = null;
+
+            try
+            {
+                validFromDate = DateTime.ParseExact(txtValidFromQuotation.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+            }
+            catch (Exception) { }
+
+            var textValidFromDate = "";
+            try
+            {
+                textValidFromDate = validFromDate.Value.ToString("dd/mm/yyyy");
+            }
+            catch { }
+            DateTime? validToDate = null;
+            try
+            {
+                validToDate = DateTime.ParseExact(txtValidToQuotation.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+            }
+            catch { }
+
+            var textValidToDate = "";
+            try
+            {
+                textValidToDate = validToDate.Value.ToString("dd/mm/yyyy");
+            }
+            catch { }
+
+            doc.Range.Replace(new Regex("(\\[ValidFromDate\\])"), textValidFromDate);
+            doc.Range.Replace(new Regex("(\\[ValidToDate\\])"), textValidToDate);
+            return doc;
+        }
+
+    }
 }

@@ -228,10 +228,8 @@
                     </th>
                     <th>Note
                     </th>
-                    <th>
-                    </th>
-                    <th>
-                    </th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 <asp:Repeater runat="server" ID="rptActivities" OnItemDataBound="rptActivities_ItemDataBound">
                     <ItemTemplate>
@@ -272,15 +270,14 @@
             <table class="table table-bordered table-hover table-common">
                 <tr class="active">
                     <th>Created Date</th>
-                    <th>Name
+                    <th>Contract\Quotation
                     </th>
                     <th>Expired on
                     </th>
                     <th>Received</th>
                     <th>Download
                     </th>
-                    <th>
-                    </th>
+                    <th></th>
                 </tr>
                 <asp:Repeater runat="server" ID="rptContracts" OnItemDataBound="rptContracts_ItemDataBound">
                     <ItemTemplate>
@@ -309,6 +306,7 @@
             </table>
             <div class="btn-toolbar">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-issuecontract">Issue contract</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".modal-issuequotation">Issue quotation</button>
             </div>
         </asp:PlaceHolder>
         <asp:Label runat="server" ID="lblContracts" Text="You don't have permission to use this function. If you want to use this function please contact administrator"
@@ -319,21 +317,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h3 class="modal-title" id="gridSystemModalLabel">Issue Contract</h3>
+                    <h3 class="modal-title">Issue Contract</h3>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-xs-1">
-                                <label>Name</label>
-                            </div>
-                            <div class="col-xs-11">
-                                <asp:TextBox runat="server" ID="txtContractName" CssClass="form-control" placeholder="Name"> </asp:TextBox>
-                            </div>
-
-                        </div>
-                    </div>
-
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-2">
@@ -373,7 +359,7 @@
                             </div>
                             <div class="col-xs-11">
                                 <div class="row">
-                                    <div class="col-xs-12" style="margin-bottom:10px">
+                                    <div class="col-xs-12" style="margin-bottom: 10px">
                                         <span class="btn btn-success fileinput-button">
                                             <i class="glyphicon glyphicon-plus"></i>
                                             <span>Add file</span>
@@ -393,7 +379,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-1">
@@ -404,6 +389,96 @@
                                     <button type="button" class="btn btn-primary">Send email</button>
                                     <asp:Button runat="server" ID="btnExportContractPreviewWord" class="btn btn-primary" Text="Export to Word" OnClick="btnExportContractPreviewWord_Click"></asp:Button>
                                     <asp:Button runat="server" ID="btnExportContractPreviewPdf" class="btn btn-primary" Text="Export to Pdf" OnClick="btnExportContractPreviewPdf_Click"></asp:Button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Issue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade modal-issuequotation" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title">Issue Quotation</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label>Valid from</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <asp:TextBox runat="server" ID="txtValidFromQuotation" CssClass="form-control" placeholder="Valid from (dd/mm/yyyy)" data-type="datetimepicker"></asp:TextBox>
+                            </div>
+                            <div class="col-xs-2">
+                                <label>Valid to</label>
+                            </div>
+                            <div class="col-xs-4">
+                                <asp:TextBox runat="server" ID="txtValidToQuotation" CssClass="form-control" placeholder="Valid to (dd/mm/yyyy)" data-type="datetimepicker"></asp:TextBox>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label>Select quotation</label>
+                            </div>
+                            <div class="col-xs-10">
+                                <asp:DropDownList ID="ddlQuotationTemplate" runat="server" CssClass="form-control">
+                                    <asp:ListItem Text="-- Select quotation --" Value="-1"></asp:ListItem>
+                                    <asp:ListItem Text="Quotation lv1" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="Quotation lv2" Value="2"></asp:ListItem>
+                                    <asp:ListItem Text="Quotation lv3" Value="3"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label>Upload</label>
+                            </div>
+                            <div class="col-xs-10">
+                                <div class="row">
+                                    <div class="col-xs-12" style="margin-bottom: 10px">
+                                        <span class="btn btn-success fileinput-button">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                            <span>Add file</span>
+                                            <input id="btnFileUpload" name="file" multiple="" type="file">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">
+                                                <span class="sr-only"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label>Preview</label>
+                            </div>
+                            <div class="col-xs-10">
+                                <div class="btn-toolbar">
+                                    <button type="button" class="btn btn-primary">Send email</button>
+                                    <asp:Button runat="server" ID="Button1" class="btn btn-primary" Text="Export to Word" OnClick="btnExportQuotationPreviewWord_Click"></asp:Button>
+                                    <asp:Button runat="server" ID="Button2" class="btn btn-primary" Text="Export to Pdf" OnClick="btnExportQuotationPreviewPdf_Click"></asp:Button>
                                 </div>
                             </div>
                         </div>
@@ -436,7 +511,7 @@
                 $('.progress-bar').css('width', 0 + '%');
                 data.submit();
             },
-            progress: function (e, data) {               
+            progress: function (e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);
                 $('.progress-bar').css('width', progress + '%');
             },
