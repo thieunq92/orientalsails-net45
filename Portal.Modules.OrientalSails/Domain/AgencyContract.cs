@@ -19,5 +19,6 @@ namespace Portal.Modules.OrientalSails.Domain
         public virtual int QuotationTemplate { get; set; }
         public virtual DateTime? QuotationValidFromDate { get; set; }
         public virtual DateTime? QuotationValidToDate { get; set; }
+        public virtual int Status { get; set; }
     }
 }

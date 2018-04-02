@@ -197,7 +197,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 var contract = (AgencyContract)e.Item.DataItem;
 
                 ValueBinder.BindLiteral(e.Item, "litName", contract.ContractName);
-                ValueBinder.BindLiteral(e.Item, "litExpired", contract.ExpiredDate.Value.ToString("dd/MM/yyyy"));
+                var expiredDate = new DateTime();
+                try
+                {
+                    expiredDate = contract.ExpiredDate.Value;
+                }
+                catch { }
+
+                ValueBinder.BindLiteral(e.Item, "litExpired", expiredDate == DateTime.MinValue ? "" : expiredDate.ToString("dd/MM/yyyy"));
                 if (contract.CreateDate != null)
                     ValueBinder.BindLiteral(e.Item, "litCreatedDate", contract.CreateDate.Value.ToString("dd/MM/yyyy"));
 
@@ -222,6 +229,59 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 linkEdit.NavigateUrl = "javascript:";
                 linkEdit.Attributes.Add("onclick", CMS.ServerControls.Popup.OpenPopupScript(url, "Contract", 300, 400));
                 linkEdit.Visible = _editPermission;
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                var litContractQuotation = (Literal)e.Item.FindControl("litContractQuotation");
+                var contractTemplate = contract.ContractTemplate;
+                var contractTemplateName = "";
+                switch (contractTemplate)
+                {
+                    case 1:
+                        contractTemplateName = "Contract Lv1";
+                        break;
+                    case 2:
+                        contractTemplateName = "Contract Lv2";
+                        break;
+                    case 3:
+                        contractTemplateName = "Contract Lv3";
+                        break;
+                }
+
+                var quotationTemplate = contract.QuotationTemplate;
+                var quotationTemplateName = "";
+                switch (quotationTemplate)
+                {
+                    case 1:
+                        quotationTemplateName = "Quotation Lv1";
+                        break;
+                    case 2:
+                        quotationTemplateName = "Quotation Lv2";
+                        break;
+                    case 3:
+                        quotationTemplateName = "Quotation Lv3";
+                        break;
+                }
+
+                var separator = "";
+                if (contractTemplateName != "" && quotationTemplateName != "")
+                    separator = @" \ ";
+                var contractQuotationName = contractTemplateName + separator + quotationTemplateName;
+                litContractQuotation.Text = @"<a>" + contractQuotationName + @"</a>";
+
+                var litStatus = (Literal)e.Item.FindControl("litStatus");
+                var status = contract.Status;
+                var statusName = "";
+                switch (status)
+                {
+                    case 1:
+                        statusName = "Contract sent";
+                        break;
+                    case 2:
+                        statusName = "Contract in valid";
+                        break;
+                }
+                litStatus.Text = statusName;
+
             }
         }
 
@@ -466,12 +526,12 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
             try
             {
-                validFromDate = DateTime.ParseExact(txtContractValidFromDate.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+                validFromDate = DateTime.ParseExact(txtContractValidFromDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
             catch (Exception) { }
 
             var validFromDay = validFromDate != null ? validFromDate.Value.Day.ToString("#00") : "";
-            var validFromMonth = validFromDate != null ? (validFromDate.Value.Month + 2).ToString("#00") : "";
+            var validFrommonth = validFromDate != null ? (validFromDate.Value.Month + 1).ToString("#00") : "";
             var validFromYear = validFromDate != null ? validFromDate.Value.Year.ToString() : "";
 
             var doc = new Aspose.Words.Document(Server.MapPath("/Modules/Sails/Admin/ExportTemplates/Contract.doc"));
@@ -527,19 +587,19 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             DateTime? validToDate = null;
             try
             {
-                validToDate = DateTime.ParseExact(txtContractValidToDate.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+                validToDate = DateTime.ParseExact(txtContractValidToDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
             catch { }
 
             var textValidToDate = "";
             try
             {
-                textValidToDate = validToDate.Value.ToString("dd/mm/yyyy");
+                textValidToDate = validToDate.Value.ToString("dd/MM/yyyy");
             }
             catch { }
 
             doc.Range.Replace(new Regex("(\\[ValidFromDay\\])"), validFromDay);
-            doc.Range.Replace(new Regex("(\\[ValidFromMonth\\])"), validFromMonth);
+            doc.Range.Replace(new Regex("(\\[ValidFrommonth\\])"), validFrommonth);
             doc.Range.Replace(new Regex("(\\[ValidFromYear\\])"), validFromYear);
             doc.Range.Replace(new Regex("(\\[AgencyName\\])"), agencyName);
             doc.Range.Replace(new Regex("(\\[TenGiaoDich\\])"), agencyTenGiaoDich);
@@ -580,27 +640,27 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
             try
             {
-                validFromDate = DateTime.ParseExact(txtQuotationValidFromDate.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+                validFromDate = DateTime.ParseExact(txtQuotationValidFromDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
             catch (Exception) { }
 
             var textValidFromDate = "";
             try
             {
-                textValidFromDate = validFromDate.Value.ToString("dd/mm/yyyy");
+                textValidFromDate = validFromDate.Value.ToString("dd/MM/yyyy");
             }
             catch { }
             DateTime? validToDate = null;
             try
             {
-                validToDate = DateTime.ParseExact(txtQuotationValidToDate.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+                validToDate = DateTime.ParseExact(txtQuotationValidToDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
             catch { }
 
             var textValidToDate = "";
             try
             {
-                textValidToDate = validToDate.Value.ToString("dd/mm/yyyy");
+                textValidToDate = validToDate.Value.ToString("dd/MM/yyyy");
             }
             catch { }
 
@@ -623,26 +683,32 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var selectedQuotationTemplate = -1;
             try
             {
-                selectedQuotationTemplate = Int32.Parse(ddlContractTemplate.SelectedValue);
+                selectedQuotationTemplate = Int32.Parse(ddlQuotationTemplate.SelectedValue);
             }
             catch { }
-            agencyContract.ContractTemplate = selectedQuotationTemplate;
+            agencyContract.QuotationTemplate = selectedQuotationTemplate;
 
-            var contractValidFromDate = new DateTime();
+            var quotationValidFromDate = new DateTime();
             try
             {
-                contractValidFromDate = DateTime.ParseExact(txtQuotationValidFromDate.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+                quotationValidFromDate = DateTime.ParseExact(txtQuotationValidFromDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
             catch { }
-            agencyContract.ContractValidFromDate = contractValidFromDate;
+            if (quotationValidFromDate == DateTime.MinValue)
+                agencyContract.QuotationValidFromDate = null;
+            else
+                agencyContract.QuotationValidFromDate = quotationValidFromDate;
 
-            var contractValidToDate = new DateTime();
+            var quotationValidToDate = new DateTime();
             try
             {
-                contractValidToDate = DateTime.ParseExact(txtQuotationValidToDate.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+                quotationValidToDate = DateTime.ParseExact(txtQuotationValidToDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
             catch { }
-            agencyContract.ContractValidToDate = contractValidToDate;
+            if (quotationValidToDate == DateTime.MinValue)
+                agencyContract.QuotationValidToDate = null;
+            else
+                agencyContract.QuotationValidToDate = quotationValidToDate;
 
             AgencyViewBLL.AgencyContractSaveOrUpdate(agencyContract);
         }
@@ -670,19 +736,33 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var contractValidFromDate = new DateTime();
             try
             {
-                contractValidFromDate = DateTime.ParseExact(txtContractValidFromDate.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+                contractValidFromDate = DateTime.ParseExact(txtContractValidFromDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
             catch { }
-            agencyContract.ContractValidFromDate = contractValidFromDate;
+            if (contractValidFromDate == DateTime.MinValue)
+                agencyContract.ContractValidFromDate = null;
+            else
+                agencyContract.ContractValidFromDate = contractValidFromDate;
 
             var contractValidToDate = new DateTime();
             try
             {
-                contractValidToDate = DateTime.ParseExact(txtContractValidToDate.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture);
+                contractValidToDate = DateTime.ParseExact(txtContractValidToDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
             catch { }
 
-            agencyContract.ContractValidToDate = contractValidToDate;
+            if (contractValidToDate == DateTime.MinValue)
+                agencyContract.ContractValidToDate = null;
+            else
+                agencyContract.ContractValidToDate = contractValidToDate;
+
+            var selectedStatus = -1;
+            try
+            {
+                selectedStatus = Int32.Parse(ddlStatus.SelectedValue);
+            }
+            catch { }
+            agencyContract.Status = selectedStatus;
             AgencyViewBLL.AgencyContractSaveOrUpdate(agencyContract);
         }
 

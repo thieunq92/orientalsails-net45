@@ -186,7 +186,7 @@
                                 <asp:HyperLink runat="server" ID="hplEmail"></asp:HyperLink>
                             </td>
                             <td>
-                                <%# ((DateTime?)Eval("Birthday"))==null?"" : ((DateTime?)Eval("Birthday")).Value.ToString("dd/MM/yyyy")%>
+                                <%# ((DateTime?)Eval("Birthday"))==null? "" : ((DateTime?)Eval("Birthday")).Value.ToString("dd/MM/yyyy")%>
                             </td>
                             <td>
                                 <%# DataBinder.Eval(Container.DataItem, "Note") %>
@@ -269,35 +269,43 @@
         <asp:PlaceHolder runat="server" ID="plhContracts">
             <table class="table table-bordered table-hover table-common">
                 <tr class="active">
-                    <th>Created Date</th>
-                    <th>Contract\Quotation
-                    </th>
-                    <th>Expired on
-                    </th>
-                    <th>Received</th>
-                    <th>Download
-                    </th>
+                    <th>Valid From</th>
+                    <th>Valid To</th>
+                    <th>Contract\Quotation</th>
+                    <th>Status</th>
                     <th></th>
                 </tr>
                 <asp:Repeater runat="server" ID="rptContracts" OnItemDataBound="rptContracts_ItemDataBound">
                     <ItemTemplate>
                         <tr>
-                            <td>
+                            <td class="hide">
                                 <asp:Literal runat="server" ID="litCreatedDate" />
                             </td>
-                            <td>
+                            <td class="hide">
                                 <asp:Literal runat="server" ID="litName"></asp:Literal>
                             </td>
-                            <td>
+                            <td class="hide">
                                 <asp:Literal runat="server" ID="litExpired"></asp:Literal>
                             </td>
-                            <td>
+                            <td class="hide">
                                 <asp:Literal runat="server" ID="litReceived"></asp:Literal>
+                            </td>
+                            <td>
+                                <%# ((DateTime?)Eval("ContractValidFromDate")) == null ? "" : ((DateTime?)Eval("ContractValidFromDate")).Value.ToString("dd/MM/yyyy") %>
+                            </td>
+                            <td>
+                                <%# ((DateTime?)Eval("ContractValidToDate")) == null ? "" : ((DateTime?)Eval("ContractValidToDate")).Value.ToString("dd/MM/yyyy") %>
+                            </td>
+                            <td>
+                                <asp:Literal runat="server" ID="litContractQuotation"></asp:Literal>
+                            </td>
+                            <td>
+                                <asp:Literal runat="server" ID="litStatus"></asp:Literal>
                             </td>
                             <td>
                                 <asp:HyperLink runat="server" ID="hplDownload" ToolTip="Download"></asp:HyperLink>
                             </td>
-                            <td>
+                            <td class="hide">
                                 <asp:HyperLink runat="server" ID="hplEdit"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Edit"></i></asp:HyperLink>
                             </td>
                         </tr>
@@ -323,6 +331,20 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-2">
+                                <label>Status</label>
+                            </div>
+                            <div class="col-xs-10">
+                                <asp:DropDownList runat="server" ID="ddlStatus" CssClass="form-control">
+                                    <asp:ListItem Text="-- Select Status --" Value ="-1"></asp:ListItem>
+                                    <asp:ListItem Text="Contract sent" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="Contract in valid" Value="2"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-2">
                                 <label>Valid from</label>
                             </div>
                             <div class="col-xs-4">
@@ -336,7 +358,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-2">
@@ -352,7 +373,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="row">
                             <div class="col-xs-2">
@@ -402,7 +422,6 @@
             </div>
         </div>
     </div>
-
     <div class="modal fade modal-issuequotation" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog" role="document">
             <div class="modal-content">

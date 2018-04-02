@@ -20,6 +20,7 @@
     <property name="QuotationTemplate"/>
     <property name="QuotationValidFromDate"/>
     <property name="QuotationValidToDate"/>
+    <property name="Status"/>
 
     <many-to-one name="Agency" column="AgencyId" class="Agency"/>
   </class>
