@@ -53,14 +53,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            _editPermission = Module.PermissionCheck(Permission.ACTION_EDITAGENCY, UserIdentity);
+            _viewBookingPermission = Module.PermissionCheck("VIEWBOOKINGBYAGENCY", UserIdentity);
+            _contactsPermission = Module.PermissionCheck("CONTACTS", UserIdentity);
+            _recentActivitiesPermission = Module.PermissionCheck("RECENTACTIVITIES", UserIdentity);
+            _contractsPermission = Module.PermissionCheck("CONTRACTS", UserIdentity);
+
             if (!IsPostBack)
             {
-                _editPermission = Module.PermissionCheck(Permission.ACTION_EDITAGENCY, UserIdentity);
-                _viewBookingPermission = Module.PermissionCheck("VIEWBOOKINGBYAGENCY", UserIdentity);
-                _contactsPermission = Module.PermissionCheck("CONTACTS", UserIdentity);
-                _recentActivitiesPermission = Module.PermissionCheck("RECENTACTIVITIES", UserIdentity);
-                _contractsPermission = Module.PermissionCheck("CONTRACTS", UserIdentity);
-
                 if (Request.QueryString["agencyid"] != null)
                 {
                     var agency = Module.AgencyGetById(Convert.ToInt32(Request.QueryString["agencyid"]));
@@ -135,6 +135,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                     rptActivities.DataBind();
                 }
             }
+            LoadContracts();
             RenderViewBookingByThisAgency();
             RenderContacts();
             RenderRecentActivities();
@@ -190,6 +191,13 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             }
         }
 
+        public void LoadContracts()
+        {
+            var agencyId = Agency.Id;
+            rptContracts.DataSource = AgencyViewBLL.AgencyContractGetAllByAgency(agencyId);
+            rptContracts.DataBind();
+        }
+
         protected void rptContracts_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.DataItem is AgencyContract)
@@ -231,7 +239,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 linkEdit.Visible = _editPermission;
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                var litContractQuotation = (Literal)e.Item.FindControl("litContractQuotation");
+                var plhContractQuotation = (PlaceHolder)e.Item.FindControl("plhContractQuotation");
                 var contractTemplate = contract.ContractTemplate;
                 var contractTemplateName = "";
                 switch (contractTemplate)
@@ -262,11 +270,26 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                         break;
                 }
 
-                var separator = "";
+                var lbtContractTemplate = new LinkButton()
+                {
+                    Text = contractTemplateName,
+                    CommandArgument = contract.Id.ToString(),
+                };
+                lbtContractTemplate.Click += new EventHandler(lbtContractTemplate_Click);
+                var lbtQuotationTemplate = new LinkButton()
+                {
+                    Text = quotationTemplateName,
+                    CommandArgument = contract.Id.ToString(),
+                };
+                lbtQuotationTemplate.Click += new EventHandler(lbtQuotationTemplate_Click);
+                var separator = new Literal()
+                {
+                    Text = @" \ ",
+                };
+                plhContractQuotation.Controls.Add(lbtContractTemplate);
                 if (contractTemplateName != "" && quotationTemplateName != "")
-                    separator = @" \ ";
-                var contractQuotationName = contractTemplateName + separator + quotationTemplateName;
-                litContractQuotation.Text = @"<a>" + contractQuotationName + @"</a>";
+                    plhContractQuotation.Controls.Add(separator);
+                plhContractQuotation.Controls.Add(lbtQuotationTemplate);
 
                 var litStatus = (Literal)e.Item.FindControl("litStatus");
                 var status = contract.Status;
@@ -281,8 +304,31 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                         break;
                 }
                 litStatus.Text = statusName;
-
             }
+        }
+
+        public void lbtQuotationTemplate_Click(object sender, EventArgs e)
+        {
+            var agencyContractId = -1;
+            try
+            {
+                agencyContractId = Int32.Parse(((LinkButton)sender).CommandArgument);
+            }
+            catch { }
+            var agencyContract = AgencyViewBLL.AgencyContractGetById(agencyContractId);
+            ExportQuotationToWord(agencyContract);
+        }
+
+        public void lbtContractTemplate_Click(object sender, EventArgs e)
+        {
+            var agencyContractId = -1;
+            try
+            {
+                agencyContractId = Int32.Parse(((LinkButton)sender).CommandArgument);
+            }
+            catch { }
+            var agencyContract = AgencyViewBLL.AgencyContractGetById(agencyContractId);
+            ExportContractToWord(agencyContract);
         }
 
         protected void rptContacts_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -438,12 +484,46 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             Response.End();
         }
 
+        public void ExportContractToWord(AgencyContract agencyContract)
+        {
+            var doc = GetGeneratedContract(agencyContract);
+            var m = new MemoryStream();
+            doc.Save(m, SaveFormat.Doc);
+
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ContentType = "application/msword";
+            Response.AppendHeader("content-disposition",
+                                  "attachment; filename=" + string.Format("{0}.doc", "contract"));
+            Response.OutputStream.Write(m.GetBuffer(), 0, m.GetBuffer().Length);
+            Response.OutputStream.Flush();
+            Response.OutputStream.Close();
+            m.Close();
+            Response.End();
+        }
+
         public void ExportQuotationToWord()
         {
             var doc = GetGeneratedQuotation();
             var m = new MemoryStream();
             doc.Save(m, SaveFormat.Doc);
+            Response.Clear();
+            Response.Buffer = true;
+            Response.ContentType = "application/msword";
+            Response.AppendHeader("content-disposition",
+                                  "attachment; filename=" + string.Format("{0}.doc", "quotation"));
+            Response.OutputStream.Write(m.GetBuffer(), 0, m.GetBuffer().Length);
+            Response.OutputStream.Flush();
+            Response.OutputStream.Close();
+            m.Close();
+            Response.End();
+        }
 
+        public void ExportQuotationToWord(AgencyContract agencyContract)
+        {
+            var doc = GetGeneratedQuotation(agencyContract);
+            var m = new MemoryStream();
+            doc.Save(m, SaveFormat.Doc);
             Response.Clear();
             Response.Buffer = true;
             Response.ContentType = "application/msword";
@@ -522,6 +602,30 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
         public Aspose.Words.Document GetGeneratedContract()
         {
+            var selectedContractTemplate = -1;
+            try
+            {
+                selectedContractTemplate = Int32.Parse(ddlContractTemplate.SelectedValue);
+            }
+            catch { }
+            var templatePath = "";
+            switch (selectedContractTemplate)
+            {
+                case 1:
+                    templatePath = "/Modules/Sails/Admin/ExportTemplates/Contract Lv1.doc";
+                    break;
+                case 2:
+                    templatePath = "/Modules/Sails/Admin/ExportTemplates/Contract Lv2.doc";
+                    break;
+                case 3:
+                    templatePath = "/Modules/Sails/Admin/ExportTemplates/Contract Lv3.doc";
+                    break;
+            }
+            return GetGeneratedContract(templatePath);
+        }
+
+        public Aspose.Words.Document GetGeneratedContract(string templatePath)
+        {
             DateTime? validFromDate = null;
 
             try
@@ -534,7 +638,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var validFrommonth = validFromDate != null ? (validFromDate.Value.Month + 1).ToString("#00") : "";
             var validFromYear = validFromDate != null ? validFromDate.Value.Year.ToString() : "";
 
-            var doc = new Aspose.Words.Document(Server.MapPath("/Modules/Sails/Admin/ExportTemplates/Contract.doc"));
+            var doc = new Aspose.Words.Document(Server.MapPath(templatePath));
             var agencyName = "";
             var agencyTenGiaoDich = "";
             var agencyNguoiDaiDien = "";
@@ -599,7 +703,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             catch { }
 
             doc.Range.Replace(new Regex("(\\[ValidFromDay\\])"), validFromDay);
-            doc.Range.Replace(new Regex("(\\[ValidFrommonth\\])"), validFrommonth);
+            doc.Range.Replace(new Regex("(\\[ValidFromMonth\\])"), validFrommonth);
             doc.Range.Replace(new Regex("(\\[ValidFromYear\\])"), validFromYear);
             doc.Range.Replace(new Regex("(\\[AgencyName\\])"), agencyName);
             doc.Range.Replace(new Regex("(\\[TenGiaoDich\\])"), agencyTenGiaoDich);
@@ -608,6 +712,54 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             doc.Range.Replace(new Regex("(\\[AgencyPhone\\])"), agencyPhone);
             doc.Range.Replace(new Regex("(\\[AgencyFax\\])"), agencyFax);
             doc.Range.Replace(new Regex("(\\[AgencyTaxCode\\])"), agencyTaxCode);
+            doc.Range.Replace(new Regex("(\\[ValidToDate\\])"), textValidToDate);
+            return doc;
+
+        }
+        public Aspose.Words.Document GetGeneratedContract(AgencyContract agencyContract)
+        {
+            var template = agencyContract.ContractTemplate;
+            var templatePath = "";
+            switch (template)
+            {
+                case 1:
+                    templatePath = "/Modules/Sails/Admin/ExportTemplates/Contract Lv1.doc";
+                    break;
+                case 2:
+                    templatePath = "/Modules/Sails/Admin/ExportTemplates/Contract Lv2.doc";
+                    break;
+                case 3:
+                    templatePath = "/Modules/Sails/Admin/ExportTemplates/Contract Lv3.doc";
+                    break;
+            }
+
+            var doc = GetGeneratedContract(templatePath);
+            DateTime? validFromDate = null;
+            try
+            {
+                validFromDate = agencyContract.ContractValidFromDate;
+            }
+            catch (Exception) { }
+            var validFromDay = validFromDate != null ? validFromDate.Value.Day.ToString("#00") : "";
+            var validFrommonth = validFromDate != null ? (validFromDate.Value.Month + 1).ToString("#00") : "";
+            var validFromYear = validFromDate != null ? validFromDate.Value.Year.ToString() : "";
+
+            DateTime? validToDate = null;
+            try
+            {
+                validToDate = agencyContract.ContractValidToDate;
+            }
+            catch { }
+
+            var textValidToDate = "";
+            try
+            {
+                textValidToDate = validToDate.Value.ToString("dd/MM/yyyy");
+            }
+            catch { }
+            doc.Range.Replace(new Regex("(\\[ValidFromDay\\])"), validFromDay);
+            doc.Range.Replace(new Regex("(\\[ValidFromMonth\\])"), validFrommonth);
+            doc.Range.Replace(new Regex("(\\[ValidFromYear\\])"), validFromYear);
             doc.Range.Replace(new Regex("(\\[ValidToDate\\])"), textValidToDate);
             return doc;
         }
@@ -620,7 +772,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 selectedQuotationTemplate = Int32.Parse(ddlQuotationTemplate.SelectedValue);
             }
             catch { }
-
             var templatePath = "";
             switch (selectedQuotationTemplate)
             {
@@ -635,15 +786,12 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                     break;
             }
             var doc = new Aspose.Words.Document(Server.MapPath(templatePath));
-
             DateTime? validFromDate = null;
-
             try
             {
                 validFromDate = DateTime.ParseExact(txtQuotationValidFromDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
             catch (Exception) { }
-
             var textValidFromDate = "";
             try
             {
@@ -657,6 +805,44 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             }
             catch { }
 
+            var textValidToDate = "";
+            try
+            {
+                textValidToDate = validToDate.Value.ToString("dd/MM/yyyy");
+            }
+            catch { }
+
+            doc.Range.Replace(new Regex("(\\[ValidFromDate\\])"), textValidFromDate);
+            doc.Range.Replace(new Regex("(\\[ValidToDate\\])"), textValidToDate);
+            return doc;
+
+        }
+
+        public Aspose.Words.Document GetGeneratedQuotation(AgencyContract agencyContract)
+        {
+            var template = agencyContract.QuotationTemplate;
+            var templatePath = "";
+            switch (template)
+            {
+                case 1:
+                    templatePath = "/Modules/Sails/Admin/ExportTemplates/QuotationLv1.doc";
+                    break;
+                case 2:
+                    templatePath = "/Modules/Sails/Admin/ExportTemplates/QuotationLv2.doc";
+                    break;
+                case 3:
+                    templatePath = "/Modules/Sails/Admin/ExportTemplates/QuotationLv3.doc";
+                    break;
+            }
+            var doc = new Aspose.Words.Document(Server.MapPath(templatePath));
+            DateTime? validFromDate = agencyContract.QuotationValidFromDate;
+            var textValidFromDate = "";
+            try
+            {
+                textValidFromDate = validFromDate.Value.ToString("dd/MM/yyyy");
+            }
+            catch { }
+            DateTime? validToDate = agencyContract.QuotationValidToDate;
             var textValidToDate = "";
             try
             {
@@ -711,6 +897,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 agencyContract.QuotationValidToDate = quotationValidToDate;
 
             AgencyViewBLL.AgencyContractSaveOrUpdate(agencyContract);
+            LoadContracts();
         }
 
         protected void btnIssueContract_Click(object sender, EventArgs e)
@@ -763,8 +950,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             }
             catch { }
             agencyContract.Status = selectedStatus;
-            AgencyViewBLL.AgencyContractSaveOrUpdate(agencyContract);
-        }
 
+            AgencyViewBLL.AgencyContractSaveOrUpdate(agencyContract);
+            LoadContracts();
+        }
     }
 }

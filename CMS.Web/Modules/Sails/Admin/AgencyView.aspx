@@ -271,7 +271,7 @@
                 <tr class="active">
                     <th>Valid From</th>
                     <th>Valid To</th>
-                    <th>Contract\Quotation</th>
+                    <th>Contract \ Quotation</th>
                     <th>Status</th>
                     <th></th>
                 </tr>
@@ -297,7 +297,7 @@
                                 <%# ((DateTime?)Eval("ContractValidToDate")) == null ? "" : ((DateTime?)Eval("ContractValidToDate")).Value.ToString("dd/MM/yyyy") %>
                             </td>
                             <td>
-                                <asp:Literal runat="server" ID="litContractQuotation"></asp:Literal>
+                                <asp:PlaceHolder runat="server" ID="plhContractQuotation"></asp:PlaceHolder>
                             </td>
                             <td>
                                 <asp:Literal runat="server" ID="litStatus"></asp:Literal>

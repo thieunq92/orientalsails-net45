@@ -45,5 +45,10 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
         {
             return AgencyContractRepository.AgencyContractGetAllByAgency(agencyId);
         }
+
+        public AgencyContract AgencyContractGetById(int agencyContractId)
+        {
+            return AgencyContractRepository.AgencyContractGetById(agencyContractId);
+        }
     }
 }
