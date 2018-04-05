@@ -319,6 +319,24 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.DropDownList ddlContractTemplate;
         
         /// <summary>
+        /// hifContractTemplatePath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hifContractTemplatePath;
+        
+        /// <summary>
+        /// hifContractTemplateName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hifContractTemplateName;
+        
+        /// <summary>
         /// btnExportContractPreviewWord control.
         /// </summary>
         /// <remarks>
@@ -371,6 +389,24 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlQuotationTemplate;
+        
+        /// <summary>
+        /// hifQuotationTemplatePath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hifQuotationTemplatePath;
+        
+        /// <summary>
+        /// hifQuotationTemplateName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hifQuotationTemplateName;
         
         /// <summary>
         /// btnExportQuotationPreviewWord control.

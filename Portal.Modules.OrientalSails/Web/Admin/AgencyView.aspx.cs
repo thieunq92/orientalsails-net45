@@ -612,13 +612,17 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             switch (selectedContractTemplate)
             {
                 case 1:
-                    templatePath = "/Modules/Sails/Admin/ExportTemplates/Contract Lv1.doc";
+                    templatePath = "ExportTemplates/Contract Lv1.doc";
                     break;
                 case 2:
-                    templatePath = "/Modules/Sails/Admin/ExportTemplates/Contract Lv2.doc";
+                    templatePath = "ExportTemplates/Contract Lv2.doc";
                     break;
                 case 3:
-                    templatePath = "/Modules/Sails/Admin/ExportTemplates/Contract Lv3.doc";
+                    templatePath = "ExportTemplates/Contract Lv3.doc";
+                    break;
+                case 4:
+                    var uploadedTemplatePath = hifContractTemplatePath.Value;
+                    templatePath = uploadedTemplatePath;
                     break;
             }
             return GetGeneratedContract(templatePath);
@@ -723,13 +727,16 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             switch (template)
             {
                 case 1:
-                    templatePath = "/Modules/Sails/Admin/ExportTemplates/Contract Lv1.doc";
+                    templatePath = "ExportTemplates/Contract Lv1.doc";
                     break;
                 case 2:
-                    templatePath = "/Modules/Sails/Admin/ExportTemplates/Contract Lv2.doc";
+                    templatePath = "ExportTemplates/Contract Lv2.doc";
                     break;
                 case 3:
-                    templatePath = "/Modules/Sails/Admin/ExportTemplates/Contract Lv3.doc";
+                    templatePath = "ExportTemplates/Contract Lv3.doc";
+                    break;
+                case 4:
+                    templatePath = agencyContract.ContractTemplatePath;
                     break;
             }
 
@@ -776,13 +783,17 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             switch (selectedQuotationTemplate)
             {
                 case 1:
-                    templatePath = "/Modules/Sails/Admin/ExportTemplates/QuotationLv1.doc";
+                    templatePath = "ExportTemplates/QuotationLv1.doc";
                     break;
                 case 2:
-                    templatePath = "/Modules/Sails/Admin/ExportTemplates/QuotationLv2.doc";
+                    templatePath = "ExportTemplates/QuotationLv2.doc";
                     break;
                 case 3:
-                    templatePath = "/Modules/Sails/Admin/ExportTemplates/QuotationLv3.doc";
+                    templatePath = "ExportTemplates/QuotationLv3.doc";
+                    break;
+                case 4:
+                    var uploadedQuotationTemplatePath = hifQuotationTemplatePath.Value;
+                    templatePath = uploadedQuotationTemplatePath;
                     break;
             }
             var doc = new Aspose.Words.Document(Server.MapPath(templatePath));
@@ -825,13 +836,16 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             switch (template)
             {
                 case 1:
-                    templatePath = "/Modules/Sails/Admin/ExportTemplates/QuotationLv1.doc";
+                    templatePath = "ExportTemplates/QuotationLv1.doc";
                     break;
                 case 2:
-                    templatePath = "/Modules/Sails/Admin/ExportTemplates/QuotationLv2.doc";
+                    templatePath = "ExportTemplates/QuotationLv2.doc";
                     break;
                 case 3:
-                    templatePath = "/Modules/Sails/Admin/ExportTemplates/QuotationLv3.doc";
+                    templatePath = "ExportTemplates/QuotationLv3.doc";
+                    break;
+                case 4:
+                    templatePath = agencyContract.QuotationTemplatePath;
                     break;
             }
             var doc = new Aspose.Words.Document(Server.MapPath(templatePath));
@@ -895,7 +909,8 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 agencyContract.QuotationValidToDate = null;
             else
                 agencyContract.QuotationValidToDate = quotationValidToDate;
-
+            agencyContract.QuotationTemplatePath = hifQuotationTemplatePath.Value;
+            agencyContract.QuotationTemplateName = hifQuotationTemplateName.Value;
             AgencyViewBLL.AgencyContractSaveOrUpdate(agencyContract);
             LoadContracts();
         }
@@ -950,7 +965,8 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             }
             catch { }
             agencyContract.Status = selectedStatus;
-
+            agencyContract.ContractTemplatePath = hifContractTemplatePath.Value;
+            agencyContract.ContractTemplateName = hifContractTemplateName.Value;
             AgencyViewBLL.AgencyContractSaveOrUpdate(agencyContract);
             LoadContracts();
         }

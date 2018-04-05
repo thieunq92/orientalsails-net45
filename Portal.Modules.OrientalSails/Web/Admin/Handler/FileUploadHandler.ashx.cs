@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -70,7 +71,11 @@ namespace Portal.Modules.OrientalSails.Web.Admin.Handler
                         context.Response.ContentType = "text/plain";
                     }
 
-                    context.Response.Write("Success");
+                    context.Response.Write(JsonConvert.SerializeObject(new
+                    {
+                        path = @"handler/upload/" + file,
+                        name = postedFile.FileName,
+                    }));
                 }
             }
             catch (Exception exp)

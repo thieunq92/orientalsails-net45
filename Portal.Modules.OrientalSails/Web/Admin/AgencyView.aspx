@@ -335,7 +335,7 @@
                             </div>
                             <div class="col-xs-10">
                                 <asp:DropDownList runat="server" ID="ddlStatus" CssClass="form-control">
-                                    <asp:ListItem Text="-- Select Status --" Value ="-1"></asp:ListItem>
+                                    <asp:ListItem Text="-- Select Status --" Value="-1"></asp:ListItem>
                                     <asp:ListItem Text="Contract sent" Value="1"></asp:ListItem>
                                     <asp:ListItem Text="Contract in valid" Value="2"></asp:ListItem>
                                 </asp:DropDownList>
@@ -368,7 +368,8 @@
                                     <asp:ListItem Text="-- Select contract --" Value="-1"></asp:ListItem>
                                     <asp:ListItem Text="Contract lv1" Value="1"></asp:ListItem>
                                     <asp:ListItem Text="Contract lv2" Value="2"></asp:ListItem>
-                                    <asp:ListItem Text="Contract lv3" Value="2"></asp:ListItem>
+                                    <asp:ListItem Text="Contract lv3" Value="3"></asp:ListItem>
+                                    <asp:ListItem Text ="Custom Contract" Value="4"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -384,7 +385,9 @@
                                         <span class="btn btn-success fileinput-button">
                                             <i class="glyphicon glyphicon-plus"></i>
                                             <span>Add file</span>
-                                            <input id="btnFileUpload" name="file" multiple="" type="file">
+                                            <input id="btnFileUploadContract" name="file" multiple="" type="file">
+                                            <asp:HiddenField runat="server" ID="hifContractTemplatePath" />
+                                            <asp:HiddenField runat="server" ID="hifContractTemplateName" />
                                         </span>
                                     </div>
                                 </div>
@@ -458,6 +461,7 @@
                                     <asp:ListItem Text="Quotation lv1" Value="1"></asp:ListItem>
                                     <asp:ListItem Text="Quotation lv2" Value="2"></asp:ListItem>
                                     <asp:ListItem Text="Quotation lv3" Value="3"></asp:ListItem>
+                                    <asp:ListItem Text="Custom Quotation" Value="4"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -473,7 +477,9 @@
                                         <span class="btn btn-success fileinput-button">
                                             <i class="glyphicon glyphicon-plus"></i>
                                             <span>Add file</span>
-                                            <input id="btnFileUpload" name="file" multiple="" type="file">
+                                            <input id="btnFileUploadQuotation" name="file" multiple="" type="file">
+                                            <asp:HiddenField runat="server" ID="hifQuotationTemplatePath" />
+                                            <asp:HiddenField runat="server" ID="hifQuotationTemplateName" />
                                         </span>
                                     </div>
                                 </div>
@@ -525,7 +531,7 @@
         });
     </script>
     <script type="text/javascript">
-        $('#btnFileUpload').fileupload({
+        $('#btnFileUploadContract').fileupload({
             url: 'Handler/FileUploadHandler.ashx?upload=start',
             add: function (e, data) {
                 $('.progress-bar').css('width', 0 + '%');
@@ -535,10 +541,28 @@
                 var progress = parseInt(data.loaded / data.total * 100, 10);
                 $('.progress-bar').css('width', progress + '%');
             },
-            success: function (response, status) {
+            error: function (error) {
+            }
+        }).bind('fileuploaddone', function (e, data) {
+            $("#<%= hifContractTemplatePath.ClientID %>").val(data.result.path)
+            $("#<%= hifContractTemplateName.ClientID %>").val(data.result.name)
+        })
+
+        $('#btnFileUploadQuotation').fileupload({
+            url: 'Handler/FileUploadHandler.ashx?upload=start',
+            add: function (e, data) {
+                $('.progress-bar').css('width', 0 + '%');
+                data.submit();
+            },
+            progress: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('.progress-bar').css('width', progress + '%');
             },
             error: function (error) {
             }
-        });
+        }).bind('fileuploaddone', function (e, data) {
+            $("#<%= hifQuotationTemplatePath.ClientID %>").val(data.result.path)
+            $("#<%= hifQuotationTemplateName.ClientID %>").val(data.result.name)
+        })
     </script>
 </asp:Content>
