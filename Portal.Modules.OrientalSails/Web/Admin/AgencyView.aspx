@@ -23,18 +23,24 @@
         </div>
         <div class="row">
             <div class="col-xs-1">
-                <label>Tên giao dịch</label>
+                <label>Trading name</label>
             </div>
             <div class="col-xs-11">
-                <asp:Literal runat="server" ID="litTenTiengViet"></asp:Literal>
+                <asp:Literal runat="server" ID="litTradingName"></asp:Literal>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-1">
-                <label>Người đại diện</label>
+                <label>Representative</label>
             </div>
-            <div class="col-xs-11">
-                <asp:Literal runat="server" ID="litGiamDoc"></asp:Literal>
+            <div class="col-xs-3">
+                <asp:Literal runat="server" ID="litRepresentative"></asp:Literal>
+            </div>
+            <div class="col-xs-1">
+                <label>Position</label>
+            </div>
+            <div class="col-xs-3">
+                <asp:Literal runat="server" ID="litRepresentativePosition"></asp:Literal>
             </div>
         </div>
         <div class="row">
@@ -369,7 +375,7 @@
                                     <asp:ListItem Text="Contract lv1" Value="1"></asp:ListItem>
                                     <asp:ListItem Text="Contract lv2" Value="2"></asp:ListItem>
                                     <asp:ListItem Text="Contract lv3" Value="3"></asp:ListItem>
-                                    <asp:ListItem Text ="Custom Contract" Value="4"></asp:ListItem>
+                                    <asp:ListItem Text="Custom Contract" Value="4"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>

@@ -22,22 +22,31 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.TextBox textBoxName;
         
         /// <summary>
-        /// txtTenTiengViet control.
+        /// txtTradingName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTenTiengViet;
+        protected global::System.Web.UI.WebControls.TextBox txtTradingName;
         
         /// <summary>
-        /// txtGiamDoc control.
+        /// txtRepresentative control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGiamDoc;
+        protected global::System.Web.UI.WebControls.TextBox txtRepresentative;
+        
+        /// <summary>
+        /// txtRepresentativePosition control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRepresentativePosition;
         
         /// <summary>
         /// txtPhone control.

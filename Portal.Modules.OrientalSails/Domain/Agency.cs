@@ -21,8 +21,9 @@ namespace Portal.Modules.OrientalSails.Domain
         public virtual string Email { get; set; }
         public virtual string Fax { get; set; }
         public virtual Role Role { get; set; }
-        public virtual string TenTiengViet { get; set; }
-        public virtual string GiamDoc {get;set;}
+        public virtual string TradingName { get; set; }
+        public virtual string Representative { get; set; }
+        public virtual string RepresentativePosition { get; set; }
 
         public virtual IList Users
         {

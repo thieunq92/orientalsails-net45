@@ -40,22 +40,31 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.Literal litName;
         
         /// <summary>
-        /// litTenTiengViet control.
+        /// litTradingName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litTenTiengViet;
+        protected global::System.Web.UI.WebControls.Literal litTradingName;
         
         /// <summary>
-        /// litGiamDoc control.
+        /// litRepresentative control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litGiamDoc;
+        protected global::System.Web.UI.WebControls.Literal litRepresentative;
+        
+        /// <summary>
+        /// litRepresentativePosition control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litRepresentativePosition;
         
         /// <summary>
         /// litRole control.

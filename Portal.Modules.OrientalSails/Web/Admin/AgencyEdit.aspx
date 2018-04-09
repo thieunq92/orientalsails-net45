@@ -27,20 +27,26 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-xs-2">
-                            Tên giao dịch
+                            Trading name
                         </div>
                         <div class="col-xs-10">
-                            <asp:TextBox ID="txtTenTiengViet" runat="server" CssClass="form-control" placeholder="Tên giao dịch"></asp:TextBox>
+                            <asp:TextBox ID="txtTradingName" runat="server" CssClass="form-control" placeholder="Trading name"></asp:TextBox>
                         </div>
                     </div>
                 </div>
-                  <div class="form-group">
+                <div class="form-group">
                     <div class="row">
                         <div class="col-xs-2">
-                            Người đại diện
+                            Representative
                         </div>
-                        <div class="col-xs-10">
-                            <asp:TextBox ID="txtGiamDoc" runat="server" CssClass="form-control" placeholder="Người đại diện"></asp:TextBox>
+                        <div class="col-xs-3">
+                            <asp:TextBox ID="txtRepresentative" runat="server" CssClass="form-control" placeholder="Representative"></asp:TextBox>
+                        </div>
+                        <div class="col-xs-2">
+                            Position
+                        </div>
+                        <div class="col-xs-3">
+                            <asp:TextBox ID="txtRepresentativePosition" runat="server" CssClass="form-control" placeholder="Position"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -136,7 +142,7 @@
                         </div>
                         <div class="col-xs-3">
                             <asp:DropDownList ID="ddlPaymentPeriod" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                <asp:ListItem Value="None" Text= "--Payment period--"></asp:ListItem>
+                                <asp:ListItem Value="None" Text="--Payment period--"></asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>

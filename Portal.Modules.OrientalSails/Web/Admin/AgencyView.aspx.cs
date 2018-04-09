@@ -71,8 +71,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                     }
                     litName1.Text = agency.Name;
                     litName.Text = agency.Name;
-                    litTenTiengViet.Text = agency.TenTiengViet;
-                    litGiamDoc.Text = agency.GiamDoc;
+                    litTradingName.Text = agency.TradingName;
+                    litRepresentative.Text = agency.Representative;
+                    litRepresentativePosition.Text = agency.RepresentativePosition;
                     if (agency.Role != null)
                         litRole.Text = agency.Role.Name;
                     else
@@ -658,13 +659,13 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
             try
             {
-                agencyTenGiaoDich = !String.IsNullOrEmpty(Agency.TenTiengViet) ? Agency.TenTiengViet : "";
+                agencyTenGiaoDich = !String.IsNullOrEmpty(Agency.TradingName) ? Agency.TradingName : "";
             }
             catch { }
 
             try
             {
-                agencyNguoiDaiDien = !String.IsNullOrEmpty(Agency.GiamDoc) ? Agency.GiamDoc : "";
+                agencyNguoiDaiDien = !String.IsNullOrEmpty(Agency.Representative) ? Agency.Representative : "";
             }
             catch { }
 
