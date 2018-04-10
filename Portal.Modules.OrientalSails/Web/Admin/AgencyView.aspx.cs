@@ -254,6 +254,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                     case 3:
                         contractTemplateName = "Contract Lv3";
                         break;
+                    case 4:
+                        contractTemplateName = "Custom Contract";
+                        break;
                 }
 
                 var quotationTemplate = contract.QuotationTemplate;
@@ -268,6 +271,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                         break;
                     case 3:
                         quotationTemplateName = "Quotation Lv3";
+                        break;
+                    case 4:
+                        quotationTemplateName = "Custom Quotation";
                         break;
                 }
 
