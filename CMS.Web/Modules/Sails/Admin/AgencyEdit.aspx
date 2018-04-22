@@ -39,14 +39,58 @@
                         <div class="col-xs-2">
                             Representative
                         </div>
-                        <div class="col-xs-3">
+                        <div class="col-xs-10">
                             <asp:TextBox ID="txtRepresentative" runat="server" CssClass="form-control" placeholder="Representative"></asp:TextBox>
                         </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
                         <div class="col-xs-2">
-                            Position
+                            Representative Position
                         </div>
-                        <div class="col-xs-3">
-                            <asp:TextBox ID="txtRepresentativePosition" runat="server" CssClass="form-control" placeholder="Position"></asp:TextBox>
+                        <div class="col-xs-10">
+                            <asp:TextBox ID="txtRepresentativePosition" runat="server" CssClass="form-control" placeholder="Representative position"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            Contact
+                        </div>
+                        <div class="col-xs-10">
+                            <asp:TextBox ID="txtContact" runat="server" CssClass="form-control" placeholder="Contact"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            Contact Address
+                        </div>
+                        <div class="col-xs-10">
+                            <asp:TextBox ID="txtContactAddress" runat="server" CssClass="form-control" placeholder="Contact address"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            Contact Email
+                        </div>
+                        <div class="col-xs-10">
+                            <asp:TextBox ID="txtContactEmail" runat="server" CssClass="form-control" placeholder="Contact email"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            Contact Position
+                        </div>
+                        <div class="col-xs-10">
+                            <asp:TextBox ID="txtContactPosition" runat="server" CssClass="form-control" placeholder="Contact position"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -56,10 +100,11 @@
                             Phone
                         </div>
                         <div class="col-xs-10">
-                            <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control" placeholder="Phone"></asp:TextBox>
+                            <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control" placeholder="Contact position"></asp:TextBox>
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-xs-2">
@@ -99,6 +144,16 @@
                         </div>
                         <div class="col-xs-10">
                             <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Email"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            Website
+                        </div>
+                        <div class="col-xs-10">
+                            <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" placeholder="Website"></asp:TextBox>
                         </div>
                     </div>
                 </div>

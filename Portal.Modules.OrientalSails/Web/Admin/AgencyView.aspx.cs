@@ -74,6 +74,11 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                     litTradingName.Text = agency.TradingName;
                     litRepresentative.Text = agency.Representative;
                     litRepresentativePosition.Text = agency.RepresentativePosition;
+                    litContact.Text = agency.Contact;
+                    litContactAddress.Text = agency.ContactAddress;
+                    litContactEmail.Text = agency.ContactEmail;
+                    litContactPosition.Text = agency.ContactPosition;
+                    litWebsite.Text = agency.Website;
                     if (agency.Role != null)
                         litRole.Text = agency.Role.Name;
                     else
@@ -651,12 +656,19 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
             var doc = new Aspose.Words.Document(Server.MapPath(templatePath));
             var agencyName = "";
-            var agencyTenGiaoDich = "";
-            var agencyNguoiDaiDien = "";
+            var agencyTradingName = "";
+            var agencyRepresentative = "";
+            var agencyRepresentativePosition = "";
+            var agencyContact = "";
+            var agencyContactEmail = "";
+            var agencyContactAddress = "";
+            var agencyContactPosition = "";
             var agencyAddress = "";
             var agencyPhone = "";
             var agencyFax = "";
             var agencyTaxCode = "";
+            var agencyWebsite = "";
+
             try
             {
                 agencyName = !String.IsNullOrEmpty(Agency.Name) ? Agency.Name : "";
@@ -665,13 +677,43 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
             try
             {
-                agencyTenGiaoDich = !String.IsNullOrEmpty(Agency.TradingName) ? Agency.TradingName : "";
+                agencyTradingName = !String.IsNullOrEmpty(Agency.TradingName) ? Agency.TradingName : "";
             }
             catch { }
 
             try
             {
-                agencyNguoiDaiDien = !String.IsNullOrEmpty(Agency.Representative) ? Agency.Representative : "";
+                agencyRepresentative = !String.IsNullOrEmpty(Agency.Representative) ? Agency.Representative : "";
+            }
+            catch { }
+
+            try
+            {
+                agencyRepresentativePosition = !String.IsNullOrEmpty(Agency.RepresentativePosition) ? Agency.RepresentativePosition : "";
+            }
+            catch { }
+
+            try
+            {
+                agencyContact = !String.IsNullOrEmpty(Agency.Contact) ? Agency.Contact : "";
+            }
+            catch { }
+
+            try
+            {
+                agencyContactAddress = !String.IsNullOrEmpty(Agency.ContactAddress) ? Agency.ContactAddress : "";
+            }
+            catch { }
+
+            try
+            {
+                agencyContactPosition = !String.IsNullOrEmpty(Agency.ContactPosition) ? Agency.ContactPosition : "";
+            }
+            catch { }
+
+            try
+            {
+                agencyContactEmail = !String.IsNullOrEmpty(Agency.ContactEmail) ? Agency.ContactEmail : "";
             }
             catch { }
 
@@ -713,12 +755,25 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             }
             catch { }
 
+            try
+            {
+                agencyWebsite = !String.IsNullOrEmpty(Agency.Website) ? Agency.Website : "";
+            }
+            catch { }
+
+
             doc.Range.Replace(new Regex("(\\[ValidFromDay\\])"), validFromDay);
             doc.Range.Replace(new Regex("(\\[ValidFromMonth\\])"), validFrommonth);
             doc.Range.Replace(new Regex("(\\[ValidFromYear\\])"), validFromYear);
             doc.Range.Replace(new Regex("(\\[AgencyName\\])"), agencyName);
-            doc.Range.Replace(new Regex("(\\[TenGiaoDich\\])"), agencyTenGiaoDich);
-            doc.Range.Replace(new Regex("(\\[NguoiDaiDien\\])"), agencyNguoiDaiDien);
+            doc.Range.Replace(new Regex("(\\[TradingName\\])"), agencyTradingName);
+            doc.Range.Replace(new Regex("(\\[Representative\\])"), agencyRepresentative);
+            doc.Range.Replace(new Regex("(\\[RepresentativePosition\\])"), agencyRepresentativePosition);
+            doc.Range.Replace(new Regex("(\\[Contact\\])"), agencyContact);
+            doc.Range.Replace(new Regex("(\\[ContactPosition\\])"), agencyContactPosition);
+            doc.Range.Replace(new Regex("(\\[ContactAddress\\])"), agencyContactAddress);
+            doc.Range.Replace(new Regex("(\\[ContactEmail\\])"), agencyContactEmail);
+            doc.Range.Replace(new Regex("(\\[AgencyWebsite\\])"), agencyWebsite);
             doc.Range.Replace(new Regex("(\\[AgencyAddress\\])"), agencyAddress);
             doc.Range.Replace(new Regex("(\\[AgencyPhone\\])"), agencyPhone);
             doc.Range.Replace(new Regex("(\\[AgencyFax\\])"), agencyFax);

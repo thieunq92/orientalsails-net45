@@ -33,14 +33,48 @@
             <div class="col-xs-1">
                 <label>Representative</label>
             </div>
-            <div class="col-xs-3">
+            <div class="col-xs-11">
                 <asp:Literal runat="server" ID="litRepresentative"></asp:Literal>
             </div>
+        </div>
+        <div class="row">
             <div class="col-xs-1">
-                <label>Position</label>
+                <label>Representative Position</label>
             </div>
-            <div class="col-xs-3">
+            <div class="col-xs-11">
                 <asp:Literal runat="server" ID="litRepresentativePosition"></asp:Literal>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label>Contact</label>
+            </div>
+            <div class="col-xs-11">
+                <asp:Literal runat="server" ID="litContact"></asp:Literal>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label>Contact Address</label>
+            </div>
+            <div class="col-xs-11">
+                <asp:Literal runat="server" ID="litContactAddress"></asp:Literal>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label>Contact Position</label>
+            </div>
+            <div class="col-xs-11">
+                <asp:Literal runat="server" ID="litContactPosition"></asp:Literal>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label>Contact Email</label>
+            </div>
+            <div class="col-xs-11">
+                <asp:Literal runat="server" ID="litContactEmail"></asp:Literal>
             </div>
         </div>
         <div class="row">
@@ -81,6 +115,14 @@
             </div>
             <div class="col-xs-11">
                 <asp:HyperLink runat="server" ID="hplEmail"></asp:HyperLink>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-1">
+                <label>Website</label>
+            </div>
+            <div class="col-xs-11">
+                <asp:Literal runat="server" ID="litWebsite"></asp:Literal>
             </div>
         </div>
         <div class="row">

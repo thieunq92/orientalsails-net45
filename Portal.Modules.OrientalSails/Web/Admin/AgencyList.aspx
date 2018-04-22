@@ -150,7 +150,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <asp:Button runat="server" ID="btnExportAgency" CssClass="btn btn-primary"
-                                Text="Export agency"></asp:Button>
+                                Text="Export agency" OnClick="btnExport_Click"></asp:Button>
                             <asp:HyperLink runat="server" ID="hplViewMeetings" CssClass="btn btn-primary">View meetings</asp:HyperLink>
                         </div>
                         <div class="col-xs-12">

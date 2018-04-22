@@ -24,6 +24,11 @@ namespace Portal.Modules.OrientalSails.Domain
         public virtual string TradingName { get; set; }
         public virtual string Representative { get; set; }
         public virtual string RepresentativePosition { get; set; }
+        public virtual string Contact { get; set; }
+        public virtual string ContactAddress { get; set; }
+        public virtual string ContactPosition { get; set; }
+        public virtual string ContactEmail { get; set; }
+        public virtual string Website { get; set; }
 
         public virtual IList Users
         {
