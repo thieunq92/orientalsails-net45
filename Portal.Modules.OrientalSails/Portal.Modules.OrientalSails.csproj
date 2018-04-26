@@ -69,6 +69,9 @@
     <Compile Include="BusinessLogic\CustomerInforRowInputBLL.cs" />
     <Compile Include="BusinessLogic\DocumentViewBLL.cs" />
     <Compile Include="BusinessLogic\PaymentReportBLL.cs" />
+    <Compile Include="BusinessLogic\QuotationCreateBLL.cs" />
+    <Compile Include="BusinessLogic\QuotationManagementBLL.cs" />
+    <Compile Include="BusinessLogic\QuotationViewBLL.cs" />
     <Compile Include="BusinessLogic\SailsMasterBLL.cs" />
     <Compile Include="BusinessLogic\SeriesManagerBLL.cs" />
     <Compile Include="BusinessLogic\SeriesViewBLL.cs" />
@@ -118,6 +121,8 @@
     <Compile Include="Domain\HaiPhongExpenseType.cs" />
     <Compile Include="Domain\HaiPhongExpenseTypeHaiPhongExpenseCustomerType.cs" />
     <Compile Include="Domain\HaiPhongReduceExpense.cs" />
+    <Compile Include="Domain\Quotation.cs" />
+    <Compile Include="Domain\QuotationPrice.cs" />
     <Compile Include="Domain\Series.cs" />
     <Compile Include="Domain\VoucherBatch.cs" />
     <Compile Include="Domain\DocumentCategory.cs" />
@@ -156,6 +161,11 @@
     <Compile Include="Domain\SailsPriceConfig.cs" />
     <Compile Include="Domain\SailsTrip.cs" />
     <Compile Include="Enums\PermissionEnum.cs" />
+    <Compile Include="Enums\Quotation\CruiseEnum.cs" />
+    <Compile Include="Enums\Quotation\NumberOfPassengerEnum.cs" />
+    <Compile Include="Enums\Quotation\RoomClassEnum.cs" />
+    <Compile Include="Enums\Quotation\RoomTypeEnum.cs" />
+    <Compile Include="Enums\Quotation\TripEnum.cs" />
     <Compile Include="Enums\Roles.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +207,8 @@
     <Compile Include="Repository\LockedRepository.cs" />
     <Compile Include="Repository\NationalityRepository.cs" />
     <Compile Include="Repository\PermissionRepository.cs" />
+    <Compile Include="Repository\QuotationPriceRepository.cs" />
+    <Compile Include="Repository\QuotationRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\RoomClassRepository.cs" />
@@ -429,6 +441,27 @@
     </Compile>
     <Compile Include="Web\Admin\QuerySql.aspx.designer.cs">
       <DependentUpon>QuerySql.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Admin\QuotationCreate.aspx.cs">
+      <DependentUpon>QuotationCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Admin\QuotationCreate.aspx.designer.cs">
+      <DependentUpon>QuotationCreate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Admin\QuotationManagement.aspx.cs">
+      <DependentUpon>QuotationManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Admin\QuotationManagement.aspx.designer.cs">
+      <DependentUpon>QuotationManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Admin\QuotationView.aspx.cs">
+      <DependentUpon>QuotationView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Admin\QuotationView.aspx.designer.cs">
+      <DependentUpon>QuotationView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\Admin\SearchOldBooking.aspx.cs">
       <DependentUpon>SearchOldBooking.aspx</DependentUpon>
@@ -998,6 +1031,8 @@
     <EmbeddedResource Include="Domain\Series.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Domain\Quotation.hbm.xml" />
+    <EmbeddedResource Include="Domain\QuotationPrice.hbm.xml" />
     <Content Include="packages.config" />
     <Content Include="Web\Admin\AddBooking.aspx" />
     <Content Include="Web\Admin\AddSeriesBookings.aspx" />
@@ -1006,6 +1041,9 @@
     <Content Include="Web\Admin\app.module.js" />
     <Content Include="Web\Admin\DocumentViewController.js" />
     <Content Include="Web\Admin\QuerySql.aspx" />
+    <Content Include="Web\Admin\QuotationCreate.aspx" />
+    <Content Include="Web\Admin\QuotationManagement.aspx" />
+    <Content Include="Web\Admin\QuotationView.aspx" />
     <Content Include="Web\Admin\SeriesManager.aspx" />
     <Content Include="Web\Admin\SeriesView.aspx" />
     <Content Include="Web\Admin\ViewActivities.aspx" />

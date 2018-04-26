@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="MO.Master" AutoEventWireup="true"
+﻿ <%@ Page Language="C#" MasterPageFile="MO.Master" AutoEventWireup="true"
     CodeBehind="AgencyEdit.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.AgencyEdit" %>
 
 <%@ Register Assembly="CMS.ServerControls" Namespace="CMS.ServerControls.FileUpload"

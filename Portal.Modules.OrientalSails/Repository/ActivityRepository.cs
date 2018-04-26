@@ -10,13 +10,10 @@ namespace Portal.Modules.OrientalSails.Repository
     public class ActivityRepository : RepositoryBase<Activity>
     {
         public ActivityRepository() : base() { }
-
         public ActivityRepository(ISession session)
             : base(session)
         {
-
         }
-
         public IList<Activity> MeetingGetAllBy(int userId, DateTime? from, DateTime? to)
         {
             var query = _session.QueryOver<Activity>()

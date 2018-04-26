@@ -490,6 +490,24 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.HyperLink hlAgencyLocation;
         
         /// <summary>
+        /// hlQuotationManagement control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlQuotationManagement;
+        
+        /// <summary>
+        /// hlContractManagement control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlContractManagement;
+        
+        /// <summary>
         /// tabTrips control.
         /// </summary>
         /// <remarks>

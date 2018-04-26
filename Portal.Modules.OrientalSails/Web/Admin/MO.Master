@@ -99,6 +99,12 @@
                                         <asp:HyperLink ID="hlViewMeetings" runat="server">View Meeting</asp:HyperLink></li>
                                     <li id="pAgencyLocation" runat="server">
                                         <asp:HyperLink ID="hlAgencyLocation" runat="server">Location</asp:HyperLink></li>
+                                    <li>
+                                        <asp:HyperLink ID="hlQuotationManagement" runat="server">Quotation Management</asp:HyperLink>
+                                    </li>
+                                    <li>
+                                        <asp:HyperLink ID="hlContractManagement" runat="server">Contract Management</asp:HyperLink>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="dropdown" id="tabTrips" runat="server">
@@ -353,7 +359,7 @@
         $('body').on('click', function (e) {
             if ($(e.target).data('toggle') !== 'popover'
                 && $(e.target).parents('[data-toggle="popover"]').length === 0
-                && $(e.target).parents('.popover.in').length === 0) { 
+                && $(e.target).parents('.popover.in').length === 0) {
                 $('[data-toggle="popover"]').popover('hide');
             }
         });
