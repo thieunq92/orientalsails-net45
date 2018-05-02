@@ -66,6 +66,7 @@
     <Compile Include="BusinessLogic\BookingPaymentBLL.cs" />
     <Compile Include="BusinessLogic\BookingReportBLL.cs" />
     <Compile Include="BusinessLogic\BookingViewBLL.cs" />
+    <Compile Include="BusinessLogic\ContractManagementBLL.cs" />
     <Compile Include="BusinessLogic\CustomerInforRowInputBLL.cs" />
     <Compile Include="BusinessLogic\DocumentViewBLL.cs" />
     <Compile Include="BusinessLogic\PaymentReportBLL.cs" />
@@ -112,6 +113,9 @@
     <Compile Include="Domain\Activity.cs" />
     <Compile Include="Domain\Charter.cs" />
     <Compile Include="Domain\CheckingTransaction.cs" />
+    <Compile Include="Domain\Contracts.cs" />
+    <Compile Include="Domain\ContractPrice.cs" />
+    <Compile Include="Domain\ContractValid.cs" />
     <Compile Include="Domain\CruiseCostType.cs" />
     <Compile Include="Domain\CruiseHaiPhongExpenseType.cs" />
     <Compile Include="Domain\HaiPhongContract.cs" />
@@ -200,6 +204,7 @@
     <Compile Include="Repository\BookingHistoryRepository.cs" />
     <Compile Include="Repository\BookingRepository.cs" />
     <Compile Include="Repository\BookingRoomRepository.cs" />
+    <Compile Include="Repository\ContractRepository.cs" />
     <Compile Include="Repository\CruiseRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\Database.cs" />
@@ -390,6 +395,13 @@
     </Compile>
     <Compile Include="Web\Admin\CheckVoucher.aspx.designer.cs">
       <DependentUpon>CheckVoucher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Admin\ContractManagement.aspx.cs">
+      <DependentUpon>ContractManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Admin\ContractManagement.aspx.designer.cs">
+      <DependentUpon>ContractManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\Admin\HaiPhongContracts.aspx.cs">
       <DependentUpon>HaiPhongContracts.aspx</DependentUpon>
@@ -1034,12 +1046,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Domain\Quotation.hbm.xml" />
     <EmbeddedResource Include="Domain\QuotationPrice.hbm.xml" />
+    <EmbeddedResource Include="Domain\Contracts.hbm.xml" />
+    <EmbeddedResource Include="Domain\ContractPrice.hbm.xml" />
+    <EmbeddedResource Include="Domain\ContractValid.hbm.xml" />
     <Content Include="packages.config" />
     <Content Include="Web\Admin\AddBooking.aspx" />
     <Content Include="Web\Admin\AddSeriesBookings.aspx" />
     <Content Include="Web\Admin\AddSeriesBookingsController.js" />
     <Content Include="Web\Admin\AddSeriesBookingsService.js" />
     <Content Include="Web\Admin\app.module.js" />
+    <Content Include="Web\Admin\ContractManagement.aspx" />
     <Content Include="Web\Admin\DocumentViewController.js" />
     <Content Include="Web\Admin\QuerySql.aspx" />
     <Content Include="Web\Admin\QuotationCreate.aspx" />
