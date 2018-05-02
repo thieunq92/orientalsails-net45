@@ -13,6 +13,8 @@ namespace Portal.Modules.OrientalSails.Domain
         public virtual User CreatedBy { get; set; }
         public virtual DateTime? ValidFrom { get; set; }
         public virtual DateTime? ValidTo { get; set; }
+        public virtual string Name { get; set; }
+        public virtual int Currency { get; set; }
         public virtual IList<QuotationPrice> ListQuotationPrice { get; set; }
     }
 }

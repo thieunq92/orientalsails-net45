@@ -1,4 +1,5 @@
 ﻿using Portal.Modules.OrientalSails.BusinessLogic;
+using Portal.Modules.OrientalSails.Enums.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,18 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             {
                 quotationManagementBLL.Dispose();
                 quotationManagementBLL = null;
+            }
+        }
+        public string GetCurrency(int currency)
+        {
+            switch (currency)
+            {
+                case (int)CurrencyEnum.USD:
+                    return "USD";
+                case (int)CurrencyEnum.VND:
+                    return "VND";
+                default:
+                    return "";
             }
         }
     }

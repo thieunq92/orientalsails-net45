@@ -13,6 +13,24 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
     public partial class QuotationCreate {
         
         /// <summary>
+        /// txtName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtName;
+        
+        /// <summary>
+        /// ddlCurrency control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCurrency;
+        
+        /// <summary>
         /// txtValidFrom control.
         /// </summary>
         /// <remarks>
@@ -103,78 +121,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtOs22d1nCharter13to17passenger;
         
         /// <summary>
-        /// txtOs3d2nDouble control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOs3d2nDouble;
-        
-        /// <summary>
-        /// txtOs3d2nSingle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOs3d2nSingle;
-        
-        /// <summary>
-        /// txtOs3d2nChildren6to11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOs3d2nChildren6to11;
-        
-        /// <summary>
-        /// txtOs13d2nCharter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOs13d2nCharter;
-        
-        /// <summary>
-        /// txtOs23d2nCharter1to4passenger control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOs23d2nCharter1to4passenger;
-        
-        /// <summary>
-        /// txtOs23d2nCharter5to8passenger control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOs23d2nCharter5to8passenger;
-        
-        /// <summary>
-        /// txtOs23d2nCharter9to12passenger control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOs23d2nCharter9to12passenger;
-        
-        /// <summary>
-        /// txtOs23d2nCharter13to17passenger control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOs23d2nCharter13to17passenger;
-        
-        /// <summary>
         /// txtCls2d1nDouble control.
         /// </summary>
         /// <remarks>
@@ -209,42 +155,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCls2d1nCharter;
-        
-        /// <summary>
-        /// txtCls3d2nDouble control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCls3d2nDouble;
-        
-        /// <summary>
-        /// txtCls3d2nSingle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCls3d2nSingle;
-        
-        /// <summary>
-        /// txtCls3d2nChildren6to11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCls3d2nChildren6to11;
-        
-        /// <summary>
-        /// txtCls3d2nCharter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCls3d2nCharter;
         
         /// <summary>
         /// txtStl2d1nDeluxeDouble control.
@@ -353,6 +263,114 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtStl2d1nCharter51to63passenger;
+        
+        /// <summary>
+        /// txtOs3d2nDouble control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOs3d2nDouble;
+        
+        /// <summary>
+        /// txtOs3d2nSingle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOs3d2nSingle;
+        
+        /// <summary>
+        /// txtOs3d2nChildren6to11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOs3d2nChildren6to11;
+        
+        /// <summary>
+        /// txtOs13d2nCharter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOs13d2nCharter;
+        
+        /// <summary>
+        /// txtOs23d2nCharter1to4passenger control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOs23d2nCharter1to4passenger;
+        
+        /// <summary>
+        /// txtOs23d2nCharter5to8passenger control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOs23d2nCharter5to8passenger;
+        
+        /// <summary>
+        /// txtOs23d2nCharter9to12passenger control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOs23d2nCharter9to12passenger;
+        
+        /// <summary>
+        /// txtOs23d2nCharter13to17passenger control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOs23d2nCharter13to17passenger;
+        
+        /// <summary>
+        /// txtCls3d2nDouble control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCls3d2nDouble;
+        
+        /// <summary>
+        /// txtCls3d2nSingle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCls3d2nSingle;
+        
+        /// <summary>
+        /// txtCls3d2nChildren6to11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCls3d2nChildren6to11;
+        
+        /// <summary>
+        /// txtCls3d2nCharter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCls3d2nCharter;
         
         /// <summary>
         /// txtStl3d2nDeluxeDouble control.

@@ -70,6 +70,8 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 ValidTo = validTo,
                 CreatedDate = DateTime.Now,
                 CreatedBy = UserBLL.UserGetCurrent(),
+                Name = txtName.Text,
+                Currency = Int32.Parse(ddlCurrency.SelectedValue),
             };
             QuotationCreateBLL.QuotationSaveOrUpdate(quotation);
             var priceOs2d1nDouble = GetPrice(txtOs2d1nDouble.Text);

@@ -206,7 +206,7 @@
             <asp:Panel ID="pBookingList" runat="server" CssClass="box2">
                 <asp:HyperLink ID="hyperLinkBookingList" runat="server">Danh sách booking</asp:HyperLink>
             </asp:Panel>
-             <asp:Panel ID="pAddSeriesBookings" runat="server" CssClass="box2">
+            <asp:Panel ID="pAddSeriesBookings" runat="server" CssClass="box2">
                 <asp:HyperLink ID="hplAddSeriesBookings" runat="server">Add Serial Bookings</asp:HyperLink>
             </asp:Panel>
             <asp:Panel ID="pSeriesBookingsManager" runat="server" CssClass="box2">
@@ -281,6 +281,12 @@
             </asp:Panel>
             <asp:Panel ID="pAgencyLocation" runat="server" CssClass="box2">
                 <asp:HyperLink ID="hplAgencyLocation" runat="server">Locations</asp:HyperLink>
+            </asp:Panel>
+            <asp:Panel ID="pQuotationManagement" runat="server" CssClass="box2">
+                <asp:HyperLink ID="hplQuotationManagement" runat="server">Quotation Management</asp:HyperLink>
+            </asp:Panel>
+            <asp:Panel ID="pContractManagement" runat="server" CssClass="box2">
+                <asp:HyperLink ID="hplContractManagement" runat="server">Contract Management</asp:HyperLink>
             </asp:Panel>
         </asp:Panel>
         <ajaxToolkit:HoverMenuExtender ID="hmeTrips" runat="Server" HoverCssClass="popupHover"

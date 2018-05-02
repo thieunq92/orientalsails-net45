@@ -10,6 +10,7 @@
                     <tr class="active">
                         <th>Created date</th>
                         <th>Created by</th>
+                        <th>Currency</th>
                         <th>Quotation</th>
                     </tr>
                     <asp:Repeater runat="server" ID="rptQuotation">
@@ -17,7 +18,8 @@
                             <tr>
                                 <td><%# DataBinder.Eval(Container.DataItem,"CreatedDate","{0:dd/MM/yyyy}") %></td>
                                 <td><%# Eval("CreatedBy.FullName")%></td>
-                                <td><a href="QuotationView.aspx?NodeId=1&SectionId=15&qi=<%# Eval("Id") %>">View</i>
+                                <td><%# GetCurrency((int)Eval("Currency")) %></td>
+                                <td><a href="QuotationView.aspx?NodeId=1&SectionId=15&qi=<%# Eval("Id") %>"><%# Eval("Name")%></i>
                                 </a></td>
                             </tr>
                         </ItemTemplate>

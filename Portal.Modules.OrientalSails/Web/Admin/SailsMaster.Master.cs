@@ -81,6 +81,10 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             hyperLinkAgencyList.NavigateUrl = string.Format("AgentList.aspx?NodeId={0}&SectionId={1}",
                                                             Request.QueryString["NodeId"],
                                                             Request.QueryString["SectionId"]);
+
+            hplQuotationManagement.NavigateUrl = string.Format("QuotationManagement?NodeId={0}&SectionId={1}",
+                    Request.QueryString["NodeId"],
+                    Request.QueryString["SectionId"]);
             //hplAgencyEdit.Text = Resources.hplAgencyEdit;
             //hplAgencyList.Text = Resources.hplAgencyList;
             //hyperLinkAgencyList.Text = Resources.hyperLinkAgencyList;

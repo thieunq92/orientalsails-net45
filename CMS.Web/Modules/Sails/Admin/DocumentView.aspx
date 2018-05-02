@@ -6,7 +6,6 @@
             <a data-toggle="tab" href="#{{item.Id}}">{{item.Name}}</a>
         </li>
     </ul>
-
     <div class="tab-content" ng-controller="tabPaneController">
         <div id="all" class="tab-pane fade in active" ng-controller="allPanelController">
             <table class="document-table table table-bordered table-hover">

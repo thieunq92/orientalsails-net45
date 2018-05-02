@@ -167,6 +167,7 @@
     <Compile Include="Enums\Quotation\RoomTypeEnum.cs" />
     <Compile Include="Enums\Quotation\TripEnum.cs" />
     <Compile Include="Enums\Roles.cs" />
+    <Compile Include="Enums\Shared\CurrencyEnum.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportEngine\BookingConfirmation.cs">

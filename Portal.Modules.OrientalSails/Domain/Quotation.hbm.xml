@@ -10,6 +10,8 @@
     <property name="CreatedDate"/>
     <property name="ValidFrom"/>
     <property name="ValidTo"/>
+    <property name="Name"/>
+    <property name="Currency"/>
     <many-to-one name="CreatedBy" column="CreatedBy" class="CMS.Core.Domain.User, CMS.Core" not-found="ignore"/>
     <bag name="ListQuotationPrice" inverse="true" batch-size="10">
       <key column="QuotationId"/>
