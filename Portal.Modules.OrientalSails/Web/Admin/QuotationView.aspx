@@ -214,9 +214,7 @@
                         <tr>
                             <td>Calypso Cruise Charter</td>
                             <td>
-
                                 <asp:Literal runat="server" ID="txtCls2d1nCharter"></asp:Literal>
-
                             </td>
                         </tr>
                     </table>
@@ -334,17 +332,12 @@
                             <td>Suite
                             </td>
                             <td>
-
                                 <asp:Literal runat="server" ID="txtStl2d1nSuiteDouble"></asp:Literal>
-
                             </td>
                             <td>
-
                                 <asp:Literal runat="server" ID="txtStl2d1nSuiteSingle"></asp:Literal>
-
                             </td>
                             <td>
-
                                 <asp:Literal runat="server" ID="txtStl2d1nSuiteExtrabed"></asp:Literal>
                             </td>
                         </tr>

@@ -1,4 +1,4 @@
-﻿using Portal.Modules.OrientalSails.BusinessLogic;
+﻿    using Portal.Modules.OrientalSails.BusinessLogic;
 using Portal.Modules.OrientalSails.Domain;
 using Portal.Modules.OrientalSails.Enums.Quotation;
 using Portal.Modules.OrientalSails.Enums.Shared;
@@ -89,6 +89,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             txtStl3d2nCharter1to40passenger.Text = GetCurrency() + GetPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to40passenger).ToString();
             txtStl3d2nCharter41to50passenger.Text = GetCurrency() + GetPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._41to50passenger).ToString();
             txtStl3d2nCharter51to63passenger.Text = GetCurrency() + GetPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._51to63passenger).ToString();
+        }
+
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+            if (quotationViewBLL != null) {
+                quotationViewBLL.Dispose();
+                quotationViewBLL = null;
+            }
         }
 
         public string GetCurrency()

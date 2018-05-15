@@ -7,15 +7,13 @@ using System.Web;
 
 namespace Portal.Modules.OrientalSails.BusinessLogic
 {
-    public class ContractManagementBLL
+    public class ContractViewBLL
     {
         public ContractRepository ContractRepository { get; set; }
-
-        public ContractManagementBLL()
+        public ContractViewBLL()
         {
             ContractRepository = new ContractRepository();
         }
-
         public void Dispose()
         {
             if (ContractRepository != null)
@@ -25,9 +23,9 @@ namespace Portal.Modules.OrientalSails.BusinessLogic
             }
         }
 
-        public IList<Contracts> ContractGetAll()
+        public Contracts ContractGetById(int contractId)
         {
-            return ContractRepository.ContractGetAll();
+            return ContractRepository.ContractGetById(contractId);
         }
     }
 }

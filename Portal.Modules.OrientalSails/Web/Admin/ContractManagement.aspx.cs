@@ -23,7 +23,8 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            rptContract.DataSource = ContractManagementBLL.ContractGetAll();
+            rptContract.DataBind();
         }
         protected void Page_Unload(object sender, EventArgs e)
         {

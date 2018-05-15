@@ -15,8 +15,9 @@
 
 var moduleViewActivities = angular.module("moduleViewActivities", []);
 var moduleDocumentView = angular.module("moduleDocumentView", []);
-
+var moduleContractCreate = angular.module("moduleContractCreate", []);
 angular.module("myApp",
     ["moduleAddSeriesBookings",
     "moduleViewActivities",
-    "moduleDocumentView"]);
+    "moduleDocumentView",
+    "moduleContractCreate"]);

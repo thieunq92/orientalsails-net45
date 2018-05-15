@@ -66,7 +66,9 @@
     <Compile Include="BusinessLogic\BookingPaymentBLL.cs" />
     <Compile Include="BusinessLogic\BookingReportBLL.cs" />
     <Compile Include="BusinessLogic\BookingViewBLL.cs" />
+    <Compile Include="BusinessLogic\ContractCreateBLL.cs" />
     <Compile Include="BusinessLogic\ContractManagementBLL.cs" />
+    <Compile Include="BusinessLogic\ContractViewBLL.cs" />
     <Compile Include="BusinessLogic\CustomerInforRowInputBLL.cs" />
     <Compile Include="BusinessLogic\DocumentViewBLL.cs" />
     <Compile Include="BusinessLogic\PaymentReportBLL.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="DataTransferObject\AvaiableRoomDTO.cs" />
     <Compile Include="DataTransferObject\BookingDTO.cs" />
     <Compile Include="DataTransferObject\CheckRoomResultDTO.cs" />
+    <Compile Include="DataTransferObject\ContractDTO.cs" />
     <Compile Include="DataTransferObject\DocumentCategoryDTO.cs" />
     <Compile Include="DataTransferObject\MeetingDTO.cs" />
     <Compile Include="DataTransferObject\SeriesDTO.cs" />
@@ -165,6 +168,11 @@
     <Compile Include="Domain\SailsPriceConfig.cs" />
     <Compile Include="Domain\SailsTrip.cs" />
     <Compile Include="Enums\PermissionEnum.cs" />
+    <Compile Include="Enums\Contract\CruiseEnum.cs" />
+    <Compile Include="Enums\Contract\NumberOfPassengerEnum.cs" />
+    <Compile Include="Enums\Contract\RoomClassEnum.cs" />
+    <Compile Include="Enums\Contract\RoomTypeEnum.cs" />
+    <Compile Include="Enums\Contract\TripEnum.cs" />
     <Compile Include="Enums\Quotation\CruiseEnum.cs" />
     <Compile Include="Enums\Quotation\NumberOfPassengerEnum.cs" />
     <Compile Include="Enums\Quotation\RoomClassEnum.cs" />
@@ -204,7 +212,9 @@
     <Compile Include="Repository\BookingHistoryRepository.cs" />
     <Compile Include="Repository\BookingRepository.cs" />
     <Compile Include="Repository\BookingRoomRepository.cs" />
+    <Compile Include="Repository\ContractPriceRepository.cs" />
     <Compile Include="Repository\ContractRepository.cs" />
+    <Compile Include="Repository\ContractValidRepository.cs" />
     <Compile Include="Repository\CruiseRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\Database.cs" />
@@ -396,12 +406,26 @@
     <Compile Include="Web\Admin\CheckVoucher.aspx.designer.cs">
       <DependentUpon>CheckVoucher.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web\Admin\ContractCreate.aspx.cs">
+      <DependentUpon>ContractCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Admin\ContractCreate.aspx.designer.cs">
+      <DependentUpon>ContractCreate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Web\Admin\ContractManagement.aspx.cs">
       <DependentUpon>ContractManagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Web\Admin\ContractManagement.aspx.designer.cs">
       <DependentUpon>ContractManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\Admin\ContractView.aspx.cs">
+      <DependentUpon>ContractView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\Admin\ContractView.aspx.designer.cs">
+      <DependentUpon>ContractView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web\Admin\HaiPhongContracts.aspx.cs">
       <DependentUpon>HaiPhongContracts.aspx</DependentUpon>
@@ -948,6 +972,10 @@
       <DependentUpon>AddSeriesBookingsWebMethod.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Web\Admin\WebMethod\ContractCreateWebMethod.asmx.cs">
+      <DependentUpon>ContractCreateWebMethod.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Web\Admin\WebMethod\DocumentViewWebMethod.asmx.cs">
       <DependentUpon>DocumentViewWebMethod.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -1055,7 +1083,10 @@
     <Content Include="Web\Admin\AddSeriesBookingsController.js" />
     <Content Include="Web\Admin\AddSeriesBookingsService.js" />
     <Content Include="Web\Admin\app.module.js" />
+    <Content Include="Web\Admin\ContractCreate.aspx" />
+    <Content Include="Web\Admin\ContractCreateController.js" />
     <Content Include="Web\Admin\ContractManagement.aspx" />
+    <Content Include="Web\Admin\ContractView.aspx" />
     <Content Include="Web\Admin\DocumentViewController.js" />
     <Content Include="Web\Admin\QuerySql.aspx" />
     <Content Include="Web\Admin\QuotationCreate.aspx" />
@@ -1066,6 +1097,7 @@
     <Content Include="Web\Admin\ViewActivities.aspx" />
     <Content Include="Web\Admin\ViewActivitiesController.js" />
     <Content Include="Web\Admin\WebMethod\AddSeriesBookingsWebMethod.asmx" />
+    <Content Include="Web\Admin\WebMethod\ContractCreateWebMethod.asmx" />
     <Content Include="Web\Admin\WebMethod\DocumentViewWebMethod.asmx" />
     <Content Include="Web\Admin\WebMethod\ViewActivitiesWebMethod.asmx" />
     <Content Include="Web\Ajax\AjaxHandler.aspx" />
