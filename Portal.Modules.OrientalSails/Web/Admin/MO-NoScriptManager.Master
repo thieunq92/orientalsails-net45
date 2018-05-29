@@ -356,7 +356,16 @@
             }
         });
     </script>
-
+    <script>
+        $(function () {
+            $("[data-control='datetimepicker']").datetimepicker({
+                timepicker: false,
+                format: 'd/m/Y',
+                scrollInput: false,
+                scrollMonth: false,
+            })
+        })
+    </script>
     <asp:ContentPlaceHolder ID="Scripts" runat="server">
     </asp:ContentPlaceHolder>
 </body>

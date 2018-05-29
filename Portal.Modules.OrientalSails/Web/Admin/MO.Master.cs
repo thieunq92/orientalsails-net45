@@ -162,7 +162,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             hlAddSerialBookings.NavigateUrl = "AddSeriesBookings.aspx?NodeId=1&SectionId=15";
             hplSeriesManager.NavigateUrl = "SeriesManager.aspx?NodeId=1&SectionId=15";
             hlQuotationManagement.NavigateUrl = "QuotationManagement.aspx?NodeId=1&SectionId=15";
-            hlContractManagement.NavigateUrl = "ContractManagement.aspx?NoId=1&SectionId=15";
+            hlContractManagement.NavigateUrl = "ContractManagement.aspx?NodeId=1&SectionId=15";
         }
 
         public void AgencyContactBirthdayBind()

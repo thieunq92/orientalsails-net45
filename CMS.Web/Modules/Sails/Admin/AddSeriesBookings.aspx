@@ -2,9 +2,7 @@
     AutoEventWireup="true"
     CodeBehind="AddSeriesBookings.aspx.cs"
     Inherits="Portal.Modules.OrientalSails.Web.Admin.AddSeriesBookings" %>
-
 <asp:Content ID="AdminContent" ContentPlaceHolderID="AdminContent" runat="server">
-
     <div ng-controller="checkPermissionController">
         <div ng-show="displayErrorPanel">
             <div class="row">
@@ -179,7 +177,7 @@
                                     Start date
                                 </div>
                                 <div class="col-xs-3">
-                                    <input type="text" placeholder="Booking code" ng-model="startDate" class="form-control" id="txtSearchStartDate"></input>
+                                    <input type="text" placeholder="Start date" ng-model="startDate" class="form-control" id="txtSearchStartDate"></input>
                                 </div>
                             </div>
                         </div>

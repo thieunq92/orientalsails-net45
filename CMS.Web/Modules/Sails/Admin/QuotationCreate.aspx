@@ -67,19 +67,19 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs2d1nDouble" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs2d1nDouble" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs2d1nSingle" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs2d1nSingle" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs2d1nChildren6to11" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs2d1nChildren6to11" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -94,7 +94,7 @@
                                     <td colspan="4">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs12d1nCharter" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs12d1nCharter" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -109,25 +109,25 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs22d1nCharter1to4passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs22d1nCharter1to4passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs22d1nCharter5to8passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs22d1nCharter5to8passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs22d1nCharter9to12passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs22d1nCharter9to12passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs22d1nCharter13to17passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs22d1nCharter13to17passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -158,19 +158,19 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtCls2d1nDouble" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtCls2d1nDouble" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtCls2d1nSingle" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtCls2d1nSingle" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtCls2d1nChildren6to11" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtCls2d1nChildren6to11" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -185,7 +185,7 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtCls2d1nCharter" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtCls2d1nCharter" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -216,19 +216,19 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl2d1nDeluxeDouble" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl2d1nDeluxeDouble" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl2d1nDeluxeSingle" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl2d1nDeluxeSingle" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl2d1nDeluxeExtrabed" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl2d1nDeluxeExtrabed" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -238,19 +238,19 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl2d1nExecutiveDouble" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl2d1nExecutiveDouble" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl2d1nExecutiveSingle" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl2d1nExecutiveSingle" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl2d1nExecutiveExtrabed" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl2d1nExecutiveExtrabed" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -260,19 +260,19 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl2d1nSuiteDouble" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl2d1nSuiteDouble" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl2d1nSuiteSingle" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl2d1nSuiteSingle" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl2d1nSuiteExtrabed" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl2d1nSuiteExtrabed" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -293,19 +293,19 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl2d1nCharter1to40passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl2d1nCharter1to40passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl2d1nCharter41to50passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl2d1nCharter41to50passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl2d1nCharter51to63passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl2d1nCharter51to63passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -338,19 +338,19 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs3d2nDouble" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs3d2nDouble" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs3d2nSingle" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs3d2nSingle" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs3d2nChildren6to11" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs3d2nChildren6to11" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -365,7 +365,7 @@
                                     <td colspan="4">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs13d2nCharter" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs13d2nCharter" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -380,25 +380,25 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs23d2nCharter1to4passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs23d2nCharter1to4passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs23d2nCharter5to8passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs23d2nCharter5to8passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs23d2nCharter9to12passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs23d2nCharter9to12passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtOs23d2nCharter13to17passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtOs23d2nCharter13to17passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -429,19 +429,19 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtCls3d2nDouble" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtCls3d2nDouble" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtCls3d2nSingle" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtCls3d2nSingle" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtCls3d2nChildren6to11" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtCls3d2nChildren6to11" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -456,7 +456,7 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtCls3d2nCharter" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtCls3d2nCharter" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -487,19 +487,19 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl3d2nDeluxeDouble" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl3d2nDeluxeDouble" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl3d2nDeluxeSingle" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl3d2nDeluxeSingle" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl3d2nDeluxeExtrabed" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl3d2nDeluxeExtrabed" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -509,19 +509,19 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl3d2nExecutiveDouble" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl3d2nExecutiveDouble" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl3d2nExecutiveSingle" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl3d2nExecutiveSingle" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl3d2nExecutiveExtrabed" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl3d2nExecutiveExtrabed" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -531,19 +531,19 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl3d2nSuiteDouble" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl3d2nSuiteDouble" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl3d2nSuiteSingle" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl3d2nSuiteSingle" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl3d2nSuiteExtrabed" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl3d2nSuiteExtrabed" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -564,19 +564,19 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl3d2nCharter1to40passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl3d2nCharter1to40passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl3d2nCharter41to50passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl3d2nCharter41to50passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <asp:TextBox runat="server" ID="txtStl3d2nCharter51to63passenger" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtStl3d2nCharter51to63passenger" CssClass="form-control" data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'placeholder': '0', 'rightAlign':false" Text="0"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>

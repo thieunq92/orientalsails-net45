@@ -130,9 +130,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtOs2d1nDouble = e.Item.FindControl("txtOs2d1nDouble") as Literal;
             var txtOs2d1nSingle = e.Item.FindControl("txtOs2d1nSingle") as Literal;
             var txtOs2d1nChildren6to11 = e.Item.FindControl("txtOs2d1nChildren6to11") as Literal;
-            txtOs2d1nDouble.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtOs2d1nSingle.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtOs2d1nChildren6to11.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Children6to11, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtOs2d1nDouble.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow);
+            txtOs2d1nSingle.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow);
+            txtOs2d1nChildren6to11.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Children6to11, false, (int)NumberOfPassengerEnum.Unknow);
         }
         public string GetCurrency()
         {
@@ -160,6 +160,10 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             else
                 return 0.0;
         }
+        public string GetPriceFormatted(ContractValid contractValid, int cruiseId, int tripId, int roomClassId, int roomTypeId, bool isCharter, int numberOfPassenger){
+            var price = GetPrice(contractValid, cruiseId, tripId, roomClassId, roomTypeId, isCharter, numberOfPassenger);
+            return String.Format("{0:#,##0.##}", price);
+        }
         protected void rptPriceOs12d1nCharter_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             var contractValid = e.Item.DataItem as ContractValid;
@@ -173,10 +177,10 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtOs22d1nCharter5to8passenger = e.Item.FindControl("txtOs22d1nCharter5to8passenger") as Literal;
             var txtOs22d1nCharter9to12passenger = e.Item.FindControl("txtOs22d1nCharter9to12passenger") as Literal;
             var txtOs22d1nCharter13to17passenger = e.Item.FindControl("txtOs22d1nCharter13to17passenger") as Literal;
-            txtOs22d1nCharter1to4passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to4passenger).ToString();
-            txtOs22d1nCharter5to8passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._5to8passenger).ToString();
-            txtOs22d1nCharter9to12passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._9to12passenger).ToString();
-            txtOs22d1nCharter13to17passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._13to17passenger).ToString();
+            txtOs22d1nCharter1to4passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to4passenger);
+            txtOs22d1nCharter5to8passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._5to8passenger);
+            txtOs22d1nCharter9to12passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._9to12passenger);
+            txtOs22d1nCharter13to17passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._13to17passenger);
         }
         protected void rptPriceOs3d2n_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
@@ -184,15 +188,15 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtOs3d2nDouble = e.Item.FindControl("txtOs3d2nDouble") as Literal;
             var txtOs3d2nSingle = e.Item.FindControl("txtOs3d2nSingle") as Literal;
             var txtOs3d2nChildren6to11 = e.Item.FindControl("txtOs3d2nChildren6to11") as Literal;
-            txtOs3d2nDouble.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtOs3d2nSingle.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtOs3d2nChildren6to11.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Children6to11, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtOs3d2nDouble.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtOs3d2nSingle.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtOs3d2nChildren6to11.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Children6to11, false, (int)NumberOfPassengerEnum.Unknow).ToString();
         }
         protected void rptPriceOs13d2nCharter_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             var contractValid = e.Item.DataItem as ContractValid;
             var txtOs13d2nCharter = e.Item.FindControl("txtOs13d2nCharter") as Literal;
-            txtOs13d2nCharter.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtOs13d2nCharter.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails1, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum.Unknow).ToString();
         }
         protected void rptPriceOs23d2nCharter_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
@@ -201,10 +205,10 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtOs23d2nCharter5to8passenger = e.Item.FindControl("txtOs23d2nCharter5to8passenger") as Literal;
             var txtOs23d2nCharter9to12passenger = e.Item.FindControl("txtOs23d2nCharter9to12passenger") as Literal;
             var txtOs23d2nCharter13to17passenger = e.Item.FindControl("txtOs23d2nCharter13to17passenger") as Literal;
-            txtOs23d2nCharter1to4passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to4passenger).ToString();
-            txtOs23d2nCharter5to8passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._5to8passenger).ToString();
-            txtOs23d2nCharter9to12passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._9to12passenger).ToString();
-            txtOs23d2nCharter13to17passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._13to17passenger).ToString();
+            txtOs23d2nCharter1to4passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to4passenger).ToString();
+            txtOs23d2nCharter5to8passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._5to8passenger).ToString();
+            txtOs23d2nCharter9to12passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._9to12passenger).ToString();
+            txtOs23d2nCharter13to17passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._13to17passenger).ToString();
         }
 
         protected void rptPriceCls2d1n_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -213,16 +217,16 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtCls2d1nDouble = e.Item.FindControl("txtCls2d1nDouble") as Literal;
             var txtCls2d1nSingle = e.Item.FindControl("txtCls2d1nSingle") as Literal;
             var txtCls2d1nChildren6to11 = e.Item.FindControl("txtCls2d1nChildren6to11") as Literal;
-            txtCls2d1nDouble.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtCls2d1nSingle.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtCls2d1nChildren6to11.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Children6to11, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtCls2d1nDouble.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtCls2d1nSingle.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtCls2d1nChildren6to11.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Children6to11, false, (int)NumberOfPassengerEnum.Unknow).ToString();
         }
 
         protected void rptPriceCls2d1nCharter_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             var contractValid = e.Item.DataItem as ContractValid;
             var txtCls2d1nCharter = e.Item.FindControl("txtCls2d1nCharter") as Literal;
-            txtCls2d1nCharter.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtCls2d1nCharter.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum.Unknow).ToString();
         }
         protected void rptPriceCls3d2n_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
@@ -230,16 +234,16 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtCls3d2nDouble = e.Item.FindControl("txtCls3d2nDouble") as Literal;
             var txtCls3d2nSingle = e.Item.FindControl("txtCls3d2nSingle") as Literal;
             var txtCls3d2nChildren6to11 = e.Item.FindControl("txtCls3d2nChildren6to11") as Literal;
-            txtCls3d2nDouble.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtCls3d2nSingle.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtCls3d2nChildren6to11.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Children6to11, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtCls3d2nDouble.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtCls3d2nSingle.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtCls3d2nChildren6to11.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Children6to11, false, (int)NumberOfPassengerEnum.Unknow).ToString();
         }
 
         protected void rptPriceCls3d2nCharter_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             var contractValid = e.Item.DataItem as ContractValid;
             var txtCls3d2nCharter = e.Item.FindControl("txtCls3d2nCharter") as Literal;
-            txtCls3d2nCharter.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtCls3d2nCharter.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Calypso, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum.Unknow).ToString();
         }
 
         protected void rptPriceStl2d1nDeluxe_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -248,9 +252,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtStl2d1nDeluxeDouble = e.Item.FindControl("txtStl2d1nDeluxeDouble") as Literal;
             var txtStl2d1nDeluxeSingle = e.Item.FindControl("txtStl2d1nDeluxeSingle") as Literal;
             var txtStl2d1nDeluxeExtrabed = e.Item.FindControl("txtStl2d1nDeluxeExtrabed") as Literal;
-            txtStl2d1nDeluxeDouble.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtStl2d1nDeluxeSingle.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtStl2d1nDeluxeExtrabed.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl2d1nDeluxeDouble.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl2d1nDeluxeSingle.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl2d1nDeluxeExtrabed.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow).ToString();
         }
 
         protected void rptPriceStl2d1nExecutive_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -259,9 +263,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtStl2d1nExecutiveDouble = e.Item.FindControl("txtStl2d1nExecutiveDouble") as Literal;
             var txtStl2d1nExecutiveSingle = e.Item.FindControl("txtStl2d1nExecutiveSingle") as Literal;
             var txtStl2d1nExecutiveExtrabed = e.Item.FindControl("txtStl2d1nExecutiveExtrabed") as Literal;
-            txtStl2d1nExecutiveDouble.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Executive, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtStl2d1nExecutiveSingle.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Executive, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtStl2d1nExecutiveExtrabed.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Executive, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl2d1nExecutiveDouble.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Executive, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl2d1nExecutiveSingle.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Executive, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl2d1nExecutiveExtrabed.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Executive, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow).ToString();
         }
 
         protected void rptPriceStl2d1nSuite_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -270,9 +274,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtStl2d1nSuiteDouble = e.Item.FindControl("txtStl2d1nSuiteDouble") as Literal;
             var txtStl2d1nSuiteSingle = e.Item.FindControl("txtStl2d1nSuiteSingle") as Literal;
             var txtStl2d1nSuiteExtrabed = e.Item.FindControl("txtStl2d1nSuiteExtrabed") as Literal;
-            txtStl2d1nSuiteDouble.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtStl2d1nSuiteSingle.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtStl2d1nSuiteExtrabed.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl2d1nSuiteDouble.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl2d1nSuiteSingle.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl2d1nSuiteExtrabed.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow).ToString();
         }
 
         protected void rptPriceStl2d1nCharter_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -281,9 +285,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtStl2d1nCharter1to40passenger = e.Item.FindControl("txtStl2d1nCharter1to40passenger") as Literal;
             var txtStl2d1nCharter41to50passenger = e.Item.FindControl("txtStl2d1nCharter41to50passenger") as Literal;
             var txtStl2d1nCharter51to63passenger = e.Item.FindControl("txtStl2d1nCharter51to63passenger") as Literal;
-            txtStl2d1nCharter1to40passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to40passenger).ToString();
-            txtStl2d1nCharter41to50passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._41to50passenger).ToString();
-            txtStl2d1nCharter51to63passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._51to63passenger).ToString();
+            txtStl2d1nCharter1to40passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to40passenger).ToString();
+            txtStl2d1nCharter41to50passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._41to50passenger).ToString();
+            txtStl2d1nCharter51to63passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._51to63passenger).ToString();
         }
 
         protected void rptPriceStl3d2nDeluxe_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -292,9 +296,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtStl3d2nDeluxeDouble = e.Item.FindControl("txtStl3d2nDeluxeDouble") as Literal;
             var txtStl3d2nDeluxeSingle = e.Item.FindControl("txtStl3d2nDeluxeSingle") as Literal;
             var txtStl3d2nDeluxeExtrabed = e.Item.FindControl("txtStl3d2nDeluxeExtrabed") as Literal;
-            txtStl3d2nDeluxeDouble.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtStl3d2nDeluxeSingle.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtStl3d2nDeluxeExtrabed.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl3d2nDeluxeDouble.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl3d2nDeluxeSingle.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl3d2nDeluxeExtrabed.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow).ToString();
         }
 
         protected void rptPriceStl3d2nExecutive_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -303,9 +307,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtStl3d2nExecutiveDouble = e.Item.FindControl("txtStl3d2nExecutiveDouble") as Literal;
             var txtStl3d2nExecutiveSingle = e.Item.FindControl("txtStl3d2nExecutiveSingle") as Literal;
             var txtStl3d2nExecutiveExtrabed = e.Item.FindControl("txtStl3d2nExecutiveExtrabed") as Literal;
-            txtStl3d2nExecutiveDouble.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Executive, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtStl3d2nExecutiveSingle.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Executive, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtStl3d2nExecutiveExtrabed.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Executive, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl3d2nExecutiveDouble.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Executive, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl3d2nExecutiveSingle.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Executive, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl3d2nExecutiveExtrabed.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Executive, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow).ToString();
         }
 
         protected void rptPriceStl3d2nSuite_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -314,9 +318,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtStl3d2nSuiteDouble = e.Item.FindControl("txtStl3d2nSuiteDouble") as Literal;
             var txtStl3d2nSuiteSingle = e.Item.FindControl("txtStl3d2nSuiteSingle") as Literal;
             var txtStl3d2nSuiteExtrabed = e.Item.FindControl("txtStl3d2nSuiteExtrabed") as Literal;
-            txtStl3d2nSuiteDouble.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtStl3d2nSuiteSingle.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
-            txtStl3d2nSuiteExtrabed.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl3d2nSuiteDouble.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl3d2nSuiteSingle.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow).ToString();
+            txtStl3d2nSuiteExtrabed.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow).ToString();
         }
 
         protected void rptPriceStl3d2nCharter_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -325,9 +329,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var txtStl3d2nCharter1to40passenger = e.Item.FindControl("txtStl3d2nCharter1to40passenger") as Literal;
             var txtStl3d2nCharter41to50passenger = e.Item.FindControl("txtStl3d2nCharter41to50passenger") as Literal;
             var txtStl3d2nCharter51to63passenger = e.Item.FindControl("txtStl3d2nCharter51to63passenger") as Literal;
-            txtStl3d2nCharter1to40passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to40passenger).ToString();
-            txtStl3d2nCharter41to50passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._41to50passenger).ToString();
-            txtStl3d2nCharter51to63passenger.Text = GetCurrency() + GetPrice(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._51to63passenger).ToString();
+            txtStl3d2nCharter1to40passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to40passenger).ToString();
+            txtStl3d2nCharter41to50passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._41to50passenger).ToString();
+            txtStl3d2nCharter51to63passenger.Text = GetCurrency() + GetPriceFormatted(contractValid, (int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._51to63passenger).ToString();
         }
     }
 }

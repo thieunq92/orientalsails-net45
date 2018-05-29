@@ -12,10 +12,21 @@
             }
         };
     });
-
 var moduleViewActivities = angular.module("moduleViewActivities", []);
 var moduleDocumentView = angular.module("moduleDocumentView", []);
-var moduleContractCreate = angular.module("moduleContractCreate", []);
+var moduleContractCreate = angular.module("moduleContractCreate", [])
+.directive('inputMask', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, el, attrs) {
+            $(el).inputmask(scope.$eval(attrs.inputMask));
+            $(el).on('change', function (e) {
+                scope.application == scope.application || {}
+                scope.application.phone = $(e.target).val();
+            });
+        }
+    };
+});
 angular.module("myApp",
     ["moduleAddSeriesBookings",
     "moduleViewActivities",

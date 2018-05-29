@@ -13,15 +13,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
     public partial class BookingReport {
         
         /// <summary>
-        /// popupManager control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CMS.ServerControls.Popup popupManager;
-        
-        /// <summary>
         /// txtDate control.
         /// </summary>
         /// <remarks>
@@ -29,15 +20,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDate;
-        
-        /// <summary>
-        /// calendarDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calendarDate;
         
         /// <summary>
         /// txtBookingCode control.
@@ -85,15 +67,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.Repeater rptCruises;
         
         /// <summary>
-        /// liMenu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liMenu;
-        
-        /// <summary>
         /// hplLimousineTab control.
         /// </summary>
         /// <remarks>
@@ -128,6 +101,24 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptShadows;
+        
+        /// <summary>
+        /// txtLockDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLockDescription;
+        
+        /// <summary>
+        /// btnLock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLock;
         
         /// <summary>
         /// litLockIncome control.
@@ -166,24 +157,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::AjaxControlToolkit.ConfirmButtonExtender ConfirmButtonExtenderDelete;
         
         /// <summary>
-        /// txtLockDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLockDescription;
-        
-        /// <summary>
-        /// btnLock control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLock;
-        
-        /// <summary>
         /// plhDailyExpenses control.
         /// </summary>
         /// <remarks>
@@ -202,94 +175,13 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.Repeater rptCruiseExpense;
         
         /// <summary>
-        /// plhBarRevenue control.
+        /// popupManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder plhBarRevenue;
-        
-        /// <summary>
-        /// txtBarRevenue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBarRevenue;
-        
-        /// <summary>
-        /// plhExpenses control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder plhExpenses;
-        
-        /// <summary>
-        /// litCustomerCost control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litCustomerCost;
-        
-        /// <summary>
-        /// litRunningCost control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litRunningCost;
-        
-        /// <summary>
-        /// litSubTotal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litSubTotal;
-        
-        /// <summary>
-        /// litManual control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litManual;
-        
-        /// <summary>
-        /// litTotal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litTotal;
-        
-        /// <summary>
-        /// plhNote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder plhNote;
-        
-        /// <summary>
-        /// fckNote control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FredCK.FCKeditorV2.FCKeditor fckNote;
+        protected global::CMS.ServerControls.Popup popupManager;
         
         /// <summary>
         /// btnSaveExpenses control.
@@ -371,14 +263,5 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnProvisional;
-        
-        /// <summary>
-        /// btnNewProvisional control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNewProvisional;
     }
 }

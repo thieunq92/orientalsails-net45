@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <%  Module.CommonDao.OpenSession().CreateSQLQuery("ALTER TABLE os_Quotation ADD Name nvarchar(MAX), Currency int")
+            <%  Module.CommonDao.OpenSession().CreateSQLQuery("SET ANSI_NULLS ON SET QUOTED_IDENTIFIER ON CREATE TABLE [dbo].[os_ContractPrice]( [Id] [int] IDENTITY(1,1) NOT NULL, [TripId] [int] NULL, [CruiseId] [int] NULL, [RoomClassId] [int] NULL, [RoomTypeId] [int] NULL, [IsCharter] [bit] NULL, [NumberOfPassenger] [int] NULL, [Price] [float] NULL, [ContractValidId] [int] NULL, CONSTRAINT [PK_os_ContractPrice] PRIMARY KEY CLUSTERED ( [Id] ASC )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY] ) ON [PRIMARY] ALTER TABLE [dbo].[os_ContractPrice] WITH CHECK ADD CONSTRAINT [FK_os_ContractPrice_os_ContractValid] FOREIGN KEY([ContractValidId]) REFERENCES [dbo].[os_ContractValid] ([Id]) ON UPDATE CASCADE ON DELETE SET NULL ALTER TABLE [dbo].[os_ContractPrice] CHECK CONSTRAINT [FK_os_ContractPrice_os_ContractValid]")
                 .ExecuteUpdate();%>
         </div>
     </form>

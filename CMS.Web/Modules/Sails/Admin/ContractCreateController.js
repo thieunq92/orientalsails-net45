@@ -51,7 +51,7 @@ moduleContractCreate.controller("contractCreateController", ["$rootScope", "$sco
                 "currency": $scope.currency,
             },
         }).then(function (response) {
-
+            window.location.href = "ContractManagement.aspx?NodeId=1&SectionId=15"
         }, function (response) {
 
         })

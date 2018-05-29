@@ -59,6 +59,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\AddBookingBLL.cs" />
     <Compile Include="BusinessLogic\AddSeriesBookingsBLL.cs" />
     <Compile Include="BusinessLogic\AgencyEditBLL.cs" />
     <Compile Include="BusinessLogic\AgencyViewBLL.cs" />

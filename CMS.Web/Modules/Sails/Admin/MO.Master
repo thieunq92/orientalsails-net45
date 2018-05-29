@@ -26,7 +26,11 @@
         </asp:ScriptManager>
         <asp:UpdateProgress ID="updateProcessAdmin" runat="server">
             <ProgressTemplate>
-                <img src="/Images/loading.gif" alt="loading" />
+                <div id="overlay-wholepage">
+                    <div id="image">
+                        <img src="/Images/loading.gif" alt="loading" />
+                    </div>
+                </div>
             </ProgressTemplate>
         </asp:UpdateProgress>
         <div class="container-fluid">
@@ -298,7 +302,6 @@
                 })
             }
         }
-
         var popOver = {
             configBirdayReminder: function () {
                 $("#birthday-reminder").popover({
@@ -319,13 +322,11 @@
                 })
             }
         }
-
         var textArea = {
             autosize: function () {
                 autosize($("textarea"));
             }
         }
-
         var message = {
             hideIfBlank: function () {
                 $("[role='alert']").each(function (i, e) {
@@ -335,7 +336,6 @@
                 })
             }
         }
-
         var input = {
             removeMultipleSpace: function () {
                 $("[type = 'text'], textarea").blur(function () {
@@ -343,7 +343,6 @@
                 })
             }
         }
-
         $(function () {
             tooltip.config();
             tooltip.hideIfBlank();
@@ -354,7 +353,6 @@
             input.removeMultipleSpace();
         });
     </script>
-
     <script>
         $('body').on('click', function (e) {
             if ($(e.target).data('toggle') !== 'popover'
@@ -364,7 +362,16 @@
             }
         });
     </script>
-
+    <script>
+        $(function () {
+            $("[data-control='datetimepicker']").datetimepicker({
+                timepicker: false,
+                format: 'd/m/Y',
+                scrollInput: false,
+                scrollMonth: false,
+            })
+        })
+    </script>
     <asp:ContentPlaceHolder ID="Scripts" runat="server">
     </asp:ContentPlaceHolder>
 </body>
