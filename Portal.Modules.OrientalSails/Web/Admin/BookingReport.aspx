@@ -30,7 +30,7 @@
                 Date to view 
             </div>
             <div class="col-xs-2 nopadding-left nopadding-right">
-                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" data-control="datetimepicker" autocomplete ="off"></asp:TextBox>
+                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" data-control="datetimepicker" autocomplete="off"></asp:TextBox>
             </div>
             <div class="col-xs-2">
                 <asp:TextBox runat="server" ID="txtBookingCode" placeholder="Booking code" CssClass="form-control"></asp:TextBox>
@@ -392,7 +392,7 @@
                                                 </asp:DropDownList>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txtCost" runat="server" CssClass="form-control"></asp:TextBox>
+                                                <asp:TextBox ID="txtCost" runat="server" CssClass="form-control" ></asp:TextBox>
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlGroups" runat="server" Visible="true" CssClass="form-control">
@@ -437,24 +437,28 @@
     </div>
     <svc:Popup runat="server" ID="popupManager">
     </svc:Popup>
-    <asp:Button ID="btnSaveExpenses" runat="server" Text="Save without export" OnClick="btnSaveExpenses_Click"
-        CssClass="btn btn-primary" />
-    <asp:Button ID="btnExport" runat="server" Text="Export tour" OnClick="btnExport_Click"
-        CssClass="btn btn-primary" />
-    <asp:Button ID="btnExportLimousine" runat="server" Text="Export tour" Visible="false" OnClick="btnExportLimousine_Click"
-        CssClass="btn btn-primary" />
-    <asp:Button ID="btnExport_3" runat="server" Text="Export 3 day" OnClick="btnExport_3_Click"
-        CssClass="btn btn-primary" />
-    <asp:Button ID="btnIncomeDate" runat="server" Text="Xuất doanh thu" OnClick="btnIncomeDate_Click"
-        CssClass="btn btn-primary" />
-    <asp:Button ID="btnExportRoom" runat="server" Text="Export room list" OnClick="btnExportRoom_Click"
-        CssClass="btn btn-primary" />
-    <asp:Button ID="btnExportWelcome" runat="server" Text="Export Welcome board" OnClick="btnExportWelcome_Click"
-        CssClass="btn btn-primary" />
-    <asp:Button ID="btnExcel" runat="server" Text="Export customer data" OnClick="btnExcel_Click"
-        CssClass="btn btn-primary" />
-    <asp:Button ID="btnProvisional" runat="server" Text="Export provisional register"
-        OnClick="btnProvisional_Click" CssClass="btn btn-primary" />
+    <div class="row">
+        <div class="col-xs-12 btn-grid">
+            <asp:Button ID="btnSaveExpenses" runat="server" Text="Save without export" OnClick="btnSaveExpenses_Click"
+                CssClass="btn btn-primary" />
+            <asp:Button ID="btnExport" runat="server" Text="Export tour" OnClick="btnExport_Click"
+                CssClass="btn btn-primary" />
+            <asp:Button ID="btnExportLimousine" runat="server" Text="Export tour" Visible="false" OnClick="btnExportLimousine_Click"
+                CssClass="btn btn-primary" />
+            <asp:Button ID="btnExport_3" runat="server" Text="Export 3 day" OnClick="btnExport_3_Click"
+                CssClass="btn btn-primary" />
+            <asp:Button ID="btnIncomeDate" runat="server" Text="Xuất doanh thu" OnClick="btnIncomeDate_Click"
+                CssClass="btn btn-primary" />
+            <asp:Button ID="btnExportRoom" runat="server" Text="Export room list" OnClick="btnExportRoom_Click"
+                CssClass="btn btn-primary" />
+            <asp:Button ID="btnExportWelcome" runat="server" Text="Export Welcome board" OnClick="btnExportWelcome_Click"
+                CssClass="btn btn-primary" />
+            <asp:Button ID="btnExcel" runat="server" Text="Export customer data" OnClick="btnExcel_Click"
+                CssClass="btn btn-primary" />
+            <asp:Button ID="btnProvisional" runat="server" Text="Export provisional register"
+                OnClick="btnProvisional_Click" CssClass="btn btn-primary" />
+        </div>
+    </div>
 </asp:Content>
 <asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
     <script>
