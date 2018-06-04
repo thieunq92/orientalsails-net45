@@ -412,12 +412,8 @@
                                 <label>Select contract</label>
                             </div>
                             <div class="col-xs-10">
-                                <asp:DropDownList runat="server" ID="ddlContractTemplate" CssClass="form-control">
+                                <asp:DropDownList runat="server" ID="ddlContractTemplate" CssClass="form-control" AppendDataBoundItems="true">
                                     <asp:ListItem Text="-- Select contract --" Value="-1"></asp:ListItem>
-                                    <asp:ListItem Text="Contract lv1" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="Contract lv2" Value="2"></asp:ListItem>
-                                    <asp:ListItem Text="Contract lv3" Value="3"></asp:ListItem>
-                                    <asp:ListItem Text="Custom Contract" Value="4"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -504,12 +500,8 @@
                                 <label>Select quotation</label>
                             </div>
                             <div class="col-xs-10">
-                                <asp:DropDownList ID="ddlQuotationTemplate" runat="server" CssClass="form-control">
+                                <asp:DropDownList ID="ddlQuotationTemplate" runat="server" CssClass="form-control" AppendDataBoundItems="True">
                                     <asp:ListItem Text="-- Select quotation --" Value="-1"></asp:ListItem>
-                                    <asp:ListItem Text="Quotation lv1" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="Quotation lv2" Value="2"></asp:ListItem>
-                                    <asp:ListItem Text="Quotation lv3" Value="3"></asp:ListItem>
-                                    <asp:ListItem Text="Custom Quotation" Value="4"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>

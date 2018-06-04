@@ -30,7 +30,7 @@
                 Date to view 
             </div>
             <div class="col-xs-2 nopadding-left nopadding-right">
-                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" data-control="datetimepicker"></asp:TextBox>
+                <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" data-control="datetimepicker" autocomplete ="off"></asp:TextBox>
             </div>
             <div class="col-xs-2">
                 <asp:TextBox runat="server" ID="txtBookingCode" placeholder="Booking code" CssClass="form-control"></asp:TextBox>
@@ -395,7 +395,7 @@
                                                 <asp:TextBox ID="txtCost" runat="server" CssClass="form-control"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:DropDownList ID="ddlGroups" runat="server" Visible="true" Width="50" CssClass="form-control">
+                                                <asp:DropDownList ID="ddlGroups" runat="server" Visible="true" CssClass="form-control">
                                                 </asp:DropDownList>
                                             </td>
                                             <td>

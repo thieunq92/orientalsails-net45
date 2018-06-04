@@ -207,6 +207,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 NumberOfPassenger = numberOfPassenger,
             };
             QuotationCreateBLL.QuotationPriceSaveOrUpdate(quotationPrice);
+            Response.Redirect("QuotationManagement.aspx?NodeId=1&SectionId=15");
         }
     }
 }

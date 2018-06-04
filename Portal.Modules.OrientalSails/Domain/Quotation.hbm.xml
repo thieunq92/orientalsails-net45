@@ -17,5 +17,9 @@
       <key column="QuotationId"/>
       <one-to-many class="QuotationPrice"/>
     </bag>
+    <bag name="ListAgencyContract" inverse="true" batch-size="10">
+      <key column="QuotationId"/>
+      <one-to-many class="AgencyContract"/>
+    </bag>
   </class>
 </hibernate-mapping>

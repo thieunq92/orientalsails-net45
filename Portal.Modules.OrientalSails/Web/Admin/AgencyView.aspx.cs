@@ -15,6 +15,9 @@ using Portal.Modules.OrientalSails.BusinessLogic;
 using Aspose.Words.Rendering;
 using Microsoft.Office.Interop.Word;
 using System.Linq;
+using Portal.Modules.OrientalSails.Enums.Shared;
+using C = Portal.Modules.OrientalSails.Enums.Contract;
+using Q = Portal.Modules.OrientalSails.Enums.Quotation;
 
 namespace Portal.Modules.OrientalSails.Web.Admin
 {
@@ -35,7 +38,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 return agencyViewBLL;
             }
         }
-
         public Agency Agency
         {
             get
@@ -50,7 +52,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 return agency;
             }
         }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             _editPermission = Module.PermissionCheck(Permission.ACTION_EDITAGENCY, UserIdentity);
@@ -146,8 +147,15 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             RenderContacts();
             RenderRecentActivities();
             RenderContracts();
+            ddlContractTemplate.DataSource = AgencyViewBLL.ContractGetAll();
+            ddlContractTemplate.DataTextField = "Name";
+            ddlContractTemplate.DataValueField = "Id";
+            ddlContractTemplate.DataBind();
+            ddlQuotationTemplate.DataSource = AgencyViewBLL.QuotationGetAll();
+            ddlQuotationTemplate.DataTextField = "Name";
+            ddlQuotationTemplate.DataValueField = "Id";
+            ddlQuotationTemplate.DataBind();
         }
-
         protected void Page_Unload(object sender, EventArgs e)
         {
             if (agencyViewBLL != null)
@@ -169,7 +177,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "disableInform", script);
             }
         }
-
         public void RenderContacts()
         {
             if (!_contactsPermission)
@@ -178,7 +185,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 lblContacts.Visible = true;
             }
         }
-
         public void RenderRecentActivities()
         {
             if (!_recentActivitiesPermission)
@@ -187,7 +193,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 lblActivities.Visible = true;
             }
         }
-
         public void RenderContracts()
         {
             if (!_contractsPermission)
@@ -196,14 +201,12 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 lblContracts.Visible = true;
             }
         }
-
         public void LoadContracts()
         {
             var agencyId = Agency.Id;
             rptContracts.DataSource = AgencyViewBLL.AgencyContractGetAllByAgency(agencyId);
             rptContracts.DataBind();
         }
-
         protected void rptContracts_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.DataItem is AgencyContract)
@@ -246,51 +249,29 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
                 var plhContractQuotation = (PlaceHolder)e.Item.FindControl("plhContractQuotation");
-                var contractTemplate = contract.ContractTemplate;
-                var contractTemplateName = "";
-                switch (contractTemplate)
+                var contracts = contract.Contract;
+                var contractName = "";
+                try
                 {
-                    case 1:
-                        contractTemplateName = "Contract Lv1";
-                        break;
-                    case 2:
-                        contractTemplateName = "Contract Lv2";
-                        break;
-                    case 3:
-                        contractTemplateName = "Contract Lv3";
-                        break;
-                    case 4:
-                        contractTemplateName = "Custom Contract";
-                        break;
+                    contractName = contracts.Name;
                 }
-
-                var quotationTemplate = contract.QuotationTemplate;
-                var quotationTemplateName = "";
-                switch (quotationTemplate)
+                catch { }
+                var quotation = contract.Quotation;
+                var quotationName = "";
+                try
                 {
-                    case 1:
-                        quotationTemplateName = "Quotation Lv1";
-                        break;
-                    case 2:
-                        quotationTemplateName = "Quotation Lv2";
-                        break;
-                    case 3:
-                        quotationTemplateName = "Quotation Lv3";
-                        break;
-                    case 4:
-                        quotationTemplateName = "Custom Quotation";
-                        break;
+                    quotationName = quotation.Name;
                 }
-
+                catch { }
                 var lbtContractTemplate = new LinkButton()
                 {
-                    Text = contractTemplateName,
+                    Text = contractName,
                     CommandArgument = contract.Id.ToString(),
                 };
                 lbtContractTemplate.Click += new EventHandler(lbtContractTemplate_Click);
                 var lbtQuotationTemplate = new LinkButton()
                 {
-                    Text = quotationTemplateName,
+                    Text = quotationName,
                     CommandArgument = contract.Id.ToString(),
                 };
                 lbtQuotationTemplate.Click += new EventHandler(lbtQuotationTemplate_Click);
@@ -299,7 +280,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                     Text = @" \ ",
                 };
                 plhContractQuotation.Controls.Add(lbtContractTemplate);
-                if (contractTemplateName != "" && quotationTemplateName != "")
+                if (contractName != "" && quotationName != "")
                     plhContractQuotation.Controls.Add(separator);
                 plhContractQuotation.Controls.Add(lbtQuotationTemplate);
 
@@ -318,7 +299,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 litStatus.Text = statusName;
             }
         }
-
         public void lbtQuotationTemplate_Click(object sender, EventArgs e)
         {
             var agencyContractId = -1;
@@ -330,7 +310,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var agencyContract = AgencyViewBLL.AgencyContractGetById(agencyContractId);
             ExportQuotationToWord(agencyContract);
         }
-
         public void lbtContractTemplate_Click(object sender, EventArgs e)
         {
             var agencyContractId = -1;
@@ -342,7 +321,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             var agencyContract = AgencyViewBLL.AgencyContractGetById(agencyContractId);
             ExportContractToWord(agencyContract);
         }
-
         protected void rptContacts_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.DataItem is AgencyContact)
@@ -394,7 +372,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 }
             }
         }
-
         protected void lbtDelete_Click(object sender, EventArgs e)
         {
             var btn = (IButtonControl)sender;
@@ -405,7 +382,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
             PageRedirect(Request.RawUrl);
         }
-
         protected void rptActivities_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             var activity = e.Item.DataItem as Activity;
@@ -449,7 +425,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                                              CMS.ServerControls.Popup.OpenPopupScript(url, "Contract", 300, 400));
             }
         }
-
         protected void lbtDeleteActivity_Click(object sender, EventArgs e)
         {
             var btn = (IButtonControl)sender;
@@ -457,27 +432,22 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             Module.Delete(activity);
             PageRedirect(Request.RawUrl);
         }
-
         protected void btnExportContractPreviewWord_Click(object sender, EventArgs e)
         {
             ExportContractToWord();
         }
-
         protected void btnExportContractPreviewPdf_Click(object sender, EventArgs e)
         {
             ExportContractToPdf();
         }
-
         protected void btnExportQuotationPreviewWord_Click(object sender, EventArgs e)
         {
             ExportQuotationToWord();
         }
-
         protected void btnExportQuotationPreviewPdf_Click(object sender, EventArgs e)
         {
             ExportQuotationToPdf();
         }
-
         public void ExportContractToWord()
         {
             var doc = GetGeneratedContract();
@@ -495,7 +465,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             m.Close();
             Response.End();
         }
-
         public void ExportContractToWord(AgencyContract agencyContract)
         {
             var doc = GetGeneratedContract(agencyContract);
@@ -513,7 +482,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             m.Close();
             Response.End();
         }
-
         public void ExportQuotationToWord()
         {
             var doc = GetGeneratedQuotation();
@@ -530,7 +498,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             m.Close();
             Response.End();
         }
-
         public void ExportQuotationToWord(AgencyContract agencyContract)
         {
             var doc = GetGeneratedQuotation(agencyContract);
@@ -547,7 +514,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             m.Close();
             Response.End();
         }
-
         public void ExportContractToPdf()
         {
             var doc = GetGeneratedContract();
@@ -579,7 +545,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             m.Close();
             Response.End();
         }
-
         public void ExportQuotationToPdf()
         {
             var doc = GetGeneratedQuotation();
@@ -611,37 +576,34 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             m.Close();
             Response.End();
         }
-
-        public Aspose.Words.Document GetGeneratedContract()
+        public Aspose.Words.Document GetGeneratedContract(AgencyContract agencyContract)
         {
-            var selectedContractTemplate = -1;
-            try
+            Contracts contract = null;
+            if (agencyContract != null)
             {
-                selectedContractTemplate = Int32.Parse(ddlContractTemplate.SelectedValue);
+                contract = agencyContract.Contract;
             }
-            catch { }
+            else
+            {
+                var selectedContract = -1;
+                try
+                {
+                    selectedContract = Int32.Parse(ddlContractTemplate.SelectedValue);
+                }
+                catch { }
+                contract = AgencyViewBLL.ContractGetById(selectedContract);
+            }
+            var listContractValid = contract.ListContractValid;
             var templatePath = "";
-            switch (selectedContractTemplate)
+            if (0 < listContractValid.Count && listContractValid.Count < 2)
             {
-                case 1:
-                    templatePath = "ExportTemplates/Contract Lv1.doc";
-                    break;
-                case 2:
-                    templatePath = "ExportTemplates/Contract Lv2.doc";
-                    break;
-                case 3:
-                    templatePath = "ExportTemplates/Contract Lv3.doc";
-                    break;
-                case 4:
-                    var uploadedTemplatePath = hifContractTemplatePath.Value;
-                    templatePath = uploadedTemplatePath;
-                    break;
+                templatePath = "ExportTemplates/Contract1ValidTime.doc";
             }
-            return GetGeneratedContract(templatePath);
-        }
+            if (listContractValid.Count >= 2)
+            {
+                templatePath = "ExportTemplates/Contract2ValidTime.doc";
+            }
 
-        public Aspose.Words.Document GetGeneratedContract(string templatePath)
-        {
             DateTime? validFromDate = null;
 
             try
@@ -761,7 +723,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             }
             catch { }
 
-
             doc.Range.Replace(new Regex("(\\[ValidFromDay\\])"), validFromDay);
             doc.Range.Replace(new Regex("(\\[ValidFromMonth\\])"), validFrommonth);
             doc.Range.Replace(new Regex("(\\[ValidFromYear\\])"), validFromYear);
@@ -779,158 +740,341 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             doc.Range.Replace(new Regex("(\\[AgencyFax\\])"), agencyFax);
             doc.Range.Replace(new Regex("(\\[AgencyTaxCode\\])"), agencyTaxCode);
             doc.Range.Replace(new Regex("(\\[ValidToDate\\])"), textValidToDate);
+            doc = FillContractPrice(doc, contract);
             return doc;
 
         }
-        public Aspose.Words.Document GetGeneratedContract(AgencyContract agencyContract)
+        public Aspose.Words.Document GetGeneratedContract()
         {
-            var template = agencyContract.ContractTemplate;
-            var templatePath = "";
-            switch (template)
-            {
-                case 1:
-                    templatePath = "ExportTemplates/Contract Lv1.doc";
-                    break;
-                case 2:
-                    templatePath = "ExportTemplates/Contract Lv2.doc";
-                    break;
-                case 3:
-                    templatePath = "ExportTemplates/Contract Lv3.doc";
-                    break;
-                case 4:
-                    templatePath = agencyContract.ContractTemplatePath;
-                    break;
-            }
-
-            var doc = GetGeneratedContract(templatePath);
-            DateTime? validFromDate = null;
-            try
-            {
-                validFromDate = agencyContract.ContractValidFromDate;
-            }
-            catch (Exception) { }
-            var validFromDay = validFromDate != null ? validFromDate.Value.Day.ToString("#00") : "";
-            var validFrommonth = validFromDate != null ? (validFromDate.Value.Month + 1).ToString("#00") : "";
-            var validFromYear = validFromDate != null ? validFromDate.Value.Year.ToString() : "";
-
-            DateTime? validToDate = null;
-            try
-            {
-                validToDate = agencyContract.ContractValidToDate;
-            }
-            catch { }
-
-            var textValidToDate = "";
-            try
-            {
-                textValidToDate = validToDate.Value.ToString("dd/MM/yyyy");
-            }
-            catch { }
-            doc.Range.Replace(new Regex("(\\[ValidFromDay\\])"), validFromDay);
-            doc.Range.Replace(new Regex("(\\[ValidFromMonth\\])"), validFrommonth);
-            doc.Range.Replace(new Regex("(\\[ValidFromYear\\])"), validFromYear);
-            doc.Range.Replace(new Regex("(\\[ValidToDate\\])"), textValidToDate);
-            return doc;
+            return GetGeneratedContract(null);
         }
 
-        public Aspose.Words.Document GetGeneratedQuotation()
+        public Aspose.Words.Document FillContractPrice(Aspose.Words.Document doc, Contracts contract)
         {
-            var selectedQuotationTemplate = -1;
-            try
+            var listContractValid = contract.ListContractValid;
+            var index = 1;
+            foreach (var contractValid in listContractValid)
             {
-                selectedQuotationTemplate = Int32.Parse(ddlQuotationTemplate.SelectedValue);
-            }
-            catch { }
-            var templatePath = "";
-            switch (selectedQuotationTemplate)
-            {
-                case 1:
-                    templatePath = "ExportTemplates/QuotationLv1.doc";
-                    break;
-                case 2:
-                    templatePath = "ExportTemplates/QuotationLv2.doc";
-                    break;
-                case 3:
-                    templatePath = "ExportTemplates/QuotationLv3.doc";
-                    break;
-                case 4:
-                    var uploadedQuotationTemplatePath = hifQuotationTemplatePath.Value;
-                    templatePath = uploadedQuotationTemplatePath;
-                    break;
-            }
-            var doc = new Aspose.Words.Document(Server.MapPath(templatePath));
-            DateTime? validFromDate = null;
-            try
-            {
-                validFromDate = DateTime.ParseExact(txtQuotationValidFromDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            }
-            catch (Exception) { }
-            var textValidFromDate = "";
-            try
-            {
-                textValidFromDate = validFromDate.Value.ToString("dd/MM/yyyy");
-            }
-            catch { }
-            DateTime? validToDate = null;
-            try
-            {
-                validToDate = DateTime.ParseExact(txtQuotationValidToDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            }
-            catch { }
+                var txtOs2d1nDouble = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails1, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Double, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtOs2d1nSingle = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails1, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Single, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtOs2d1nChildren6to11 = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails1, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Children6to11, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtOs12d1nCharter = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails1, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtOs22d1nCharter1to4passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails2, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._1to4passenger);
+                var txtOs22d1nCharter5to8passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails2, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._5to8passenger);
+                var txtOs22d1nCharter9to12passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails2, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._9to12passenger);
+                var txtOs22d1nCharter13to16passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails2, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._13to16passenger);
+                var txtOs3d2nDouble = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails1, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Double, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtOs3d2nSingle = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails1, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Single, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtOs3d2nChildren6to11 = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails1, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Children6to11, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtOs13d2nCharter = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails1, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtOs23d2nCharter1to4passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails2, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._1to4passenger);
+                var txtOs23d2nCharter5to8passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails2, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._5to8passenger);
+                var txtOs23d2nCharter9to12passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails2, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._9to12passenger);
+                var txtOs23d2nCharter13to16passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.OrientalSails2, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._13to16passenger);
+                var txtCls2d1nDouble = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Calypso, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Double, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtCls2d1nSingle = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Calypso, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Single, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtCls2d1nChildren6to11 = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Calypso, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Children6to11, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtCls2d1nCharter = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Calypso, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtCls3d2nDouble = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Calypso, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Double, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtCls3d2nSingle = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Calypso, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Single, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtCls3d2nChildren6to11 = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Calypso, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Children6to11, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtCls3d2nCharter = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Calypso, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl2d1nDeluxeDouble = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Double, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl2d1nDeluxeSingle = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Single, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl2d1nDeluxeExtrabed = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Extrabed, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl2d1nExecutiveDouble = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Executive, (int)C.RoomTypeEnum.Double, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl2d1nExecutiveSingle = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Executive, (int)C.RoomTypeEnum.Single, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl2d1nExecutiveExtrabed = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Executive, (int)C.RoomTypeEnum.Extrabed, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl2d1nSuiteDouble = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Suite, (int)C.RoomTypeEnum.Double, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl2d1nSuiteSingle = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Suite, (int)C.RoomTypeEnum.Single, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl2d1nSuiteExtrabed = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Suite, (int)C.RoomTypeEnum.Extrabed, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl2d1nCharter1to30passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._1to30passenger);
+                var txtStl2d1nCharter31to40passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._31to40passenger);
+                var txtStl2d1nCharter41to50passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._41to50passenger);
+                var txtStl2d1nCharter51to64passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._2Day1Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._51to64passenger);
+                var txtStl3d2nDeluxeDouble = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Double, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl3d2nDeluxeSingle = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Single, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl3d2nDeluxeExtrabed = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Deluxe, (int)C.RoomTypeEnum.Extrabed, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl3d2nExecutiveDouble = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Executive, (int)C.RoomTypeEnum.Double, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl3d2nExecutiveSingle = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Executive, (int)C.RoomTypeEnum.Single, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl3d2nExecutiveExtrabed = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Executive, (int)C.RoomTypeEnum.Extrabed, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl3d2nSuiteDouble = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Suite, (int)C.RoomTypeEnum.Double, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl3d2nSuiteSingle = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Suite, (int)C.RoomTypeEnum.Single, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl3d2nSuiteExtrabed = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Suite, (int)C.RoomTypeEnum.Extrabed, false, (int)C.NumberOfPassengerEnum.Unknow);
+                var txtStl3d2nCharter1to30passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._1to30passenger);
+                var txtStl3d2nCharter31to40passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._31to40passenger);
+                var txtStl3d2nCharter41to50passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._41to50passenger);
+                var txtStl3d2nCharter51to64passenger = GetCurrency(contract) + GetPriceFormatted(contractValid, (int)C.CruiseEnum.Starlight, (int)C.TripEnum._3Day2Night, (int)C.RoomClassEnum.Unknow, (int)C.RoomTypeEnum.Unknow, true, (int)C.NumberOfPassengerEnum._51to64passenger);
 
-            var textValidToDate = "";
-            try
-            {
-                textValidToDate = validToDate.Value.ToString("dd/MM/yyyy");
+                var textValidFromDate = "";
+                try
+                {
+                    textValidFromDate = contractValid.ValidFrom.Value.ToString("dd/MM/yyyy");
+                }
+                catch { }
+                var textValidToDate = "";
+                try
+                {
+                    textValidToDate = contractValid.ValidTo.Value.ToString("dd/MM/yyyy");
+                }
+                catch { }
+                doc.Range.Replace(new Regex("(\\[" + index + "ValidFromDate\\])"), textValidFromDate);
+                doc.Range.Replace(new Regex("(\\[" + index + "ValidToDate\\])"), textValidToDate);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os2d1nDouble\\])"), txtOs2d1nDouble);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os2d1nSingle\\])"), txtOs2d1nSingle);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os2d1nChildren6to11\\])"), txtOs2d1nChildren6to11);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os2d1nCharter\\])"), txtOs12d1nCharter);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os22d1nc14p\\])"), txtOs22d1nCharter1to4passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os22d1nc58p\\])"), txtOs22d1nCharter5to8passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os22d1nc912p\\])"), txtOs22d1nCharter9to12passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os22d1nc1316p\\])"), txtOs22d1nCharter13to16passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os3d2nDouble\\])"), txtOs3d2nDouble);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os3d2nSingle\\])"), txtOs3d2nSingle);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os3d2nChildren6to11\\])"), txtOs3d2nChildren6to11);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os3d2nCharter\\])"), txtOs13d2nCharter);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os23d2nc14p\\])"), txtOs23d2nCharter1to4passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os23d2nc58p\\])"), txtOs23d2nCharter5to8passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os23d2nc912p\\])"), txtOs23d2nCharter9to12passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Os23d2nc1316p\\])"), txtOs23d2nCharter13to16passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Cls2d1nDouble\\])"), txtCls2d1nDouble);
+                doc.Range.Replace(new Regex("(\\[" + index + "Cls2d1nSingle\\])"), txtCls2d1nSingle);
+                doc.Range.Replace(new Regex("(\\[" + index + "Cls2d1nChildren6to11\\])"), txtCls2d1nChildren6to11);
+                doc.Range.Replace(new Regex("(\\[" + index + "Cls2d1nCharter\\])"), txtCls2d1nCharter);
+                doc.Range.Replace(new Regex("(\\[" + index + "Cls3d2nDouble\\])"), txtCls3d2nDouble);
+                doc.Range.Replace(new Regex("(\\[" + index + "Cls3d2nSingle\\])"), txtCls3d2nSingle);
+                doc.Range.Replace(new Regex("(\\[" + index + "Cls3d2nChildren6to11\\])"), txtCls3d2nChildren6to11);
+                doc.Range.Replace(new Regex("(\\[" + index + "Cls3d2nCharter\\])"), txtCls3d2nCharter);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nDeluxeDouble\\])"), txtStl2d1nDeluxeDouble);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nDeluxeSingle\\])"), txtStl2d1nDeluxeSingle);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nDeluxeExtrabed\\])"), txtStl2d1nDeluxeExtrabed);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nExecutiveDouble\\])"), txtStl2d1nExecutiveDouble);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nExecutiveSingle\\])"), txtStl2d1nExecutiveSingle);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nExecutiveExtrabed\\])"), txtStl2d1nExecutiveExtrabed);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nSuiteDouble\\])"), txtStl2d1nSuiteDouble);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nSuiteSingle\\])"), txtStl2d1nSuiteSingle);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nSuiteExtrabed\\])"), txtStl2d1nSuiteExtrabed);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nc130p\\])"), txtStl2d1nCharter1to30passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nc3140p\\])"), txtStl2d1nCharter31to40passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nc4150p\\])"), txtStl2d1nCharter41to50passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl2d1nc5164p\\])"), txtStl2d1nCharter51to64passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nDeluxeDouble\\])"), txtStl3d2nDeluxeDouble);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nDeluxeSingle\\])"), txtStl3d2nDeluxeSingle);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nDeluxeExtrabed\\])"), txtStl3d2nDeluxeExtrabed);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nExecutiveDouble\\])"), txtStl3d2nExecutiveDouble);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nExecutiveSingle\\])"), txtStl3d2nExecutiveSingle);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nExecutiveExtrabed\\])"), txtStl3d2nExecutiveExtrabed);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nSuiteDouble\\])"), txtStl3d2nSuiteDouble);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nSuiteSingle\\])"), txtStl3d2nSuiteSingle);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nSuiteExtrabed\\])"), txtStl3d2nSuiteExtrabed);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nc130p\\])"), txtStl3d2nCharter1to30passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nc3140p\\])"), txtStl3d2nCharter31to40passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nc4150p\\])"), txtStl3d2nCharter41to50passenger);
+                doc.Range.Replace(new Regex("(\\[" + index + "Stl3d2nc5164p\\])"), txtStl3d2nCharter51to64passenger);
+                index++;
             }
-            catch { }
-
-            doc.Range.Replace(new Regex("(\\[ValidFromDate\\])"), textValidFromDate);
-            doc.Range.Replace(new Regex("(\\[ValidToDate\\])"), textValidToDate);
             return doc;
+        }
+        public string GetCurrency(Contracts contract)
+        {
+            switch (contract.Currency)
+            {
+                case (int)CurrencyEnum.USD:
+                    return "$";
+                case (int)CurrencyEnum.VND:
+                    return "₫";
+                default:
+                    return "";
+            }
+        }
+        public double GetPrice(ContractValid contractValid, int cruiseId, int tripId, int roomClassId, int roomTypeId, bool isCharter, int numberOfPassenger)
+        {
+            var contractPrice = contractValid.ListContractPrice.Where(x => x.CruiseId == cruiseId
+            && x.TripId == tripId
+            && x.RoomClassId == roomClassId
+            && x.RoomTypeId == roomTypeId
+            && x.IsCharter == isCharter
+            && x.NumberOfPassenger == numberOfPassenger).FirstOrDefault();
 
+            if (contractPrice != null)
+                return contractPrice.Price;
+            else
+                return 0.0;
+        }
+        public string GetPriceFormatted(ContractValid contractValid, int cruiseId, int tripId, int roomClassId, int roomTypeId, bool isCharter, int numberOfPassenger)
+        {
+            var price = GetPrice(contractValid, cruiseId, tripId, roomClassId, roomTypeId, isCharter, numberOfPassenger);
+            return String.Format("{0:#,##0.##}", price);
         }
 
         public Aspose.Words.Document GetGeneratedQuotation(AgencyContract agencyContract)
         {
-            var template = agencyContract.QuotationTemplate;
-            var templatePath = "";
-            switch (template)
+            Quotation quotation = null;
+            if (agencyContract != null)
             {
-                case 1:
-                    templatePath = "ExportTemplates/QuotationLv1.doc";
-                    break;
-                case 2:
-                    templatePath = "ExportTemplates/QuotationLv2.doc";
-                    break;
-                case 3:
-                    templatePath = "ExportTemplates/QuotationLv3.doc";
-                    break;
-                case 4:
-                    templatePath = agencyContract.QuotationTemplatePath;
-                    break;
+                quotation = agencyContract.Quotation;
             }
-            var doc = new Aspose.Words.Document(Server.MapPath(templatePath));
-            DateTime? validFromDate = agencyContract.QuotationValidFromDate;
+            else
+            {
+                var selectedQuotation = -1;
+                try
+                {
+                    selectedQuotation = Int32.Parse(ddlQuotationTemplate.SelectedValue);
+                }
+                catch { }
+                quotation = AgencyViewBLL.QuotationGetById(selectedQuotation);
+            }
+
+            var doc = new Aspose.Words.Document(Server.MapPath("ExportTemplates/Quotation.doc"));
+
             var textValidFromDate = "";
             try
             {
-                textValidFromDate = validFromDate.Value.ToString("dd/MM/yyyy");
+                textValidFromDate = quotation.ValidFrom.Value.ToString("dd/MM/yyyy");
             }
             catch { }
-            DateTime? validToDate = agencyContract.QuotationValidToDate;
             var textValidToDate = "";
             try
             {
-                textValidToDate = validToDate.Value.ToString("dd/MM/yyyy");
+                textValidToDate = quotation.ValidTo.Value.ToString("dd/MM/yyyy");
             }
             catch { }
 
+            var txtOs2d1nDouble = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails1, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Double, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtOs2d1nSingle = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails1, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Single, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtOs2d1nChildren6to11 = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails1, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Children6to11, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtOs12d1nCharter = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails1, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtOs22d1nCharter1to4passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails2, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._1to4passenger);
+            var txtOs22d1nCharter5to8passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails2, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._5to8passenger);
+            var txtOs22d1nCharter9to12passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails2, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._9to12passenger);
+            var txtOs22d1nCharter13to17passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails2, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._13to17passenger);
+            var txtOs3d2nDouble = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails1, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Double, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtOs3d2nSingle = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails1, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Single, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtOs3d2nChildren6to11 = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails1, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Children6to11, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtOs13d2nCharter = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails1, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtOs23d2nCharter1to4passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails2, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._1to4passenger);
+            var txtOs23d2nCharter5to8passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails2, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._5to8passenger);
+            var txtOs23d2nCharter9to12passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails2, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._9to12passenger);
+            var txtOs23d2nCharter13to17passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.OrientalSails2, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._13to17passenger);
+            var txtCls2d1nDouble = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Calypso, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Double, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtCls2d1nSingle = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Calypso, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Single, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtCls2d1nChildren6to11 = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Calypso, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Children6to11, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtCls2d1nCharter = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Calypso, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtCls3d2nDouble = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Calypso, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Double, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtCls3d2nSingle = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Calypso, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Single, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtCls3d2nChildren6to11 = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Calypso, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Children6to11, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtCls3d2nCharter = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Calypso, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl2d1nDeluxeDouble = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Double, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl2d1nDeluxeSingle = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Single, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl2d1nDeluxeExtrabed = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Extrabed, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl2d1nExecutiveDouble = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Executive, (int)Q.RoomTypeEnum.Double, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl2d1nExecutiveSingle = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Executive, (int)Q.RoomTypeEnum.Single, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl2d1nExecutiveExtrabed = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Executive, (int)Q.RoomTypeEnum.Extrabed, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl2d1nSuiteDouble = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Suite, (int)Q.RoomTypeEnum.Double, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl2d1nSuiteSingle = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Suite, (int)Q.RoomTypeEnum.Single, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl2d1nSuiteExtrabed = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Suite, (int)Q.RoomTypeEnum.Extrabed, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl2d1nCharter1to40passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._1to40passenger);
+            var txtStl2d1nCharter41to50passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._41to50passenger);
+            var txtStl2d1nCharter51to63passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._2Day1Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._51to63passenger);
+            var txtStl3d2nDeluxeDouble = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Double, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl3d2nDeluxeSingle = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Single, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl3d2nDeluxeExtrabed = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Deluxe, (int)Q.RoomTypeEnum.Extrabed, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl3d2nExecutiveDouble = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Executive, (int)Q.RoomTypeEnum.Double, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl3d2nExecutiveSingle = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Executive, (int)Q.RoomTypeEnum.Single, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl3d2nExecutiveExtrabed = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Executive, (int)Q.RoomTypeEnum.Extrabed, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl3d2nSuiteDouble = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Suite, (int)Q.RoomTypeEnum.Double, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl3d2nSuiteSingle = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Suite, (int)Q.RoomTypeEnum.Single, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl3d2nSuiteExtrabed = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Suite, (int)Q.RoomTypeEnum.Extrabed, false, (int)Q.NumberOfPassengerEnum.Unknow);
+            var txtStl3d2nCharter1to40passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._1to40passenger);
+            var txtStl3d2nCharter41to50passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._41to50passenger);
+            var txtStl3d2nCharter51to63passenger = GetCurrency(quotation) + GetPriceFormatted(quotation, (int)Q.CruiseEnum.Starlight, (int)Q.TripEnum._3Day2Night, (int)Q.RoomClassEnum.Unknow, (int)Q.RoomTypeEnum.Unknow, true, (int)Q.NumberOfPassengerEnum._51to63passenger);
+
             doc.Range.Replace(new Regex("(\\[ValidFromDate\\])"), textValidFromDate);
             doc.Range.Replace(new Regex("(\\[ValidToDate\\])"), textValidToDate);
+            doc.Range.Replace(new Regex("(\\[Os2d1nDouble\\])"), txtOs2d1nDouble);
+            doc.Range.Replace(new Regex("(\\[Os2d1nSingle\\])"), txtOs2d1nSingle);
+            doc.Range.Replace(new Regex("(\\[Os2d1nChildren6to11\\])"), txtOs2d1nChildren6to11);
+            doc.Range.Replace(new Regex("(\\[Os2d1nCharter\\])"), txtOs12d1nCharter);
+            doc.Range.Replace(new Regex("(\\[Os22d1nc14p\\])"), txtOs22d1nCharter1to4passenger);
+            doc.Range.Replace(new Regex("(\\[Os22d1nc58p\\])"), txtOs22d1nCharter5to8passenger);
+            doc.Range.Replace(new Regex("(\\[Os22d1nc912p\\])"), txtOs22d1nCharter9to12passenger);
+            doc.Range.Replace(new Regex("(\\[Os22d1nc1317p\\])"), txtOs22d1nCharter13to17passenger);
+            doc.Range.Replace(new Regex("(\\[Os3d2nDouble\\])"), txtOs3d2nDouble);
+            doc.Range.Replace(new Regex("(\\[Os3d2nSingle\\])"), txtOs3d2nSingle);
+            doc.Range.Replace(new Regex("(\\[Os3d2nChildren6to11\\])"), txtOs3d2nChildren6to11);
+            doc.Range.Replace(new Regex("(\\[Os3d2nCharter\\])"), txtOs13d2nCharter);
+            doc.Range.Replace(new Regex("(\\[Os23d2nc14p\\])"), txtOs23d2nCharter1to4passenger);
+            doc.Range.Replace(new Regex("(\\[Os23d2nc58p\\])"), txtOs23d2nCharter5to8passenger);
+            doc.Range.Replace(new Regex("(\\[Os23d2nc912p\\])"), txtOs23d2nCharter9to12passenger);
+            doc.Range.Replace(new Regex("(\\[Os23d2nc1317p\\])"), txtOs23d2nCharter13to17passenger);
+            doc.Range.Replace(new Regex("(\\[Cls2d1nDouble\\])"), txtCls2d1nDouble);
+            doc.Range.Replace(new Regex("(\\[Cls2d1nSingle\\])"), txtCls2d1nSingle);
+            doc.Range.Replace(new Regex("(\\[Cls2d1nChildren6to11\\])"), txtCls2d1nChildren6to11);
+            doc.Range.Replace(new Regex("(\\[Cls2d1nCharter\\])"), txtCls2d1nCharter);
+            doc.Range.Replace(new Regex("(\\[Cls3d2nDouble\\])"), txtCls3d2nDouble);
+            doc.Range.Replace(new Regex("(\\[Cls3d2nSingle\\])"), txtCls3d2nSingle);
+            doc.Range.Replace(new Regex("(\\[Cls3d2nChildren6to11\\])"), txtCls3d2nChildren6to11);
+            doc.Range.Replace(new Regex("(\\[Cls3d2nCharter\\])"), txtCls3d2nCharter);
+            doc.Range.Replace(new Regex("(\\[Stl2d1nDeluxeDouble\\])"), txtStl2d1nDeluxeDouble);
+            doc.Range.Replace(new Regex("(\\[Stl2d1nDeluxeSingle\\])"), txtStl2d1nDeluxeSingle);
+            doc.Range.Replace(new Regex("(\\[Stl2d1nDeluxeExtrabed\\])"), txtStl2d1nDeluxeExtrabed);
+            doc.Range.Replace(new Regex("(\\[Stl2d1nExecutiveDouble\\])"), txtStl2d1nExecutiveDouble);
+            doc.Range.Replace(new Regex("(\\[Stl2d1nExecutiveSingle\\])"), txtStl2d1nExecutiveSingle);
+            doc.Range.Replace(new Regex("(\\[Stl2d1nExecutiveExtrabed\\])"), txtStl2d1nExecutiveExtrabed);
+            doc.Range.Replace(new Regex("(\\[Stl2d1nSuiteDouble\\])"), txtStl2d1nSuiteDouble);
+            doc.Range.Replace(new Regex("(\\[Stl2d1nSuiteSingle\\])"), txtStl2d1nSuiteSingle);
+            doc.Range.Replace(new Regex("(\\[Stl2d1nSuiteExtrabed\\])"), txtStl2d1nSuiteExtrabed);
+            doc.Range.Replace(new Regex("(\\[Stl2d1nc140p\\])"), txtStl2d1nCharter1to40passenger);
+            doc.Range.Replace(new Regex("(\\[Stl2d1nc4150p\\])"), txtStl2d1nCharter41to50passenger);
+            doc.Range.Replace(new Regex("(\\[Stl2d1nc5163p\\])"), txtStl2d1nCharter51to63passenger);
+            doc.Range.Replace(new Regex("(\\[Stl3d2nDeluxeDouble\\])"), txtStl3d2nDeluxeDouble);
+            doc.Range.Replace(new Regex("(\\[Stl3d2nDeluxeSingle\\])"), txtStl3d2nDeluxeSingle);
+            doc.Range.Replace(new Regex("(\\[Stl3d2nDeluxeExtrabed\\])"), txtStl3d2nDeluxeExtrabed);
+            doc.Range.Replace(new Regex("(\\[Stl3d2nExecutiveDouble\\])"), txtStl3d2nExecutiveDouble);
+            doc.Range.Replace(new Regex("(\\[Stl3d2nExecutiveSingle\\])"), txtStl3d2nExecutiveSingle);
+            doc.Range.Replace(new Regex("(\\[Stl3d2nExecutiveExtrabed\\])"), txtStl3d2nExecutiveExtrabed);
+            doc.Range.Replace(new Regex("(\\[Stl3d2nSuiteDouble\\])"), txtStl3d2nSuiteDouble);
+            doc.Range.Replace(new Regex("(\\[Stl3d2nSuiteSingle\\])"), txtStl3d2nSuiteSingle);
+            doc.Range.Replace(new Regex("(\\[Stl3d2nSuiteExtrabed\\])"), txtStl3d2nSuiteExtrabed);
+            doc.Range.Replace(new Regex("(\\[Stl3d2nc140p\\])"), txtStl3d2nCharter1to40passenger);
+            doc.Range.Replace(new Regex("(\\[Stl3d2nc4150p\\])"), txtStl3d2nCharter41to50passenger);
+            doc.Range.Replace(new Regex("(\\[Stl3d2nc5163p\\])"), txtStl3d2nCharter51to63passenger);
             return doc;
         }
+        public Aspose.Words.Document GetGeneratedQuotation()
+        {
+            return GetGeneratedQuotation(null);
+        }
+        public string GetCurrency(Quotation quotation)
+        {
+            switch (quotation.Currency)
+            {
+                case (int)CurrencyEnum.USD:
+                    return "$";
+                case (int)CurrencyEnum.VND:
+                    return "₫";
+                default:
+                    return "";
+            }
+        }
+        public double GetPrice(Quotation quotation, int cruiseId, int tripId, int roomClassId, int roomTypeId, bool isCharter, int numberOfPassenger)
+        {
+            var quotationPrice = quotation.ListQuotationPrice.Where(x => x.CruiseId == cruiseId
+            && x.TripId == tripId
+            && x.RoomClassId == roomClassId
+            && x.RoomTypeId == roomTypeId
+            && x.IsCharter == isCharter
+            && x.NumberOfPassenger == numberOfPassenger).FirstOrDefault();
 
+            if (quotationPrice != null)
+                return quotationPrice.Price;
+            else
+                return 0.0;
+        }
+        public string GetPriceFormatted(Quotation quotation, int cruiseId, int tripId, int roomClassId, int roomTypeId, bool isCharter, int numberOfPassenger)
+        {
+            var price = GetPrice(quotation, cruiseId, tripId, roomClassId, roomTypeId, isCharter, numberOfPassenger);
+            return String.Format("{0:#,##0.##}", price);
+        }
         protected void btnIssueQuotation_Click(object sender, EventArgs e)
         {
             var agencyId = Agency.Id;
@@ -941,42 +1085,16 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 agencyContract = existedAgencyContract.FirstOrDefault();
             }
             agencyContract.Agency = Agency;
-
-            var selectedQuotationTemplate = -1;
+            var selectedQuotation = -1;
             try
             {
-                selectedQuotationTemplate = Int32.Parse(ddlQuotationTemplate.SelectedValue);
+                selectedQuotation = Int32.Parse(ddlQuotationTemplate.SelectedValue);
             }
             catch { }
-            agencyContract.QuotationTemplate = selectedQuotationTemplate;
-
-            var quotationValidFromDate = new DateTime();
-            try
-            {
-                quotationValidFromDate = DateTime.ParseExact(txtQuotationValidFromDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            }
-            catch { }
-            if (quotationValidFromDate == DateTime.MinValue)
-                agencyContract.QuotationValidFromDate = null;
-            else
-                agencyContract.QuotationValidFromDate = quotationValidFromDate;
-
-            var quotationValidToDate = new DateTime();
-            try
-            {
-                quotationValidToDate = DateTime.ParseExact(txtQuotationValidToDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            }
-            catch { }
-            if (quotationValidToDate == DateTime.MinValue)
-                agencyContract.QuotationValidToDate = null;
-            else
-                agencyContract.QuotationValidToDate = quotationValidToDate;
-            agencyContract.QuotationTemplatePath = hifQuotationTemplatePath.Value;
-            agencyContract.QuotationTemplateName = hifQuotationTemplateName.Value;
+            agencyContract.Quotation = AgencyViewBLL.QuotationGetById(selectedQuotation);
             AgencyViewBLL.AgencyContractSaveOrUpdate(agencyContract);
             LoadContracts();
         }
-
         protected void btnIssueContract_Click(object sender, EventArgs e)
         {
             var agencyId = Agency.Id;
@@ -989,13 +1107,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
             agencyContract.Agency = Agency;
 
-            var selectedContractTemplate = -1;
+            var selectedContract = -1;
             try
             {
-                selectedContractTemplate = Int32.Parse(ddlContractTemplate.SelectedValue);
+                selectedContract = Int32.Parse(ddlContractTemplate.SelectedValue);
             }
             catch { }
-            agencyContract.ContractTemplate = selectedContractTemplate;
+            var contract = AgencyViewBLL.ContractGetById(selectedContract);
+            agencyContract.Contract = contract;
 
             var contractValidFromDate = new DateTime();
             try
@@ -1027,8 +1146,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             }
             catch { }
             agencyContract.Status = selectedStatus;
-            agencyContract.ContractTemplatePath = hifContractTemplatePath.Value;
-            agencyContract.ContractTemplateName = hifContractTemplateName.Value;
             AgencyViewBLL.AgencyContractSaveOrUpdate(agencyContract);
             LoadContracts();
         }

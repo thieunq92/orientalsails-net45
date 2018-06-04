@@ -1,4 +1,4 @@
-﻿    using Portal.Modules.OrientalSails.BusinessLogic;
+﻿using Portal.Modules.OrientalSails.BusinessLogic;
 using Portal.Modules.OrientalSails.Domain;
 using Portal.Modules.OrientalSails.Enums.Quotation;
 using Portal.Modules.OrientalSails.Enums.Shared;
@@ -40,7 +40,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var listQuotationPrice = Quotation.ListQuotationPrice;
             txtOs2d1nDouble.Text = GetCurrency() + GetPriceFormatted((int)CruiseEnum.OrientalSails1, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow);
             txtOs2d1nSingle.Text = GetCurrency() + GetPriceFormatted((int)CruiseEnum.OrientalSails1, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow);
             txtOs2d1nChildren6to11.Text = GetCurrency() + GetPriceFormatted((int)CruiseEnum.OrientalSails1, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Children6to11, false, (int)NumberOfPassengerEnum.Unknow);
@@ -93,7 +92,8 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
         protected void Page_Unload(object sender, EventArgs e)
         {
-            if (quotationViewBLL != null) {
+            if (quotationViewBLL != null)
+            {
                 quotationViewBLL.Dispose();
                 quotationViewBLL = null;
             }
@@ -140,7 +140,8 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 return 0.0;
         }
 
-        public string GetPriceFormatted(int cruiseId, int tripId, int roomClassId, int roomTypeId, bool isCharter, int numberOfPassenger){
+        public string GetPriceFormatted(int cruiseId, int tripId, int roomClassId, int roomTypeId, bool isCharter, int numberOfPassenger)
+        {
             var price = GetPrice(cruiseId, tripId, roomClassId, roomTypeId, isCharter, numberOfPassenger);
             return String.Format("{0:#,##0.##}", price);
         }

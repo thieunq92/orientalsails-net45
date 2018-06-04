@@ -24,5 +24,7 @@ namespace Portal.Modules.OrientalSails.Domain
         public virtual string QuotationTemplatePath { get; set; }
         public virtual string ContractTemplateName { get; set; }
         public virtual string QuotationTemplateName { get; set; }
+        public virtual Contracts Contract { get; set; }
+        public virtual Quotation Quotation { get; set; }
     }
 }

@@ -15,5 +15,9 @@
       <key column="ContractId"/>
       <one-to-many class="ContractValid"/>
     </bag>
+    <bag name="ListAgencyContract" inverse="true" batch-size="10">
+      <key column="ContractId"/>
+      <one-to-many class="AgencyContract"/>
+    </bag>
   </class>
 </hibernate-mapping>

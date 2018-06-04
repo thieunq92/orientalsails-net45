@@ -84,7 +84,7 @@
                                 <td><strong>1-4 khách </strong></td>
                                 <td><strong>5-8 khách </strong></td>
                                 <td><strong>9-12 khách </strong></td>
-                                <td><strong>13-17 khách </strong></td>
+                                <td><strong>13-16 khách </strong></td>
                             </ItemTemplate>
                         </asp:Repeater>
                     </tr>
@@ -101,7 +101,7 @@
                                     <asp:Literal runat="server" ID="txtOs22d1nCharter9to12passenger"></asp:Literal>
                                 </td>
                                 <td>
-                                    <asp:Literal runat="server" ID="txtOs22d1nCharter13to17passenger"></asp:Literal>
+                                    <asp:Literal runat="server" ID="txtOs22d1nCharter13to16passenger"></asp:Literal>
                                 </td>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -188,7 +188,7 @@
                                 <td><strong>1-4 khách </strong></td>
                                 <td><strong>5-8 khách </strong></td>
                                 <td><strong>9-12 khách </strong></td>
-                                <td><strong>13-17 khách </strong></td>
+                                <td><strong>13-16 khách </strong></td>
                             </ItemTemplate>
                         </asp:Repeater>
                     </tr>
@@ -205,7 +205,7 @@
                                     <asp:Literal runat="server" ID="txtOs23d2nCharter9to12passenger"></asp:Literal>
                                 </td>
                                 <td>
-                                    <asp:Literal runat="server" ID="txtOs23d2nCharter13to17passenger"></asp:Literal>
+                                    <asp:Literal runat="server" ID="txtOs23d2nCharter13to16passenger"></asp:Literal>
                                 </td>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -449,22 +449,26 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><strong>1-40 khách</strong></td>
+                        <td><strong>1-30 khách</strong></td>
+                        <td><strong>31-40 khách</strong></td>
                         <td><strong>41-50 khách</strong></td>
-                        <td><strong>51-63 khách</strong></td>
+                        <td><strong>51-64 khách</strong></td>
                     </tr>
                     <asp:Repeater runat="server" ID="rptPriceStl2d1nCharter" OnItemDataBound="rptPriceStl2d1nCharter_ItemDataBound">
                         <ItemTemplate>
                             <tr>
                                 <td><strong><%# DataBinder.Eval(Container.DataItem, "ValidFrom", "{0:dd/MM/yyyy}") %> - <%# DataBinder.Eval(Container.DataItem, "ValidTo", "{0:dd/MM/yyyy}") %></strong></td>
                                 <td>
-                                    <asp:Literal runat="server" ID="txtStl2d1nCharter1to40passenger"></asp:Literal>
+                                    <asp:Literal runat="server" ID="txtStl2d1nCharter1to30passenger"></asp:Literal>
+                                </td>
+                                <td>
+                                    <asp:Literal runat="server" ID="txtStl2d1nCharter31to40passenger"></asp:Literal>
                                 </td>
                                 <td>
                                     <asp:Literal runat="server" ID="txtStl2d1nCharter41to50passenger"></asp:Literal>
                                 </td>
                                 <td>
-                                    <asp:Literal runat="server" ID="txtStl2d1nCharter51to63passenger"></asp:Literal>
+                                    <asp:Literal runat="server" ID="txtStl2d1nCharter51to64passenger"></asp:Literal>
                                 </td>
                             </tr>
                         </ItemTemplate>
@@ -560,22 +564,26 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><strong>1-40 khách</strong></td>
+                        <td><strong>1-30 khách</strong></td>
+                        <td><strong>31-40 khách</strong></td>
                         <td><strong>41-50 khách</strong></td>
-                        <td><strong>51-63 khách</strong></td>
+                        <td><strong>51-64 khách</strong></td>
                     </tr>
                     <asp:Repeater runat="server" ID="rptPriceStl3d2nCharter" OnItemDataBound="rptPriceStl3d2nCharter_ItemDataBound">
                         <ItemTemplate>
                             <tr>
                                 <td><strong><%# DataBinder.Eval(Container.DataItem, "ValidFrom", "{0:dd/MM/yyyy}") %> - <%# DataBinder.Eval(Container.DataItem, "ValidTo", "{0:dd/MM/yyyy}") %></strong></td>
                                 <td>
-                                    <asp:Literal runat="server" ID="txtStl3d2nCharter1to40passenger"></asp:Literal>
+                                    <asp:Literal runat="server" ID="txtStl3d2nCharter1to30passenger"></asp:Literal>
+                                </td>
+                                <td>
+                                    <asp:Literal runat="server" ID="txtStl3d2nCharter31to40passenger"></asp:Literal>
                                 </td>
                                 <td>
                                     <asp:Literal runat="server" ID="txtStl3d2nCharter41to50passenger"></asp:Literal>
                                 </td>
-                                <td>
-                                    <asp:Literal runat="server" ID="txtStl3d2nCharter51to63passenger"></asp:Literal>
+                                 <td>
+                                    <asp:Literal runat="server" ID="txtStl3d2nCharter51to64passenger"></asp:Literal>
                                 </td>
                             </tr>
                         </ItemTemplate>

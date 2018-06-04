@@ -80,7 +80,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 HiddenField hiddenId = (HiddenField) item.FindControl("hiddenId");
                 SailsTrip trip = Module.TripGetById(Convert.ToInt32(hiddenId.Value));
                 CruiseTrip cr = Module.CruiseTripGet(_cruise, trip);
-                if (chkTrip.Checked && cr.Id < 0)
+                if (chkTrip.Checked && cr.Id <= 0)
                 {
                     Module.SaveOrUpdate(cr);
                 }

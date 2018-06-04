@@ -148,7 +148,7 @@
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs22d1nCharter13to17passenger" ng-init="item.txtOs22d1nCharter13to17passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs22d1nCharter13to16passenger" ng-init="item.txtOs22d1nCharter13to16passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
                                         </div>
                                     </td>
                                 </tr>
@@ -311,16 +311,23 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td><strong>1-40 khách</strong></td>
+                                    <td><strong>1-30 khách</strong></td>
+                                    <td><strong>31-40 khách</strong></td>
                                     <td><strong>41-50 khách</strong></td>
-                                    <td><strong>51-63 khách</strong></td>
+                                    <td><strong>51-64 khách</strong></td>
                                 </tr>
                                 <tr ng-repeat="item in rs.listValidTime">
                                     <td><strong>{{item.validFrom}} - {{item.validTo}}</strong></td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nCharter1to40passenger" ng-init="item.txtStl2d1nCharter1to40passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nCharter1to30passenger" ng-init="item.txtStl2d1nCharter1to30passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">USD</span>
+                                            <input type="text" ng-model="item.txtStl2d1nCharter31to40passenger" ng-init="item.txtStl2d1nCharter31to40passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
                                         </div>
                                     </td>
                                     <td>
@@ -329,10 +336,10 @@
                                             <input type="text" ng-model="item.txtStl2d1nCharter41to50passenger" ng-init="item.txtStl2d1nCharter41to50passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
                                         </div>
                                     </td>
-                                    <td>
+                                      <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nCharter51to63passenger" ng-init="item.txtStl2d1nCharter51to63passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nCharter51to64passenger" ng-init="item.txtStl2d1nCharter51to64passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
                                         </div>
                                     </td>
                                 </tr>
@@ -430,7 +437,7 @@
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs23d2nCharter13to17passenger" ng-init="item.txtOs23d2nCharter13to17passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs23d2nCharter13to16passenger" ng-init="item.txtOs23d2nCharter13to16passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
                                         </div>
                                     </td>
                                 </tr>
@@ -602,7 +609,13 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nCharter1to40passenger" ng-init="item.txtStl3d2nCharter1to40passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nCharter1to30passenger" ng-init="item.txtStl3d2nCharter1to30passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">USD</span>
+                                            <input type="text" ng-model="item.txtStl3d2nCharter31to40passenger" ng-init="item.txtStl3d2nCharter31to40passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
                                         </div>
                                     </td>
                                     <td>
@@ -614,7 +627,7 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nCharter51to63passenger" ng-init="item.txtStl3d2nCharter51to63passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nCharter51to64passenger" ng-init="item.txtStl3d2nCharter51to64passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
                                         </div>
                                     </td>
                                 </tr>

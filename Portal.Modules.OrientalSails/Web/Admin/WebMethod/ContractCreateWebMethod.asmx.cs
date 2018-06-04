@@ -90,7 +90,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
                 var priceOs22d1nCharter1to4passenger = GetPrice(contractDTO.txtOs22d1nCharter1to4passenger);
                 var priceOs22d1nCharter5to8passenger = GetPrice(contractDTO.txtOs22d1nCharter5to8passenger);
                 var priceOs22d1nCharter9to12passenger = GetPrice(contractDTO.txtOs22d1nCharter9to12passenger);
-                var priceOs22d1nCharter13to17passenger = GetPrice(contractDTO.txtOs22d1nCharter13to17passenger);
+                var priceOs22d1nCharter13to17passenger = GetPrice(contractDTO.txtOs22d1nCharter13to16passenger);
                 var priceOs3d2nDouble = GetPrice(contractDTO.txtOs3d2nDouble);
                 var priceOs3d2nSingle = GetPrice(contractDTO.txtOs3d2nSingle);
                 var priceOs3d2nChildren6to11 = GetPrice(contractDTO.txtOs3d2nChildren6to11);
@@ -101,7 +101,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
                 var priceOs23d2nCharter1to4passenger = GetPrice(contractDTO.txtOs23d2nCharter1to4passenger);
                 var priceOs23d2nCharter5to8passenger = GetPrice(contractDTO.txtOs23d2nCharter5to8passenger);
                 var priceOs23d2nCharter9to12passenger = GetPrice(contractDTO.txtOs23d2nCharter9to12passenger);
-                var priceOs23d2nCharter13to17passenger = GetPrice(contractDTO.txtOs23d2nCharter13to17passenger);
+                var priceOs23d2nCharter13to16passenger = GetPrice(contractDTO.txtOs23d2nCharter13to16passenger);
                 var priceCls2d1nDouble = GetPrice(contractDTO.txtCls2d1nDouble);
                 var priceCls2d1nSingle = GetPrice(contractDTO.txtCls2d1nSingle);
                 var priceCls2d1nChildren6to11 = GetPrice(contractDTO.txtCls2d1nChildren6to11);
@@ -119,9 +119,10 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
                 var priceStl2d1nSuiteDouble = GetPrice(contractDTO.txtStl2d1nExecutiveDouble);
                 var priceStl2d1nSuiteSingle = GetPrice(contractDTO.txtStl2d1nExecutiveSingle);
                 var priceStl2d1nSuiteExtrabed = GetPrice(contractDTO.txtStl2d1nExecutiveExtrabed);
-                var priceStl2d1nCharter1to40passenger = GetPrice(contractDTO.txtStl2d1nCharter1to40passenger);
+                var priceStl2d1nCharter1to30passenger = GetPrice(contractDTO.txtStl2d1nCharter1to30passenger);
+                var priceStl2d1nCharter31to40passenger = GetPrice(contractDTO.txtStl2d1nCharter31to40passenger);
                 var priceStl2d1nCharter41to50passenger = GetPrice(contractDTO.txtStl2d1nCharter41to50passenger);
-                var priceStl2d1nCharter51to63passenger = GetPrice(contractDTO.txtStl2d1nCharter51to63passenger);
+                var priceStl2d1nCharter51to64passenger = GetPrice(contractDTO.txtStl2d1nCharter51to64passenger);
                 var priceStl3d2nDeluxeDouble = GetPrice(contractDTO.txtStl3d2nDeluxeDouble);
                 var priceStl3d2nDeluxeSingle = GetPrice(contractDTO.txtStl3d2nDeluxeSingle);
                 var priceStl3d2nDeluxeExtrabed = GetPrice(contractDTO.txtStl3d2nDeluxeExtrabed);
@@ -131,9 +132,10 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
                 var priceStl3d2nSuiteDouble = GetPrice(contractDTO.txtStl3d2nExecutiveDouble);
                 var priceStl3d2nSuiteSingle = GetPrice(contractDTO.txtStl3d2nExecutiveSingle);
                 var priceStl3d2nSuiteExtrabed = GetPrice(contractDTO.txtStl3d2nExecutiveExtrabed);
-                var priceStl3d2nCharter1to40passenger = GetPrice(contractDTO.txtStl3d2nCharter1to40passenger);
+                var priceStl3d2nCharter1to30passenger = GetPrice(contractDTO.txtStl3d2nCharter1to30passenger);
+                var priceStl3d2nCharter31to40passenger = GetPrice(contractDTO.txtStl3d2nCharter31to40passenger);
                 var priceStl3d2nCharter41to50passenger = GetPrice(contractDTO.txtStl3d2nCharter41to50passenger);
-                var priceStl3d2nCharter51to63passenger = GetPrice(contractDTO.txtStl3d2nCharter51to63passenger);
+                var priceStl3d2nCharter51to64passenger = GetPrice(contractDTO.txtStl3d2nCharter51to64passenger);
                 CreateContractPrice((int)CruiseEnum.OrientalSails1, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow, priceOs2d1nDouble, contractValid);
                 CreateContractPrice((int)CruiseEnum.OrientalSails1, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow, priceOs2d1nSingle, contractValid);
                 CreateContractPrice((int)CruiseEnum.OrientalSails1, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Children6to11, false, (int)NumberOfPassengerEnum.Unknow, priceOs2d1nChildren6to11, contractValid);
@@ -144,7 +146,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
                 CreateContractPrice((int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to4passenger, priceOs22d1nCharter1to4passenger, contractValid);
                 CreateContractPrice((int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._5to8passenger, priceOs22d1nCharter5to8passenger, contractValid);
                 CreateContractPrice((int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._9to12passenger, priceOs22d1nCharter9to12passenger, contractValid);
-                CreateContractPrice((int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._13to17passenger, priceOs22d1nCharter13to17passenger, contractValid);
+                CreateContractPrice((int)CruiseEnum.OrientalSails2, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._13to16passenger, priceOs22d1nCharter13to17passenger, contractValid);
                 CreateContractPrice((int)CruiseEnum.OrientalSails1, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow, priceOs3d2nDouble, contractValid);
                 CreateContractPrice((int)CruiseEnum.OrientalSails1, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow, priceOs3d2nSingle, contractValid);
                 CreateContractPrice((int)CruiseEnum.OrientalSails1, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Children6to11, false, (int)NumberOfPassengerEnum.Unknow, priceOs3d2nChildren6to11, contractValid);
@@ -155,7 +157,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
                 CreateContractPrice((int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to4passenger, priceOs23d2nCharter1to4passenger, contractValid);
                 CreateContractPrice((int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._5to8passenger, priceOs23d2nCharter5to8passenger, contractValid);
                 CreateContractPrice((int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._9to12passenger, priceOs23d2nCharter9to12passenger, contractValid);
-                CreateContractPrice((int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._13to17passenger, priceOs23d2nCharter13to17passenger, contractValid);
+                CreateContractPrice((int)CruiseEnum.OrientalSails2, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._13to16passenger, priceOs23d2nCharter13to16passenger, contractValid);
                 CreateContractPrice((int)CruiseEnum.Calypso, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow, priceCls2d1nDouble, contractValid);
                 CreateContractPrice((int)CruiseEnum.Calypso, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow, priceCls2d1nSingle, contractValid);
                 CreateContractPrice((int)CruiseEnum.Calypso, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Children6to11, false, (int)NumberOfPassengerEnum.Unknow, priceCls2d1nChildren6to11, contractValid);
@@ -173,9 +175,10 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
                 CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow, priceStl2d1nSuiteDouble, contractValid);
                 CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow, priceStl2d1nSuiteSingle, contractValid);
                 CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow, priceStl2d1nSuiteExtrabed, contractValid);
-                CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to40passenger, priceStl2d1nCharter1to40passenger, contractValid);
+                CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to30passenger, priceStl2d1nCharter1to30passenger, contractValid);
+                CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._31to40passenger, priceStl2d1nCharter31to40passenger, contractValid);
                 CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._41to50passenger, priceStl2d1nCharter41to50passenger, contractValid);
-                CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._51to63passenger, priceStl2d1nCharter51to63passenger, contractValid);
+                CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._2Day1Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._51to64passenger, priceStl2d1nCharter51to64passenger, contractValid);
                 CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow, priceStl3d2nDeluxeDouble, contractValid);
                 CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow, priceStl3d2nDeluxeSingle, contractValid);
                 CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Deluxe, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow, priceStl3d2nDeluxeExtrabed, contractValid);
@@ -185,9 +188,10 @@ namespace Portal.Modules.OrientalSails.Web.Admin.WebMethod
                 CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Double, false, (int)NumberOfPassengerEnum.Unknow, priceStl3d2nSuiteDouble, contractValid);
                 CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Single, false, (int)NumberOfPassengerEnum.Unknow, priceStl3d2nSuiteSingle, contractValid);
                 CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Suite, (int)RoomTypeEnum.Extrabed, false, (int)NumberOfPassengerEnum.Unknow, priceStl3d2nSuiteExtrabed, contractValid);
-                CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to40passenger, priceStl3d2nCharter1to40passenger, contractValid);
+                CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._1to30passenger, priceStl3d2nCharter1to30passenger, contractValid);
+                CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._31to40passenger, priceStl3d2nCharter31to40passenger, contractValid);
                 CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._41to50passenger, priceStl3d2nCharter41to50passenger, contractValid);
-                CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._51to63passenger, priceStl3d2nCharter51to63passenger, contractValid);
+                CreateContractPrice((int)CruiseEnum.Starlight, (int)TripEnum._3Day2Night, (int)RoomClassEnum.Unknow, (int)RoomTypeEnum.Unknow, true, (int)NumberOfPassengerEnum._51to64passenger, priceStl3d2nCharter51to64passenger, contractValid);
             }
             Dispose();
             return null;

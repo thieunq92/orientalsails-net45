@@ -16,5 +16,6 @@ namespace Portal.Modules.OrientalSails.Domain
         public virtual string Name { get; set; }
         public virtual int Currency { get; set; }
         public virtual IList<QuotationPrice> ListQuotationPrice { get; set; }
+        public virtual IList<AgencyContract> ListAgencyContract { get; set; }
     }
 }

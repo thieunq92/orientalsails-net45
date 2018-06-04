@@ -15,7 +15,7 @@
                 Start date
             </div>
             <div class="col-xs-2">
-                <asp:TextBox ID="txtDate" runat="server" data-control="datetimepicker" class="form-control" placeholder="Start date" AutoPostBack="true" OnTextChanged="txtDate_TextChanged">
+                <asp:TextBox ID="txtDate" runat="server" data-control="datetimepicker" class="form-control" placeholder="Start date" AutoPostBack="true" OnTextChanged="txtDate_TextChanged" autocomplete="off">
                 </asp:TextBox>
             </div>
         </div>
@@ -30,7 +30,7 @@
                     readonly placeholder="Click to select agency" />
                 <input id="agencySelector" type="hidden" runat="server" />
             </div>
-            <div class="col-xs-1">
+            <div class="col-xs-1 nopadding-left">
                 <asp:TextBox ID="txtAgencyCode" runat="server" class="form-control" placeholder="TA Code"></asp:TextBox>
             </div>
             <div class="col-xs-2">
@@ -55,7 +55,6 @@
         <div class="col-xs-12">
             <asp:UpdatePanel runat="server" ID="updatePanel1">
                 <ContentTemplate>
-     
                         <em>Click vào tên tàu để bắt đầu nhập thông tin phòng</em>
                         <table class="table table-bordered table-hover">
                             <tr class="active">

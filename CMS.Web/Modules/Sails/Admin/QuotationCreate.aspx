@@ -25,13 +25,13 @@
                     Valid From
                 </div>
                 <div class="col-xs-2">
-                    <asp:TextBox runat="server" ID="txtValidFrom" CssClass="form-control" placeholder="Valid From" />
+                    <asp:TextBox runat="server" ID="txtValidFrom" CssClass="form-control" placeholder="Valid From (dd/mm/yyyy)" />
                 </div>
                 <div class="col-xs-1">
                     Valid To
                 </div>
                 <div class="col-xs-2">
-                    <asp:TextBox runat="server" ID="txtValidTo" CssClass="form-control" placeholder="Valid To" />
+                    <asp:TextBox runat="server" ID="txtValidTo" CssClass="form-control" placeholder="Valid To (dd/mm/yyyy)" />
                 </div>
             </div>
         </div>
@@ -608,6 +608,51 @@
     <script>
         $("#<%= ddlCurrency.ClientID%>").change(function () {
             $(".input-group-addon").html($(this).children("option:selected").html());
+        })
+    </script>
+    <script>
+        $("#aspnetForm").validate({
+            rules: {
+                <%=txtName.UniqueID %> : {
+                    required : true,
+                } ,   
+                <%=txtValidFrom.UniqueID%> : {
+                    required : true,
+                },
+                <%=txtValidTo.UniqueID%> : {
+                    required : true
+                },
+            },
+            messages : {
+                <%=txtName.UniqueID %> : {
+                    required : "Yêu cầu nhập tên quotation",
+                } ,   
+                <%=txtValidFrom.UniqueID%> : {
+                    required : "Yêu cầu nhập Valid From",
+                },
+                <%=txtValidTo.UniqueID%> : {
+                    required : "Yêu cầu nhập Valid To"
+                },
+            },  errorElement: "em",
+            errorPlacement: function (error, element) {
+                error.addClass("help-block");
+
+                if (element.prop("type") === "checkbox") {
+                    error.insertAfter(element.parent("label"));
+                } else {
+                    error.insertAfter(element);
+                }
+
+                if (element.siblings("span").prop("class") === "input-group-addon") {
+                    error.insertAfter(element.parent()).css({ color: "#a94442" });
+                }
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).closest("div").addClass("has-error").removeClass("has-success");
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).closest("div").removeClass("has-error");
+            }
         })
     </script>
 </asp:Content>

@@ -26,5 +26,7 @@
     <property name="ContractTemplateName"/>
     <property name="QuotationTemplateName"/>
     <many-to-one name="Agency" column="AgencyId" class="Agency"/>
+    <many-to-one name="Contract" column="ContractId" class="Contracts"/>
+    <many-to-one name="Quotation" column="QuotationId" class="Quotation"/>
   </class>
 </hibernate-mapping>
