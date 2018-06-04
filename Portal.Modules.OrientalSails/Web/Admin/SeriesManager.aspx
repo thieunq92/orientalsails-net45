@@ -42,7 +42,7 @@
     <div class="table-panel">
         <div class="row">
             <div class="col-xs-12">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover table-common">
                     <tr class="active">
                         <th>Series code</th>
                         <th>Partner</th>

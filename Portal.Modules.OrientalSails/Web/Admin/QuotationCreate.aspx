@@ -625,13 +625,13 @@
             },
             messages : {
                 <%=txtName.UniqueID %> : {
-                    required : "Yêu cầu nhập tên quotation",
+                    required : "Yêu cầu nhập tên Quotation",
                 } ,   
                 <%=txtValidFrom.UniqueID%> : {
-                    required : "Yêu cầu nhập Valid From",
+                    required : "Yêu cầu chọn ngày Valid from",
                 },
                 <%=txtValidTo.UniqueID%> : {
-                    required : "Yêu cầu nhập Valid To"
+                    required : "Yêu cầu chọn ngày Valid to"
                 },
             },  errorElement: "em",
             errorPlacement: function (error, element) {

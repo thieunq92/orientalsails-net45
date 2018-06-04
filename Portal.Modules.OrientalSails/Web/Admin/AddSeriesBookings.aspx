@@ -185,7 +185,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="overlay" ng-show="show.loadingBookingTableIcon"><i class="fa fa-circle-o-notch fa-spin loading" aria-hidden="true"></i></div>
-                            <table class="table table-bordered table-hover overlay-table">
+                            <table class="table table-bordered table-hover overlay-table table-common">
                                 <tr class="active">
                                     <th>STT</th>
                                     <th>Booking code</th>

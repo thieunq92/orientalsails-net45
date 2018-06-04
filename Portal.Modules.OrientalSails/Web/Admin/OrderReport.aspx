@@ -20,7 +20,7 @@
             Start date
         </div>
         <div class="col-xs-2">
-            <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" placeholder="Start date"></asp:TextBox>
+            <asp:TextBox ID="txtDate" runat="server" CssClass="form-control" placeholder="Start date" data-control="datetimepicker"></asp:TextBox>
         </div>
         <div class="col-xs-1">
             <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click"

@@ -10,7 +10,7 @@
                     Name
                 </div>
                 <div class="col-xs-2">
-                    <input type="text" class="form-control" ng-model="name" placeholder="Name"/>
+                    <input type="text" class="form-control" ng-model="name" placeholder="Name" name="Name" />
                 </div>
                 <div class="col-xs-1">
                     Currency
@@ -30,13 +30,13 @@
                         Valid from
                     </div>
                     <div class="col-xs-2">
-                        <input type="text" class="form-control" placeholder="Valid from (dd/mm/yyyy)" id="txtValidFrom" data-control="datetimepicker" ng-model="item.validFrom" />
+                        <input type="text" class="form-control" placeholder="Valid from (dd/mm/yyyy)" id="txtValidFrom" data-control="datetimepicker" ng-model="item.validFrom" name="ValidFrom" />
                     </div>
                     <div class="col-xs-1">
                         Valid to
                     </div>
                     <div class="col-xs-2">
-                        <input type="text" class="form-control" placeholder="Valid to (dd/mm/yyyy)" id="txtValidTo" data-control="datetimepicker" ng-model="item.validTo" />
+                        <input type="text" class="form-control" placeholder="Valid to (dd/mm/yyyy)" id="txtValidTo" data-control="datetimepicker" ng-model="item.validTo" name="ValidTo" />
                     </div>
                     <div class="col-xs-1">
                         <button type="button" class="btn btn-primary" ng-click="removeValidTime($index)" ng-show="rs.listValidTime.length > 1">Remove</button>
@@ -84,19 +84,19 @@
                                     <td ng-repeat-start="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs2d1nDouble" ng-init="item.txtOs2d1nDouble = '0'" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs2d1nDouble" ng-init="item.txtOs2d1nDouble = '0'" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs2d1nSingle" ng-init="item.txtOs2d1nSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs2d1nSingle" ng-init="item.txtOs2d1nSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs2d1nChildren6to11" ng-init="item.txtOs2d1nChildren6to11 = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs2d1nChildren6to11" ng-init="item.txtOs2d1nChildren6to11 = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -115,7 +115,7 @@
                                     <td colspan="4" ng-repeat="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs12d1nCharter" ng-init="item.txtOs12d1nCharter = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs12d1nCharter" ng-init="item.txtOs12d1nCharter = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -130,25 +130,25 @@
                                     <td ng-repeat-start="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs22d1nCharter1to4passenger" ng-init="item.txtOs22d1nCharter1to4passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs22d1nCharter1to4passenger" ng-init="item.txtOs22d1nCharter1to4passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs22d1nCharter5to8passenger" ng-init="item.txtOs22d1nCharter5to8passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs22d1nCharter5to8passenger" ng-init="item.txtOs22d1nCharter5to8passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs22d1nCharter9to12passenger" ng-init="item.txtOs22d1nCharter9to12passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs22d1nCharter9to12passenger" ng-init="item.txtOs22d1nCharter9to12passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs22d1nCharter13to16passenger" ng-init="item.txtOs22d1nCharter13to16passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs22d1nCharter13to16passenger" ng-init="item.txtOs22d1nCharter13to16passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -180,19 +180,19 @@
                                     <td ng-repeat-start="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtCls2d1nDouble" ng-init="item.txtCls2d1nDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtCls2d1nDouble" ng-init="item.txtCls2d1nDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtCls2d1nSingle" ng-init="item.txtCls2d1nSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtCls2d1nSingle" ng-init="item.txtCls2d1nSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtCls2d1nChildren6to11" ng-init="item.txtCls2d1nChildren6to11 = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtCls2d1nChildren6to11" ng-init="item.txtCls2d1nChildren6to11 = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -211,7 +211,7 @@
                                     <td ng-repeat="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtCls2d1nCharter" ng-init="item.txtCls2d1nCharter = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtCls2d1nCharter" ng-init="item.txtCls2d1nCharter = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -243,19 +243,19 @@
                                     <td ng-repeat-start="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nDeluxeDouble" ng-init="item.txtStl2d1nDeluxeDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nDeluxeDouble" ng-init="item.txtStl2d1nDeluxeDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nDeluxeSingle" ng-init="item.txtStl2d1nDeluxeSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nDeluxeSingle" ng-init="item.txtStl2d1nDeluxeSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nDeluxeExtrabed" ng-init="item.txtStl2d1nDeluxeExtrabed = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nDeluxeExtrabed" ng-init="item.txtStl2d1nDeluxeExtrabed = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -265,19 +265,19 @@
                                     <td ng-repeat-start="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nExecutiveDouble" ng-init="item.txtStl2d1nExecutiveDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nExecutiveDouble" ng-init="item.txtStl2d1nExecutiveDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nExecutiveSingle" ng-init="item.txtStl2d1nExecutiveSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nExecutiveSingle" ng-init="item.txtStl2d1nExecutiveSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nExecutiveExtrabed" ng-init="item.txtStl2d1nExecutiveExtrabed = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nExecutiveExtrabed" ng-init="item.txtStl2d1nExecutiveExtrabed = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -287,19 +287,19 @@
                                     <td ng-repeat-start="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nSuiteDouble" ng-init="item.txtStl2d1nSuiteDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nSuiteDouble" ng-init="item.txtStl2d1nSuiteDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nSuiteSingle" ng-init="item.txtStl2d1nSuiteSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nSuiteSingle" ng-init="item.txtStl2d1nSuiteSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nSuiteExtrabed" ng-init="item.txtStl2d1nSuiteExtrabed = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nSuiteExtrabed" ng-init="item.txtStl2d1nSuiteExtrabed = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -321,25 +321,25 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nCharter1to30passenger" ng-init="item.txtStl2d1nCharter1to30passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nCharter1to30passenger" ng-init="item.txtStl2d1nCharter1to30passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nCharter31to40passenger" ng-init="item.txtStl2d1nCharter31to40passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nCharter31to40passenger" ng-init="item.txtStl2d1nCharter31to40passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nCharter41to50passenger" ng-init="item.txtStl2d1nCharter41to50passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nCharter41to50passenger" ng-init="item.txtStl2d1nCharter41to50passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
-                                      <td>
+                                    <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl2d1nCharter51to64passenger" ng-init="item.txtStl2d1nCharter51to64passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl2d1nCharter51to64passenger" ng-init="item.txtStl2d1nCharter51to64passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -373,19 +373,19 @@
                                     <td ng-repeat-start="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs3d2nDouble" ng-init="item.txtOs3d2nDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs3d2nDouble" ng-init="item.txtOs3d2nDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs3d2nSingle" ng-init="item.txtOs3d2nSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs3d2nSingle" ng-init="item.txtOs3d2nSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs3d2nChildren6to11" ng-init="item.txtOs3d2nChildren6to11 = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs3d2nChildren6to11" ng-init="item.txtOs3d2nChildren6to11 = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -404,7 +404,7 @@
                                     <td colspan="4" ng-repeat="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs13d2nCharter" ng-init="item.txtOs13d2nCharter = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs13d2nCharter" ng-init="item.txtOs13d2nCharter = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -419,25 +419,25 @@
                                     <td ng-repeat-start="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs23d2nCharter1to4passenger" ng-init="item.txtOs23d2nCharter1to4passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs23d2nCharter1to4passenger" ng-init="item.txtOs23d2nCharter1to4passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs23d2nCharter5to8passenger" ng-init="item.txtOs23d2nCharter5to8passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs23d2nCharter5to8passenger" ng-init="item.txtOs23d2nCharter5to8passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs23d2nCharter9to12passenger" ng-init="item.txtOs23d2nCharter9to12passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs23d2nCharter9to12passenger" ng-init="item.txtOs23d2nCharter9to12passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtOs23d2nCharter13to16passenger" ng-init="item.txtOs23d2nCharter13to16passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtOs23d2nCharter13to16passenger" ng-init="item.txtOs23d2nCharter13to16passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -469,19 +469,19 @@
                                     <td ng-repeat-start="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtCls3d2nDouble" ng-init="item.txtCls3d2nDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtCls3d2nDouble" ng-init="item.txtCls3d2nDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtCls3d2nSingle" ng-init="item.txtCls3d2nSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtCls3d2nSingle" ng-init="item.txtCls3d2nSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtCls3d2nChildren6to11" ng-init="item.txtCls3d2nChildren6to11 = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtCls3d2nChildren6to11" ng-init="item.txtCls3d2nChildren6to11 = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -500,7 +500,7 @@
                                     <td ng-repeat="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtCls3d2nCharter" ng-init="item.txtCls3d2nCharter = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtCls3d2nCharter" ng-init="item.txtCls3d2nCharter = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -532,19 +532,19 @@
                                     <td ng-repeat-start="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nDeluxeDouble" ng-init="item.txtStl3d2nDeluxeDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nDeluxeDouble" ng-init="item.txtStl3d2nDeluxeDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nDeluxeSingle" ng-init="item.txtStl3d2nDeluxeSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nDeluxeSingle" ng-init="item.txtStl3d2nDeluxeSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nDeluxeExtrabed" ng-init="item.txtStl3d2nDeluxeExtrabed = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nDeluxeExtrabed" ng-init="item.txtStl3d2nDeluxeExtrabed = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -554,7 +554,7 @@
                                     <td ng-repeat-start="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nExecutiveDouble" ng-init="item.txtStl3d2nExecutiveDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nExecutiveDouble" ng-init="item.txtStl3d2nExecutiveDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
@@ -566,7 +566,7 @@
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nExecutiveExtrabed" ng-init="item.txtStl3d2nExecutiveExtrabed = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nExecutiveExtrabed" ng-init="item.txtStl3d2nExecutiveExtrabed = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -576,19 +576,19 @@
                                     <td ng-repeat-start="item in rs.listValidTime">
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nSuiteDouble" ng-init="item.txtStl3d2nSuiteDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nSuiteDouble" ng-init="item.txtStl3d2nSuiteDouble = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nSuiteSingle" ng-init="item.txtStl3d2nSuiteSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nSuiteSingle" ng-init="item.txtStl3d2nSuiteSingle = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td ng-repeat-end>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nSuiteExtrabed" ng-init="item.txtStl3d2nSuiteExtrabed = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nSuiteExtrabed" ng-init="item.txtStl3d2nSuiteExtrabed = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -609,25 +609,25 @@
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nCharter1to30passenger" ng-init="item.txtStl3d2nCharter1to30passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nCharter1to30passenger" ng-init="item.txtStl3d2nCharter1to30passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nCharter31to40passenger" ng-init="item.txtStl3d2nCharter31to40passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nCharter31to40passenger" ng-init="item.txtStl3d2nCharter31to40passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nCharter41to50passenger" ng-init="item.txtStl3d2nCharter41to50passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nCharter41to50passenger" ng-init="item.txtStl3d2nCharter41to50passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                     <td>
                                         <div class="input-group">
                                             <span class="input-group-addon">USD</span>
-                                            <input type="text" ng-model="item.txtStl3d2nCharter51to64passenger" ng-init="item.txtStl3d2nCharter51to64passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"/>
+                                            <input type="text" ng-model="item.txtStl3d2nCharter51to64passenger" ng-init="item.txtStl3d2nCharter51to64passenger = 0" class="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}" />
                                         </div>
                                     </td>
                                 </tr>
@@ -638,7 +638,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="button" class="btn btn-primary" ng-click="createContract()">Create contract</button>
+                    <button type="submit" class="btn btn-primary" ng-click="createContract()">Create contract</button>
                 </div>
             </div>
         </div>
@@ -650,5 +650,50 @@
         $("#currency").change(function () {
             $(".input-group-addon").html($(this).children("option:selected").html());
         })
+    </script>
+    <script>
+        $("#aspnetForm").validate({
+            rules: {
+                Name : {
+                    required : true,
+                } ,   
+                ValidFrom : {
+                    required : true,
+                },
+                ValidTo : {
+                    required : true
+                },
+            },
+              messages : {
+                Name : {
+                    required : "Yêu cầu nhập tên Contract",
+                } ,   
+                ValidFrom : {
+                    required : "Yêu cầu chọn ngày Valid from",
+                },
+                ValidTo : {
+                    required : "Yêu cầu chọn ngày Valid to"
+                },
+            },  errorElement: "em",
+              errorPlacement: function (error, element) {
+                  error.addClass("help-block");
+
+                  if (element.prop("type") === "checkbox") {
+                      error.insertAfter(element.parent("label"));
+                  } else {
+                      error.insertAfter(element);
+                  }
+
+                  if (element.siblings("span").prop("class") === "input-group-addon") {
+                      error.insertAfter(element.parent()).css({ color: "#a94442" });
+                  }
+              },
+              highlight: function (element, errorClass, validClass) {
+                  $(element).closest("div").addClass("has-error").removeClass("has-success");
+              },
+              unhighlight: function (element, errorClass, validClass) {
+                  $(element).closest("div").removeClass("has-error");
+              }
+          })
     </script>
 </asp:Content>

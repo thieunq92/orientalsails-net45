@@ -15,7 +15,7 @@
                 Start date
             </div>
             <div class="col-xs-2">
-                <asp:TextBox ID="txtDate" runat="server" data-control="datetimepicker" class="form-control" placeholder="Start date" AutoPostBack="true" OnTextChanged="txtDate_TextChanged" autocomplete="off">
+                <asp:TextBox ID="txtDate" runat="server" data-control="datetimepicker" class="form-control" placeholder="Start date (dd/mm/yyyy)" AutoPostBack="true" OnTextChanged="txtDate_TextChanged" autocomplete="off">
                 </asp:TextBox>
             </div>
         </div>
