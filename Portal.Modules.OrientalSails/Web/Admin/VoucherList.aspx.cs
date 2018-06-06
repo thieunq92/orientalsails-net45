@@ -77,17 +77,5 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                                                     Section.Id, batch.Id);
             }
         }
-
-        protected void btnDelete_Click(object sender, ImageClickEventArgs e)
-        {
-            var button = (IButtonControl)sender;
-
-            var id = Convert.ToInt32(button.CommandArgument);
-
-            var batch = Module.GetObject<VoucherBatch>(id);
-            Module.SaveOrUpdate(batch, UserIdentity);
-
-            PageRedirect(Request.RawUrl);
-        }
     }
 }

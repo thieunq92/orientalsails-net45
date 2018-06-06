@@ -1,12 +1,12 @@
 <%@ Page Language="C#" MasterPageFile="MO.Master" AutoEventWireup="true"
     CodeBehind="OrderReport.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.OrderReport"
-    Title="My pending booking" %>
+    Title="My Booking Pending" %>
 
 <%@ Register Assembly="CMS.ServerControls" Namespace="CMS.ServerControls" TagPrefix="svc" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="AdminContent" runat="server">
     <div class="page-header">
-        <h3>My pending booking</h3>
+        <h3>My booking pending</h3>
     </div>
     <div class="row">
         <div class="col-xs-1">
