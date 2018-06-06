@@ -690,9 +690,6 @@
   <data name="titleOrderReport" xml:space="preserve">
     <value>Order report</value>
   </data>
-  <data name="titleBookingPeriod" xml:space="preserve">
-    <value>Booking by period</value>
-  </data>
   <data name="btnExportAgencyList" xml:space="preserve">
     <value>Export list</value>
   </data>

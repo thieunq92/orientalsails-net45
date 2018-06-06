@@ -2,6 +2,9 @@
     CodeBehind="AddBooking.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.AddBooking" Title="Booking Adding" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="AdminContent" runat="server">
+    <div class="page-header">
+        <h3>Booking adding</h3>
+    </div>
     <div class="form-group">
         <div class="row">
             <div class="col-xs-1">
@@ -55,123 +58,123 @@
         <div class="col-xs-12">
             <asp:UpdatePanel runat="server" ID="updatePanel1">
                 <ContentTemplate>
-                        <em>Click vào tên tàu để bắt đầu nhập thông tin phòng</em>
+                    <em>Click vào tên tàu để bắt đầu nhập thông tin phòng</em>
+                    <table class="table table-bordered table-hover">
+                        <tr class="active">
+                            <th>Tên tàu
+                            </th>
+                            <th>Số phòng trống
+                            </th>
+                            <th>Trong đó
+                            </th>
+                        </tr>
+                        <asp:Repeater ID="rptCruises" runat="server" OnItemDataBound="rptCruises_ItemDataBound">
+                            <ItemTemplate>
+                                <tr id="trCruise" runat="server">
+                                    <td>
+                                        <asp:LinkButton ID="lbtCruiseName" runat="server" OnClick="lbtCruiseName_Click"></asp:LinkButton>
+                                        <asp:Literal ID="litName" runat="server"></asp:Literal>
+                                    </td>
+                                    <td>
+                                        <asp:Literal ID="litRoomCount" runat="server"></asp:Literal>
+                                    </td>
+                                    <td>
+                                        <asp:Literal ID="litRoomDetail" runat="server"></asp:Literal>
+                                    </td>
+                                </tr>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </table>
+                    <asp:PlaceHolder runat="server" ID="plhPending" Visible="False"><em>Booking pending</em>
                         <table class="table table-bordered table-hover">
                             <tr class="active">
-                                <th>Tên tàu
+                                <th>Booking code
                                 </th>
-                                <th>Số phòng trống
+                                <th>Rooms
                                 </th>
-                                <th>Trong đó
+                                <th>Trip
+                                </th>
+                                <th>Partner
+                                </th>
+                                <th>Created by
+                                </th>
+                                <th>Sale in charge
+                                </th>
+                                <th>Pending until
                                 </th>
                             </tr>
-                            <asp:Repeater ID="rptCruises" runat="server" OnItemDataBound="rptCruises_ItemDataBound">
+                            <asp:Repeater runat="server" ID="rptPendings" OnItemDataBound="rptPendings_ItemDataBound">
                                 <ItemTemplate>
-                                    <tr id="trCruise" runat="server">
+                                    <tr>
                                         <td>
-                                            <asp:LinkButton ID="lbtCruiseName" runat="server" OnClick="lbtCruiseName_Click"></asp:LinkButton>
-                                            <asp:Literal ID="litName" runat="server"></asp:Literal>
+                                            <asp:HyperLink runat="server" ID="hplCode"></asp:HyperLink>
                                         </td>
                                         <td>
-                                            <asp:Literal ID="litRoomCount" runat="server"></asp:Literal>
+                                            <asp:Literal runat="server" ID="litRooms"></asp:Literal>
                                         </td>
                                         <td>
-                                            <asp:Literal ID="litRoomDetail" runat="server"></asp:Literal>
+                                            <asp:Literal runat="server" ID="litTrip"></asp:Literal>
+                                        </td>
+                                        <td>
+                                            <asp:HyperLink runat="server" ID="hplAgency"></asp:HyperLink>
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" ID="lblCreatedBy"></asp:Label>
+                                        </td>
+                                        <td>
+                                            <asp:Label runat="server" ID="lblSaleInCharge"></asp:Label>
+
+                                        </td>
+                                        <td>
+                                            <asp:Literal runat="server" ID="litPending"></asp:Literal>
                                         </td>
                                     </tr>
                                 </ItemTemplate>
                             </asp:Repeater>
                         </table>
-                        <asp:PlaceHolder runat="server" ID="plhPending" Visible="False"><em>Booking pending</em>
-                            <table class="table table-bordered table-hover">
-                                <tr class="active">
-                                    <th>Booking code
-                                    </th>
-                                    <th>Rooms
-                                    </th>
-                                    <th>Trip
-                                    </th>
-                                    <th>Partner
-                                    </th>
-                                    <th>Created by
-                                    </th>
-                                    <th>Sale in charge
-                                    </th>
-                                    <th>Pending until
-                                    </th>
-                                </tr>
-                                <asp:Repeater runat="server" ID="rptPendings" OnItemDataBound="rptPendings_ItemDataBound">
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td>
-                                                <asp:HyperLink runat="server" ID="hplCode"></asp:HyperLink>
-                                            </td>
-                                            <td>
-                                                <asp:Literal runat="server" ID="litRooms"></asp:Literal>
-                                            </td>
-                                            <td>
-                                                <asp:Literal runat="server" ID="litTrip"></asp:Literal>
-                                            </td>
-                                            <td>
-                                                <asp:HyperLink runat="server" ID="hplAgency"></asp:HyperLink>
-                                            </td>
-                                            <td>
-                                                <asp:Label runat="server" ID="lblCreatedBy"></asp:Label>
-                                            </td>
-                                            <td>
-                                                <asp:Label runat="server" ID="lblSaleInCharge"></asp:Label>
-
-                                            </td>
-                                            <td>
-                                                <asp:Literal runat="server" ID="litPending"></asp:Literal>
-                                            </td>
-                                        </tr>
-                                    </ItemTemplate>
-                                </asp:Repeater>
-                            </table>
-                        </asp:PlaceHolder>
-                        <asp:PlaceHolder ID="plhCruiseName" runat="server" Visible="false">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-xs-2">
-                                        Chọn tàu <strong>
-                                            <asp:Literal ID="litCurrentCruise" runat="server" /></strong>
-                                    </div>
-                                    <div class="col-xs-2">
-                                        <asp:CheckBox runat="server" ID="chkCharter" Text=" Charter Booking"></asp:CheckBox>
-                                    </div>
+                    </asp:PlaceHolder>
+                    <asp:PlaceHolder ID="plhCruiseName" runat="server" Visible="false">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    Chọn tàu <strong>
+                                        <asp:Literal ID="litCurrentCruise" runat="server" /></strong>
+                                </div>
+                                <div class="col-xs-2">
+                                    <asp:CheckBox runat="server" ID="chkCharter" Text=" Charter Booking"></asp:CheckBox>
                                 </div>
                             </div>
-                            <asp:Repeater ID="rptClass" runat="server" OnItemDataBound="rptClass_ItemDataBound">
-                                <ItemTemplate>
-                                    <asp:HiddenField ID="hiddenId" runat="server" Value='<%# DataBinder.Eval(Container.DataItem,"Id") %>' />
-                                    <asp:Repeater ID="rptTypes" runat="server" OnItemDataBound="rptTypes_ItemDataBound">
-                                        <ItemTemplate>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <div class="col-xs-2">
-                                                        <asp:Label ID="labelName" runat="server"></asp:Label><asp:HiddenField ID="hiddenId"
-                                                            runat="server" Value='<%# DataBinder.Eval(Container.DataItem,"Id") %>' />
-                                                    </div>
-                                                    <div class="col-xs-1 nopadding-left nopadding-right">
-                                                        <asp:DropDownList ID="ddlAdults" runat="server" CssClass="form-control">
-                                                        </asp:DropDownList>
-                                                    </div>
-                                                    <div class="col-xs-1 nopadding-left nopadding-right">
-                                                        <asp:DropDownList ID="ddlChild" runat="server" CssClass="form-control">
-                                                        </asp:DropDownList>
-                                                    </div>
-                                                    <div class="col-xs-1 nopadding-left nopadding-right">
-                                                        <asp:DropDownList ID="ddlBaby" runat="server" CssClass="form-control">
-                                                        </asp:DropDownList>
-                                                    </div>
+                        </div>
+                        <asp:Repeater ID="rptClass" runat="server" OnItemDataBound="rptClass_ItemDataBound">
+                            <ItemTemplate>
+                                <asp:HiddenField ID="hiddenId" runat="server" Value='<%# DataBinder.Eval(Container.DataItem,"Id") %>' />
+                                <asp:Repeater ID="rptTypes" runat="server" OnItemDataBound="rptTypes_ItemDataBound">
+                                    <ItemTemplate>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-xs-2">
+                                                    <asp:Label ID="labelName" runat="server"></asp:Label><asp:HiddenField ID="hiddenId"
+                                                        runat="server" Value='<%# DataBinder.Eval(Container.DataItem,"Id") %>' />
+                                                </div>
+                                                <div class="col-xs-1 nopadding-left nopadding-right">
+                                                    <asp:DropDownList ID="ddlAdults" runat="server" CssClass="form-control">
+                                                    </asp:DropDownList>
+                                                </div>
+                                                <div class="col-xs-1 nopadding-left nopadding-right">
+                                                    <asp:DropDownList ID="ddlChild" runat="server" CssClass="form-control">
+                                                    </asp:DropDownList>
+                                                </div>
+                                                <div class="col-xs-1 nopadding-left nopadding-right">
+                                                    <asp:DropDownList ID="ddlBaby" runat="server" CssClass="form-control">
+                                                    </asp:DropDownList>
                                                 </div>
                                             </div>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </ItemTemplate>
-                            </asp:Repeater>
-                        </asp:PlaceHolder>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </asp:PlaceHolder>
                 </ContentTemplate>
                 <Triggers>
                     <asp:AsyncPostBackTrigger ControlID="txtDate" EventName="TextChanged" />

@@ -4,23 +4,7 @@
 
 <%@ Import Namespace="Portal.Modules.OrientalSails.Domain" %>
 <%@ Register Assembly="CMS.ServerControls" Namespace="CMS.ServerControls" TagPrefix="svc" %>
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
-<%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="AdminContent" runat="server">
-    <script type="text/javascript">
-        function addCommas(nStr) {
-            nStr = nStr.replace(',', '');
-            nStr += '';
-            x = nStr.split('.');
-            x1 = x[0];
-            x2 = x.length > 1 ? '.' + x[1] : '';
-            var rgx = /(\d+)(\d{3})/;
-            while (rgx.test(x1)) {
-                x1 = x1.replace(rgx, '$1' + ',' + '$2');
-            }
-            return x1 + x2;
-        }
-    </script>
     <div class="page-header">
         <h3>Booking by date</h3>
     </div>
@@ -174,24 +158,6 @@
                             </td>
                             <td>
                                 <asp:HyperLink ID="hplCode" runat="server"></asp:HyperLink>
-                                <%--  <asp:Image runat="server" ID="imgPending" ImageUrl="/images/pending.png" Visible="False"
-                                        Width="16" />
-                                    <ajax:HoverMenuExtender ID="hmeCabin" runat="Server" HoverCssClass="popupHover" PopupControlID="panelPending"
-                                        PopupPosition="Left" TargetControlID="imgPending" PopDelay="25" />
-                                    <asp:Panel runat="server" ID="panelPending" CssClass="hover_content">
-                                        Pending by
-                                        <asp:Literal runat="server" ID="litBooker">[Booker]</asp:Literal>
-                                        until
-                                        <asp:Literal runat="server" ID="litPendingUntil"></asp:Literal><br />
-                                        In charge:
-                                        <asp:Literal runat="server" ID="litSaleInCharge"></asp:Literal>
-                                        <asp:Literal runat="server" ID="litSalePhone"></asp:Literal>
-                                        <asp:Literal runat="server" ID="litSaleEmail"></asp:Literal><br />
-                                        Created by
-                                        <asp:Literal runat="server" ID="litCreatedBy"></asp:Literal>
-                                        <asp:Literal runat="server" ID="litCreatorPhone"></asp:Literal>
-                                        <asp:Literal runat="server" ID="litCreatorEmail"></asp:Literal>
-                                    </asp:Panel>--%>
                             </td>
                             <td runat="server" id="plhTotal">
                                 <asp:Label ID="label_TotalPrice" runat="server"></asp:Label>
@@ -285,7 +251,7 @@
                                 <asp:Label ID="label_NameOfPax" runat="server"></asp:Label>
                             </td>
                             <td>
-                                <asp:DropDownList ID="ddlGroup" runat="server">
+                                <asp:DropDownList ID="ddlGroup" runat="server" CssClass="form-control">
                                 </asp:DropDownList>
                                 <asp:Literal ID="litGroup" runat="server"></asp:Literal></td>
                             <td>
@@ -344,12 +310,9 @@
         <div class="col-xs-9 text-right">
             <asp:Literal runat="server" ID="litLockIncome"></asp:Literal>
             <asp:Button ID="btnLockIncome" runat="server" CssClass="btn btn-primary" OnClick="btnLockIncome_Click"
-                Text="Lock income" />
+                Text="Lock income" OnClientClick="return confirm('Khi đã khóa doanh thu thì sẽ không thể nào mở khóa được! Bạn xác nhận muốn khóa chứ?')" />
             <asp:Button ID="btnUnlockIncome" Visible="False" runat="server" CssClass="btn btn-primary"
                 OnClick="btnUnlockIncome_Click" Text="Unlock income" />
-            <ajax:ConfirmButtonExtender ID="ConfirmButtonExtenderDelete" runat="server" TargetControlID="btnLockIncome"
-                ConfirmText='Khi đã khóa doanh thu thì sẽ không thể nào mở khóa được! Bạn xác nhận muốn khóa chứ?'>
-            </ajax:ConfirmButtonExtender>
         </div>
     </div>
     <br />
@@ -392,7 +355,7 @@
                                                 </asp:DropDownList>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txtCost" runat="server" CssClass="form-control" ></asp:TextBox>
+                                                <asp:TextBox ID="txtCost" runat="server" CssClass="form-control" input-mask="{'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': true, 'rightAlign':false}"></asp:TextBox>
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlGroups" runat="server" Visible="true" CssClass="form-control">

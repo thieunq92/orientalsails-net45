@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Add Series Bookings" Language="C#" MasterPageFile="MO-NoScriptManager.Master"
+﻿<%@ Page Title="Series Booking Adding" Language="C#" MasterPageFile="MO-NoScriptManager.Master"
     AutoEventWireup="true"
     CodeBehind="AddSeriesBookings.aspx.cs"
     Inherits="Portal.Modules.OrientalSails.Web.Admin.AddSeriesBookings" %>

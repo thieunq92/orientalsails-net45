@@ -18,7 +18,7 @@ moduleAddSeriesBookings.controller("checkPermissionController", ["$rootScope", "
 }])
 
 moduleAddSeriesBookings.controller("seriesController", ["$rootScope", "$scope", "$http", "$location", function ($rootScope, $scope, $http, $location) {
-    $scope.title = "Add Series";
+    $scope.title = "Series adding";
     $scope.lblBtnSeries = "Add Series";
 
     $scope.show = {

@@ -22,15 +22,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtFrom;
         
         /// <summary>
-        /// calendarFrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calendarFrom;
-        
-        /// <summary>
         /// txtTo control.
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTo;
-        
-        /// <summary>
-        /// calendarTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calendarTo;
         
         /// <summary>
         /// btnDisplay control.
@@ -74,14 +56,5 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptBookingList;
-        
-        /// <summary>
-        /// btnExcel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExcel;
     }
 }

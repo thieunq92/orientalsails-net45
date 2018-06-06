@@ -1,8 +1,11 @@
 ﻿<%@ Page Language="C#" MasterPageFile="MO.Master" AutoEventWireup="true"
-    CodeBehind="BookingList.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.BookingList" Title="Booking Manager"%>
+    CodeBehind="BookingList.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.BookingList" Title="Booking Manager" %>
 
 <%@ Register Assembly="CMS.ServerControls" Namespace="CMS.ServerControls" TagPrefix="svc" %>
 <asp:Content ID="AdminContent" ContentPlaceHolderID="AdminContent" runat="server">
+    <div class="page-header">
+        <h3>Booking management</h3>
+    </div>
     <div class="search-panel">
         <div class="form-group">
             <div class="row">
@@ -78,7 +81,7 @@
         </div>
 
         <div class="booking-table">
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover table-common">
                 <tbody>
                     <tr class="active">
                         <th>Booking Code

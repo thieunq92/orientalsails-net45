@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" Title="Series Bookings Manager" AutoEventWireup="true" CodeBehind="SeriesManager.aspx.cs" MasterPageFile="MO.Master"
+﻿<%@ Page Language="C#" Title="Series Booking Management" AutoEventWireup="true" CodeBehind="SeriesManager.aspx.cs" MasterPageFile="MO.Master"
     Inherits="Portal.Modules.OrientalSails.Web.Admin.SeriesManager" %>
 
 <%@ Register Assembly="CMS.ServerControls" Namespace="CMS.ServerControls" TagPrefix="svc" %>
 <asp:Content ID="AdminContent" ContentPlaceHolderID="AdminContent" runat="server">
-    <h3 class="page-header">Series Manager</h3>
+    <h3 class="page-header">Series management</h3>
     <div class="search-panel">
         <div class="form-group">
             <div class="row">

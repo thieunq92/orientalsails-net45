@@ -46,15 +46,15 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Booking <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li id="pAddBooking" runat="server">
-                                        <asp:HyperLink ID="hlAddBooking" runat="server">Add Booking</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlAddBooking" runat="server">Booking Adding</asp:HyperLink></li>
                                     <li id="pBookingList" runat="server">
-                                        <asp:HyperLink ID="hlBookingList" runat="server">Booking Manager</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlBookingList" runat="server">Booking Management</asp:HyperLink></li>
                                     <li id="pAddSeriesBookings" runat="server">
-                                        <asp:HyperLink ID="hlAddSerialBookings" runat="server">Add Series Bookings</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlAddSerialBookings" runat="server">Series Booking Adding</asp:HyperLink></li>
                                     <li id="pSerialManager" runat="server">
-                                        <asp:HyperLink ID="hplSeriesManager" runat="server">Series Bookings Manager</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hplSeriesManager" runat="server">Series Booking Management</asp:HyperLink></li>
                                     <li id="pOrders" runat="server">
-                                        <asp:HyperLink ID="hlOrders" runat="server">My Pending Booking</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlOrders" runat="server">Booking Pending</asp:HyperLink></li>
                                     <li id="pBookingDate" runat="server">
                                         <asp:HyperLink ID="hlBookingDate" runat="server">Booking By Date</asp:HyperLink></li>
                                     <li id="pBookingReport" runat="server">

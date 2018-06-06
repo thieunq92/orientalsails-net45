@@ -317,15 +317,12 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 HtmlTableRow row = (HtmlTableRow)e.Item.FindControl("trItem");
                 if (item.Status == StatusType.Pending)
                 {
-                    row.Attributes.Add("style", "background-color: " + SailsModule.WARNING);
+                    row.Attributes.Add("class", "warning");
                 }
-                //if (item.Status == StatusType.Rejected)
-                //{
-                //    row.Attributes.Add("style", "background-color: " + SailsModule.IMPORTANT);
-                //}
+
                 if (item.Status == StatusType.Approved)
                 {
-                    row.Attributes.Add("style", "background-color: " + SailsModule.GOOD);
+                    row.Attributes.Add("class", "success");
                 }
 
                 if (!item.IsCharter)
