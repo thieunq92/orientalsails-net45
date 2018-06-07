@@ -85,15 +85,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtValidUntil;
         
         /// <summary>
-        /// calendarValidUntil control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calendarValidUntil;
-        
-        /// <summary>
         /// txtIssueDate control.
         /// </summary>
         /// <remarks>
@@ -101,15 +92,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIssueDate;
-        
-        /// <summary>
-        /// calendarDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calendarDate;
         
         /// <summary>
         /// ddlTemplates control.

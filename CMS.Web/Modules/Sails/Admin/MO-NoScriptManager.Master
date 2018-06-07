@@ -75,20 +75,20 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Partner <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li id="pAgencyEdit" runat="server">
-                                        <asp:HyperLink ID="hlAgencyEdit" runat="server">Add Partner</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlAgencyEdit" runat="server">Partner Adding</asp:HyperLink></li>
+                                    <li id="pAgencyList" runat="server">
+                                        <asp:HyperLink ID="hlAgencyList" runat="server">Partner Management</asp:HyperLink></li>
+                                    <li id="pAgencyPolicies" runat="server">
+                                        <asp:HyperLink ID="hlAgentList" runat="server">Partner Price Policy</asp:HyperLink></li>
                                     <li id="pVoucherEdit" runat="server">
-                                        <asp:HyperLink ID="hlVoucherEdit" runat="server">Create Voucher Batch</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlVoucherEdit" runat="server">Voucher Batch Creating</asp:HyperLink></li>
                                     <li id="pVoucherList" runat="server">
-                                        <asp:HyperLink ID="hlVoucherList" runat="server">List Voucher Batch</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlVoucherList" runat="server">Voucher Batch Management</asp:HyperLink></li>
                                     <li id="pVoucherTemplates" runat="server">
                                         <asp:HyperLink ID="hlVoucherTemplates" runat="server">Voucher Template</asp:HyperLink>
                                     </li>
-                                    <li id="pAgencyList" runat="server">
-                                        <asp:HyperLink ID="hlAgencyList" runat="server">Partner Manager</asp:HyperLink></li>
-                                    <li id="pAgencyPolicies" runat="server">
-                                        <asp:HyperLink ID="hlAgentList" runat="server">Partner Price Policy</asp:HyperLink></li>
                                     <li id="pAgencyViewMeetings" runat="server">
-                                        <asp:HyperLink ID="hlViewMeetings" runat="server">View Meeting</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlViewMeetings" runat="server">Meeting Viewing</asp:HyperLink></li>
                                     <li id="pAgencyLocation" runat="server">
                                         <asp:HyperLink ID="hlAgencyLocation" runat="server">Location</asp:HyperLink></li>
                                     <li>
