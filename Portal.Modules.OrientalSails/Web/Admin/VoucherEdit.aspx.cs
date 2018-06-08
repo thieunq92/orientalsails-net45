@@ -10,14 +10,23 @@ using CMS.Web.Util;
 using Portal.Modules.OrientalSails.Domain;
 using Portal.Modules.OrientalSails.Utils;
 using Portal.Modules.OrientalSails.Web.UI;
+using Portal.Modules.OrientalSails.BusinessLogic;
 
 namespace Portal.Modules.OrientalSails.Web.Admin
 {
     public partial class VoucherEdit : SailsAdminBasePage
     {
+        private VoucherEditBLL voucherEditBLL;
+        public VoucherEditBLL VoucherEditBLL {
+            get
+            {
+                if (voucherEditBLL == null)
+                    voucherEditBLL = new VoucherEditBLL();
+                return voucherEditBLL;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            Title = @"Voucher program edit";
             if (!IsPostBack)
             {
                 ddlCruises.DataSource = Module.CruiseGetAll();
@@ -42,7 +51,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 if (Request.QueryString["batchid"] != null)
                 {
                     var batch = Module.GetObject<VoucherBatch>(Convert.ToInt32(Request.QueryString["batchid"]));
-                    agencySelector.SelectedAgency = batch.Agency;
+                    var agencyId = -1;
+                    try
+                    {
+                        agencyId = batch.Agency.Id;
+                    }
+                    catch { }
+                    agencySelector.Value = agencyId.ToString();
+            
                     ddlCruises.SelectedValue = batch.Cruise.Id.ToString();
                     ddlTrips.SelectedValue = batch.Trip.Id.ToString();
 
@@ -89,7 +105,23 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 }
             }
         }
-
+        public string GetAgencyName() {
+            var batch = Module.GetObject<VoucherBatch>(Convert.ToInt32(Request.QueryString["batchid"]));
+            var agencyName = "";
+            try
+            {
+                agencyName = batch.Agency.Name;
+            }
+            catch { }
+            return agencyName;
+        }
+        protected void Page_Unload(object sender, EventArgs e) {
+            if (voucherEditBLL != null)
+            {
+                voucherEditBLL.Dispose();
+                voucherEditBLL = null;
+            }
+        }
         protected void buttonSave_Click(object sender, EventArgs e)
         {
             VoucherBatch batch;
@@ -109,7 +141,13 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             }
 
             batch.Name = txtName.Text;
-            batch.Agency = agencySelector.SelectedAgency;
+            var agencyId = -1;
+            try
+            {
+                agencyId = Int32.Parse(agencySelector.Value);
+            }
+            catch { }
+            batch.Agency = VoucherEditBLL.AgencyGetById(agencyId);
             batch.Cruise = Module.CruiseGetById(Convert.ToInt32(ddlCruises.SelectedValue));
             batch.Trip = Module.TripGetById(Convert.ToInt32(ddlTrips.SelectedValue));
             DateTime date;

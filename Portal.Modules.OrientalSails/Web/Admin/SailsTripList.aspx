@@ -1,36 +1,35 @@
-<%@ Page Language="C#" MasterPageFile="SailsMaster.Master" AutoEventWireup="true" CodeBehind="SailsTripList.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.SailsTripList" Title="Untitled Page" %>
+<%@ Page Language="C#" MasterPageFile="MO.Master" AutoEventWireup="true" CodeBehind="SailsTripList.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.SailsTripList" Title="Trip Management" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
 <%@ Register Assembly="System.Web.Extensions" Namespace="System.Web.UI" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="AdminContent" runat="server">
-    <fieldset>
-        <legend>
-            <img alt="Room" src="../Images/sails.gif" align="absMiddle" />
-            <asp:Label ID="titleSailsTripList" runat="server"></asp:Label>
-        </legend>
-        <div class="data_table">
-            <div class="data_grid">
-                <table>
-                    <asp:Repeater ID="rptTripList" runat="server" OnItemDataBound="rptTripList_ItemDataBound" OnItemCommand="rptTripList_ItemCommand">
-                        <HeaderTemplate>
-                            <tr class="header">
-                                <th style="width: 200px;">
-                                    <%#base.GetText("labelName") %>
-                                </th>
-                                <th style="width: 100px;">
-                                    <%#base.GetText("labelNumberOfDay") %>
-                                </th>
-                                <th style="width: 100px;">
-                                    <%#base.GetText("labelNumberOfOptions")%>
+    <div class="page-header">
+        <h3>
+            <asp:Label ID="titleSailsTripList" runat="server"></asp:Label></h3>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-bordered table-hover table-common">
+                <asp:Repeater ID="rptTripList" runat="server" OnItemDataBound="rptTripList_ItemDataBound" OnItemCommand="rptTripList_ItemCommand">
+                    <headertemplate>
+                            <tr class="active">
+                                <th>
+                                    Name
                                 </th>
                                 <th>
-                                    <%#base.GetText("textPriceConfig")%>
+                                    Number of day
                                 </th>
-                                <th style="width: 100px;">
-                                    
+                                <th>
+                                    Number of option
+                                </th>
+                                <th>
+                                    Price
+                                </th>
+                                <th>                                 
                                 </th>
                             </tr>
-                        </HeaderTemplate>
-                        <ItemTemplate>
+                        </headertemplate>
+                    <itemtemplate>
                             <tr class="item">
                                 <td>
                                     <asp:HyperLink ID="hyperLink_Name" runat="server"></asp:HyperLink>                                
@@ -61,20 +60,16 @@
                                 </td>                          
                                 <td>
                                     <asp:HyperLink ID="hyperLinkEdit" runat="server">
-                                        <asp:Image ID="imageEdit" runat="server" ImageAlign="AbsMiddle" AlternateText="Edit" CssClass="image_button16" ImageUrl="../Images/edit.gif" />
+                                        <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"></i>
                                     </asp:HyperLink>
-                                    <asp:ImageButton runat="server" ID="imageButtonDelete" ToolTip='Delete' ImageUrl="../Images/delete_file.gif"
-                                        AlternateText='Delete' ImageAlign="AbsMiddle" CssClass="image_button16" CommandName="Delete"
-                                        CommandArgument='<%# DataBinder.Eval(Container.DataItem,"Id") %>' />
-                                    <ajax:ConfirmButtonExtender ID="ConfirmButtonExtenderDelete" runat="server" TargetControlID="imageButtonDelete"
-                                        ConfirmText='<%# base.GetText("messageConfirmDelete") %>'>
-                                    </ajax:ConfirmButtonExtender>
+                                    <asp:LinkButton runat="server" ID="imageButtonDelete" CommandName="Delete" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"Id") %>' OnClientClick="javascript: return confirm('Are you sure?')">
+                                        <i class="fa fa-close fa-lg text-danger" aria-hidden="true" title="" data-toggle="tooltip" data-placement="top" data-original-title="Delete"></i>
+                                    </asp:LinkButton>       
                                 </td>
                             </tr>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </table>
-            </div>
+                        </itemtemplate>
+                </asp:Repeater>
+            </table>
         </div>
-    </fieldset>
+    </div>
 </asp:Content>

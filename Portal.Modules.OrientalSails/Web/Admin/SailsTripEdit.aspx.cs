@@ -39,19 +39,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
                 #region -- Ajax Image --
 
-                fileUploaderMap.addCustomJS(FileUploaderAJAX.customJSevent.postUpload,
-                                            FileHelper.InsertImagePostUploadJS("divMap", textBoxHiddenMap));
-                fileUploaderMap.addCustomJS(FileUploaderAJAX.customJSevent.postDelete,
-                                            FileHelper.ClearData("divMap", textBoxHiddenMap));
-                fileUploaderMap.addCustomJS(FileUploaderAJAX.customJSevent.postHide,
-                                            FileHelper.ClearData("divMap", textBoxHiddenMap));
-                if (fileUploaderMap.IsPosting)
-                {
-                    FileHelper.ManageAjaxPost(fileUploaderMap, 0, "Image\\Sails\\",
-                                              HttpPostedFileAJAX.fileType.image);
-                    return;
-                }
-
                 #endregion
 
                 if (!IsPostBack)
@@ -77,20 +64,10 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 _trip = Module.TripGetById(TripId);
                 textBoxName.Text = _trip.Name;
                 textBoxNumberOfDay.Text = _trip.NumberOfDay.ToString();
-                fckItinerary.Value = _trip.Itinerary;
-                fckDescription.Value = _trip.Description;
-                fckExclusions.Value = _trip.Exclusions;
-                fckWhatToTake.Value = _trip.WhatToTake;
-                fckInclusions.Value = _trip.Inclusions;
-                textBoxHiddenMap.Text = _trip.Image;
+                txtDescription.Text = _trip.Description;
                 txtTripCode.Text = _trip.TripCode;
-
                 ddlHalfDay.SelectedValue = _trip.HalfDay.ToString();
-
                 ddlNumberOfOptions.SelectedValue = _trip.NumberOfOptions.ToString();
-                fileUploaderMap.addCustomJS(FileUploaderAJAX.customJSevent.preLoad,
-                                            FileHelper.InsertImagePostloadJS("divMap", textBoxHiddenMap,
-                                                                             _trip.Image));
             }
         }
 
@@ -126,12 +103,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                         _trip.NumberOfDay = 0;
                     }
                     _trip.NumberOfOptions = Convert.ToInt32(ddlNumberOfOptions.SelectedValue);
-                    _trip.Image = textBoxHiddenMap.Text;
-                    _trip.Itinerary = fckItinerary.Value;
-                    _trip.Description = fckDescription.Value;
-                    _trip.Exclusions = fckExclusions.Value;
-                    _trip.Inclusions = fckInclusions.Value;
-                    _trip.WhatToTake = fckWhatToTake.Value;
+                    _trip.Description = txtDescription.Text;
                     _trip.TripCode = txtTripCode.Text;
                     _trip.HalfDay = Convert.ToInt32(ddlHalfDay.SelectedValue);
                     if (TripId > 0)

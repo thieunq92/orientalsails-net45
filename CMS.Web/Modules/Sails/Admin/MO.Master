@@ -115,26 +115,26 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cruise & Trip <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li id="pTripEdit" runat="server">
-                                        <asp:HyperLink ID="hlTripEdit" runat="server">Add Trip</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlTripEdit" runat="server">Trip Adding</asp:HyperLink></li>
                                     <li id="pTripList" runat="server">
-                                        <asp:HyperLink ID="hlTripList" runat="server">Trip Manager</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlTripList" runat="server">Trip Management</asp:HyperLink></li>
                                     <li id="pCruiseEdit" runat="server">
-                                        <asp:HyperLink ID="hlCruiseEdit" runat="server">Add Cruise</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlCruiseEdit" runat="server">Cruise Adding</asp:HyperLink></li>
                                     <li id="pCruiseList" runat="server">
-                                        <asp:HyperLink ID="hlCruiseList" runat="server">Cruise Manager</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlCruiseList" runat="server">Cruise Management</asp:HyperLink></li>
                                 </ul>
                             </li>
                             <li class="dropdown" id="tabRoom" runat="server">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Room Manager <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li id="pRoomClass" runat="server">
-                                        <asp:HyperLink ID="hlRoomClass" runat="server">Room Class Manager</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlRoomClass" runat="server">Room Class Management</asp:HyperLink></li>
                                     <li id="pRoomType" runat="server">
-                                        <asp:HyperLink ID="hlRoomType" runat="server">Room Type Manager</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlRoomType" runat="server">Room Type Management</asp:HyperLink></li>
                                     <li id="pRoomEdit" runat="server">
-                                        <asp:HyperLink ID="hlRoomEdit" runat="server">Add Room</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlRoomEdit" runat="server">Room Adding</asp:HyperLink></li>
                                     <li id="pRoomList" runat="server">
-                                        <asp:HyperLink ID="hlRoomList" runat="server">Room Manager</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlRoomList" runat="server">Room Management</asp:HyperLink></li>
                                 </ul>
                             </li>
                             <li class="dropdown" id="tabCost" runat="server">
@@ -180,7 +180,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Document <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <asp:HyperLink ID="hlViewDocument" runat="server">View Document</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlViewDocument" runat="server">Document Viewing</asp:HyperLink></li>
                                     <li id="pDocumentManage" runat="server">
                                         <asp:HyperLink ID="hlDocumentManage" runat="server">Document Manager</asp:HyperLink></li>
                                 </ul>

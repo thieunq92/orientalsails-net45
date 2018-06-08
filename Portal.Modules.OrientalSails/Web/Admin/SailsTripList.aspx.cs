@@ -32,7 +32,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                 }
                 else
                 {
-                    Title = Resources.titleSailsTripList;
+                    titleSailsTripList.Text = "Trip management";
                 }
                 if (!IsPostBack)
                 {

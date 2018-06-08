@@ -24,7 +24,9 @@
                 Vouchers issue for
             </div>
             <div class="col-xs-4">
-                <orc:AgencySelector ID="agencySelector" runat="server" />
+                <input type="text" name="txtAgency" id="ctl00_AdminContent_agencySelectornameid" class="form-control"
+                    readonly placeholder="Click to select agency" value="<%= GetAgencyName() %>" />
+                <input id="agencySelector" type="hidden" runat="server" />
             </div>
         </div>
     </div>
@@ -156,4 +158,13 @@
         <div class="settinglist">
         </div>
     </fieldset>
+</asp:Content>
+<asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
+    <script>
+        $("#ctl00_AdminContent_agencySelectornameid").click(function () {
+            var width = 800;
+            var height = 600;
+            window.open('/Modules/Sails/Admin/AgencySelectorPage.aspx?NodeId=1&SectionId=15&clientid=ctl00_AdminContent_agencySelector', 'Agencyselect', 'width=' + width + ',height=' + height + ',top=' + ((screen.height / 2) - (height / 2)) + ',left=' + ((screen.width / 2) - (width / 2)));
+        });
+    </script>
 </asp:Content>

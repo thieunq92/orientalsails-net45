@@ -28,7 +28,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Portal.Modules.OrientalSails.Web.Controls.AgencySelector agencySelector;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden agencySelector;
         
         /// <summary>
         /// txtVoucher control.

@@ -80,6 +80,7 @@
     <Compile Include="BusinessLogic\SeriesManagerBLL.cs" />
     <Compile Include="BusinessLogic\SeriesViewBLL.cs" />
     <Compile Include="BusinessLogic\ViewActivitiesBLL.cs" />
+    <Compile Include="BusinessLogic\VoucherEditBLL.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="DataAccess\ISailsDao.cs" />
     <Compile Include="DataAccess\SailsDao.cs" />
