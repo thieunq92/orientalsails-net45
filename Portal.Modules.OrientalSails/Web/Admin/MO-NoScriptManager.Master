@@ -366,6 +366,15 @@
             })
         })
     </script>
+    <script>
+        $(document).ready(function () {
+            $(".checkbox label").each(function (i, e) {
+                var label = $(e).find("label").html();
+                $(e).append(label);
+                $(e).find("label").remove();
+            });
+        })
+    </script>
     <asp:ContentPlaceHolder ID="Scripts" runat="server">
     </asp:ContentPlaceHolder>
 </body>

@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="MO.Master" AutoEventWireup="true"
-    CodeBehind="CruisesEdit.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.CruisesEdit" Title="Cruise Adding"%>
+    CodeBehind="CruisesEdit.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.CruisesEdit" Title="Cruise Adding" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
 <%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
@@ -10,67 +10,74 @@
     <div class="page-header">
         <h3>Cruise adding</h3>
     </div>
-    <fieldset>
-        <div class="settinglist">
-            <div class="basicinfo">
-                <table>
-                    <tr>
-                        <td>
-                            <asp:Label ID="labelName" runat="server"></asp:Label>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="textBoxName" runat="server"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfvName" runat="server" ValidationGroup="valid" ControlToValidate="textBoxName" ErrorMessage="Requied Field"></asp:RequiredFieldValidator>
-                        </td>
-                        <td>
-                            <asp:Label ID="lblCruiseCode" runat="server" Text="Số hiệu tàu"></asp:Label>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="txtCruiseCode" runat="server"></asp:TextBox>
-                        </td>
-
-                        <td><%= base.GetText("textTripCode") %></td>
-                        <td>
-                            <asp:TextBox ID="txtCode" runat="server" MaxLength="5"></asp:TextBox></td>
-                        <td>
-                            <asp:HyperLink ID="hplRoomPlan" runat="server" Text="Current room plan" Visible="false"></asp:HyperLink>
-                            <asp:Literal ID="litRoomPlan" runat="server" Text="Upload room plan" Visible="true"></asp:Literal>
-                        </td>
-                        <td>
-                            <asp:FileUpload ID="fileRoomPlan" runat="server" /></td>
-                    </tr>
-                </table>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-1">
+                Name
             </div>
-            <div class="advancedinfo">
-                <ul>
-                    <asp:Repeater ID="rptTrips" runat="server" OnItemDataBound="rptTrips_ItemDataBound">
-                        <ItemTemplate>
-                            <li>
-                                <asp:CheckBox ID="chkTrip" runat="server" />
-                                <asp:HiddenField ID="hiddenId" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "Id") %>' />
-                            </li>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </ul>
+            <div class="col-xs-2">
+                <asp:TextBox ID="textBoxName" runat="server" CssClass="form-control" placeholder="Name"></asp:TextBox>
             </div>
-            <div class="advancedinfo">
-                <h4>
-                    <asp:Label ID="labelDescription" runat="server"></asp:Label></h4>
-                <FCKeditorV2:FCKeditor ID="fckDescription" runat="server" Width="100%" Height="300"
-                    BasePath="~/support/fckeditor/" ToolbarSet="Basic">
-                </FCKeditorV2:FCKeditor>
+            <div class="col-xs-1">
+                Số hiệu tàu
             </div>
-
-            <%--<div class="advancedinfo">
-                <h4><asp:Label ID="labelTripImage" runat="server"></asp:Label></h4>
-                <svc:FileUploaderAJAX runat="server" ID="fileUploaderMap" />
-                <asp:TextBox ID="textBoxHiddenMap" runat="server" Style="display: none;"></asp:TextBox>
-                <div id="divMap" style="overflow: auto">
-                </div>
-            </div>--%>
-
-            <asp:Button ID="buttonSave" runat="server" OnClick="buttonSave_Click" CssClass="button" ValidationGroup="valid" />
-            <%--<asp:Button ID="buttonCancel" runat="server" OnClick="buttonCancel_Clicl" CssClass="button" />--%>
+            <div class="col-xs-2">
+                <asp:TextBox ID="txtCruiseCode" runat="server" CssClass="form-control" placeholder="Số hiệu tàu"></asp:TextBox>
+            </div>
+            <div class="col-xs-1">
+                Cruise code
+            </div>
+            <div class="col-xs-2">
+                <asp:TextBox ID="txtCode" runat="server" CssClass="form-control" placeholder="Cruise code"></asp:TextBox>
+            </div>
+            <div class="col-xs-1">
+                <asp:HyperLink ID="hplRoomPlan" runat="server" Text="Current room plan" Visible="false"></asp:HyperLink>
+                <asp:Literal ID="litRoomPlan" runat="server" Text="Upload room plan" Visible="true"></asp:Literal>
+            </div>
+            <div class="col-xs-2">
+                <asp:FileUpload ID="fileRoomPlan" runat="server" />
+            </div>
         </div>
-    </fieldset>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12">
+                <asp:Repeater ID="rptTrips" runat="server" OnItemDataBound="rptTrips_ItemDataBound">
+                    <ItemTemplate>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="checkbox">
+                                    <label>
+                                        <asp:CheckBox ID="chkTrip" runat="server" />
+                                    </label>
+                                    <asp:HiddenField ID="hiddenId" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "Id") %>' />
+                                </div>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12">
+                Description
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <asp:TextBox runat="server" ID="txtDescription" placeholder="Description" TextMode="MultiLine" CssClass="form-control"></asp:TextBox>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12">
+                <asp:Button ID="buttonSave" runat="server" OnClick="buttonSave_Click" CssClass="btn btn-primary"/>
+            </div>
+        </div>
+    </div>
+</asp:Content>
+<asp:Content ID="Scripts" ContentPlaceHolderID="Scripts" runat="server">
 </asp:Content>

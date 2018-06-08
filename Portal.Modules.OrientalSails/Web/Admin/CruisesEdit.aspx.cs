@@ -37,7 +37,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             txtCode.Text = _cruise.Code;
             txtCruiseCode.Text = _cruise.CruiseCode;
             textBoxName.Text = _cruise.Name;
-            fckDescription.Value = _cruise.Description;
+            txtDescription.Text = _cruise.Description;
             if (!string.IsNullOrEmpty(_cruise.RoomPlan))
             {
                 hplRoomPlan.Visible = true;
@@ -62,7 +62,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             _cruise.Code = txtCode.Text;
             _cruise.CruiseCode = txtCruiseCode.Text;
             _cruise.Name = textBoxName.Text;
-            _cruise.Description = fckDescription.Value;
+            _cruise.Description = txtDescription.Text;
             if (fileRoomPlan.HasFile)
             {
                 _cruise.RoomPlan = FileHelper.Upload(fileRoomPlan);
