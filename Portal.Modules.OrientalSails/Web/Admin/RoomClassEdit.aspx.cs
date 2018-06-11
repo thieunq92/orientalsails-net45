@@ -36,7 +36,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             try
             {
-                Title = Resources.titleRoomClassEdit;
                 if (Request.QueryString["cruiseid"] != null)
                 {
                     _cruise = Module.CruiseGetById(Convert.ToInt32(Request.QueryString["cruiseid"]));
@@ -48,7 +47,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                     ddlCruises.DataTextField = "Name";
                     ddlCruises.DataValueField = "Id";
                     ddlCruises.DataBind();
-                    ddlCruises.Items.Insert(0, "No cruise");
+                    ddlCruises.Items.Insert(0, "-- Cruise --");
                 }
             }
             catch (Exception ex)
@@ -78,10 +77,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
         #endregion
 
-        protected void buttonAdd_Click(object sender, EventArgs e)
+        protected void buttonCancel_Click(object sender, EventArgs e)
         {
             ClearForm();
-            labelFormTitle.Text = Resources.textNewRoomClass;
         }
 
         protected void buttonSubmit_Click(object sender, EventArgs e)
@@ -173,7 +171,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                         textBoxName.Text = item.Name;
                         textBoxDescription.Text = item.Description;
                         RoomClassId = item.Id;
-                        labelFormTitle.Text = item.Name;
                         if (item.Cruise!=null)
                         {
                             ddlCruises.SelectedValue = item.Cruise.Id.ToString();

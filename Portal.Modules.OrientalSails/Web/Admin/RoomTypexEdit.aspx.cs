@@ -32,7 +32,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             try
             {
-                Title = Resources.labelRoomTypes;
                 if (!IsPostBack)
                 {
                     GetDataSource();
@@ -109,10 +108,9 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             }
         }
 
-        protected void buttonAdd_Click(object sender, EventArgs e)
+        protected void buttonCancel_Click(object sender, EventArgs e)
         {
             ClearForm();
-            labelFormTitle.Text = Resources.textNewRoomType;
         }
 
         protected void rptRoomTypex_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -157,7 +155,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
                         chkAllowSingle.Checked = item.AllowSingBook;
                         chkShared.Checked = item.IsShared;
                         RoomTypexId = item.Id;
-                        labelFormTitle.Text = item.Name;
                         break;
                     default :
                         break;
