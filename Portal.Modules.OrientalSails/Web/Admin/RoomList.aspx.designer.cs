@@ -13,24 +13,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
     public partial class RoomList {
         
         /// <summary>
-        /// titleRoomList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label titleRoomList;
-        
-        /// <summary>
-        /// labelStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelStartDate;
-        
-        /// <summary>
         /// textBoxStartDate control.
         /// </summary>
         /// <remarks>
@@ -38,33 +20,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox textBoxStartDate;
-        
-        /// <summary>
-        /// imagecalenderStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imagecalenderStartDate;
-        
-        /// <summary>
-        /// revStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator revStartDate;
-        
-        /// <summary>
-        /// calenderStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calenderStartDate;
         
         /// <summary>
         /// buttonSearch control.

@@ -48,7 +48,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
                 rptServices.DataSource = list;
                 rptServices.DataBind();
-                labelFormTitle.Text = "New location";
                 btnDelete.Visible = false;
                 btnDelete.Enabled = false;
 
@@ -112,7 +111,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
 
                     btnDelete.Visible = true;
                     btnDelete.Enabled = true;
-                    labelFormTitle.Text = ActiveCost.Name;
                     break;
                 default:
                     break;
@@ -123,7 +121,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             ActiveCost = new AgencyLocation();
             txtServiceName.Text = String.Empty;
-            labelFormTitle.Text = "New location";
             ddlSuppliers.SelectedIndex = 0;
             btnDelete.Visible = false;
             btnDelete.Enabled = false;
@@ -144,7 +141,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             // Kiểm tra trong View State
             Module.SaveOrUpdate(ActiveCost);
             ActiveCost = ActiveCost;
-            labelFormTitle.Text = ActiveCost.Name;
             rptServices.DataSource = Module.GetObject<AgencyLocation>(Expression.IsNull("Parent"), 0, 0);
             rptServices.DataBind();
         }

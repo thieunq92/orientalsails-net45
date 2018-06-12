@@ -44,7 +44,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
             ((Control)sender).Parent.Visible = false;
         }
 
-        protected void btnAdd_Click(object sender, EventArgs e)
+        protected void btnAddSubCategory_Click(object sender, EventArgs e)
         {
             IList<Question> data = RepeaterToList();
             data.Add(new Question());

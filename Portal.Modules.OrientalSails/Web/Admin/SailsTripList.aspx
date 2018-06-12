@@ -1,7 +1,6 @@
 <%@ Page Language="C#" MasterPageFile="MO.Master" AutoEventWireup="true" CodeBehind="SailsTripList.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.SailsTripList" Title="Trip Management" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
-<%@ Register Assembly="System.Web.Extensions" Namespace="System.Web.UI" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="AdminContent" runat="server">
     <div class="page-header">
         <h3>

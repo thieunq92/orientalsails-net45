@@ -115,18 +115,13 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             Cruise cruise = (Cruise)e.Item.DataItem;
 
-            HtmlGenericControl liMenu = e.Item.FindControl("liMenu") as HtmlGenericControl;
-            if (liMenu != null)
-            {
-                if (cruise.Id == ActiveCruise.Id)
-                {
-                    liMenu.Attributes.Add("class", "selected");
-                }
-            }
-
             HyperLink hplCruises = e.Item.FindControl("hplCruises") as HyperLink;
             if (hplCruises != null)
             {
+                if (cruise.Id == ActiveCruise.Id)
+                {
+                    hplCruises.CssClass = "btn btn-default active";
+                }
                 DateTime from = DateTime.ParseExact(txtFrom.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 DateTime to = DateTime.ParseExact(txtTo.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 hplCruises.Text = cruise.Name;
@@ -312,7 +307,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             return totalTotal3dayCustomer;
         }
-     
+
         public void SetTotalTotal3DayServiceExpense(double total3DayServiceExpense)
         {
             this.totalTotal3dayServiceExpense = this.totalTotal3dayServiceExpense + total3DayServiceExpense;
@@ -332,7 +327,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             return totalTotalCruiseExpenseCustomer;
         }
-     
+
         public void SetTotalTotalCruiseExpense(double totalCruiseExpense)
         {
             this.totalTotalCruiseExpense = this.totalTotalCruiseExpense + totalCruiseExpense;
@@ -342,7 +337,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             return totalTotalCruiseExpense;
         }
-  
+
         public void SetTotalTotalExpense(double totalExpense)
         {
             this.totalTotalExpense = this.totalTotalExpense + totalExpense;
@@ -352,7 +347,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             return totalTotalExpense;
         }
- 
+
         public void SetTotalTotalExpenseVND(double totalExpenseVND)
         {
             this.totalTotalExpenseVND = this.totalTotalExpenseVND + totalExpenseVND;
@@ -372,7 +367,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             return _2dayServiceExpenseUnitPrice;
         }
-  
+
         public void Set2DayServiceExpenseUnitPriceI(double unitPrice)
         {
             _2dayServiceExpenseUnitPriceI = unitPrice;
@@ -382,7 +377,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             return _2dayServiceExpenseUnitPriceI;
         }
-  
+
         public void Set3DayServiceExpenseUnitPrice(double unitPrice)
         {
             _3dayServiceExpenseUnitPrice = unitPrice;
@@ -402,7 +397,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             return _3dayServiceExpenseUnitPriceI;
         }
-  
+
         public void SetCustomerCruisePrice(double customerCruisePrice)
         {
             this.customerCruisePrice = customerCruisePrice;
@@ -412,7 +407,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             return customerCruisePrice;
         }
-     
+
         public void SetCustomerCruisePriceI(double customerCruisePriceI)
         {
             this.customerCruisePriceI = customerCruisePriceI;
@@ -432,7 +427,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             return cruisePrice;
         }
-   
+
         public void SetCruisePriceI(double cruisePriceI)
         {
             this.cruisePriceI = cruisePriceI;
@@ -442,7 +437,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             return cruisePriceI;
         }
-    
+
         public void SetMoneyFormat(string moneyFormat)
         {
             this.moneyFormat = moneyFormat;
@@ -452,7 +447,7 @@ namespace Portal.Modules.OrientalSails.Web.Admin
         {
             return moneyFormat;
         }
-  
+
         public void SetExchangeRate(double exchangeRate)
         {
             this.exchangeRate = exchangeRate;

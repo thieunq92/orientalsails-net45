@@ -74,7 +74,7 @@
                                         <asp:HyperLink ID="hlHaiPhongExpenseReport" runat="server">Hai Phong Expense Report</asp:HyperLink>
                                     </li>
                                     <li id="pPayable" runat="server">
-                                        <asp:HyperLink ID="hlExpenseDebt" runat="server">Payable</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlExpenseDebt" runat="server">Payable Report</asp:HyperLink></li>
                                     <li id="pBalance" runat="server">
                                         <asp:HyperLink ID="hlBalance" runat="server">Balance</asp:HyperLink></li>
                                     <li id="pSummary" runat="server">
@@ -102,7 +102,7 @@
                                     <li id="pAgencyViewMeetings" runat="server">
                                         <asp:HyperLink ID="hlViewMeetings" runat="server">Meeting Viewing</asp:HyperLink></li>
                                     <li id="pAgencyLocation" runat="server">
-                                        <asp:HyperLink ID="hlAgencyLocation" runat="server">Location</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlAgencyLocation" runat="server">Location Management</asp:HyperLink></li>
                                     <li>
                                         <asp:HyperLink ID="hlQuotationManagement" runat="server">Quotation Management</asp:HyperLink>
                                     </li>
@@ -167,11 +167,11 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Feedback <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <asp:HyperLink ID="hlAddQuestion" runat="server">Add Group</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlAddQuestion" runat="server">Question Group Adding</asp:HyperLink></li>
                                     <li>
-                                        <asp:HyperLink ID="hlQuestionList" runat="server">Overview</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlQuestionList" runat="server">Question Group Overview</asp:HyperLink></li>
                                     <li>
-                                        <asp:HyperLink ID="hlFeedbackReport" runat="server">Report</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlFeedbackReport" runat="server">Feedback Report</asp:HyperLink></li>
                                     <li>
                                         <asp:HyperLink ID="hlFeedbackResponse" runat="server">Feedback Response</asp:HyperLink></li>
                                 </ul>
@@ -182,7 +182,7 @@
                                     <li>
                                         <asp:HyperLink ID="hlViewDocument" runat="server">Document Viewing</asp:HyperLink></li>
                                     <li id="pDocumentManage" runat="server">
-                                        <asp:HyperLink ID="hlDocumentManage" runat="server">Document Manager</asp:HyperLink></li>
+                                        <asp:HyperLink ID="hlDocumentManage" runat="server">Document Management</asp:HyperLink></li>
                                 </ul>
                             </li>
                             <li class="dropdown">

@@ -22,15 +22,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtDate;
         
         /// <summary>
-        /// calendarDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calendarDate;
-        
-        /// <summary>
         /// btnSelect control.
         /// </summary>
         /// <remarks>

@@ -13,15 +13,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
     public partial class FeedbackReport {
         
         /// <summary>
-        /// popupManager control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CMS.ServerControls.Popup popupManager;
-        
-        /// <summary>
         /// ddlGroups control.
         /// </summary>
         /// <remarks>
@@ -40,15 +31,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtFrom;
         
         /// <summary>
-        /// calendarDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calendarDate;
-        
-        /// <summary>
         /// txtTo control.
         /// </summary>
         /// <remarks>
@@ -56,15 +38,6 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTo;
-        
-        /// <summary>
-        /// CalendarExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
         
         /// <summary>
         /// ddlCruises control.
@@ -146,5 +119,14 @@ namespace Portal.Modules.OrientalSails.Web.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CMS.ServerControls.Pager pagerFeedback;
+        
+        /// <summary>
+        /// popupManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CMS.ServerControls.Popup popupManager;
     }
 }

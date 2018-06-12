@@ -1,91 +1,150 @@
-<%@ Page Language="C#" MasterPageFile="SailsMaster.Master" AutoEventWireup="true"
+<%@ Page Language="C#" MasterPageFile="MO.Master" AutoEventWireup="true"
     CodeBehind="QuestionGroupEdit.aspx.cs" Inherits="Portal.Modules.OrientalSails.Web.Admin.QuestionGroupEdit"
-    Title="Untitled Page" ValidateRequest="false" %>
+    Title="Question Group Adding" ValidateRequest="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="AdminContent" runat="server">
-    <fieldset>
-        <legend>Survey question</legend>
-        <div class="basicinfo">
-            <table>
-                <tr>
-                    <td>
-                        Priority
-                    </td>
-                    <td>
-                        <asp:TextBox runat="server" ID="txtPriority" Width="40"></asp:TextBox>
-                    </td>
-                    <td>
-                        Subject
-                    </td>
-                    <td>
-                        <asp:TextBox ID="txtSubject" runat="server"></asp:TextBox>
-                    </td>
-                    <td>
-                        Selection allowed:
-                    </td>
-                    <td>
-                        Select 1<asp:TextBox runat="server" ID="txtSelection1" Width="100"></asp:TextBox>
-                    </td>
-                    <td>
-                        Select 2<asp:TextBox runat="server" ID="txtSelection2" Width="100"></asp:TextBox>
-                    </td>
-                    <td>
-                        Select 3<asp:TextBox runat="server" ID="txtSelection3" Width="100"></asp:TextBox>
-                    </td>
-                    <td>
-                        Select 4<asp:TextBox runat="server" ID="txtSelection4" Width="100"></asp:TextBox>
-                    </td>
-                    <td>
-                        Select 5<asp:TextBox runat="server" ID="txtSelection5" Width="100"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5">
-                        Good choice
-                        <asp:DropDownList runat="server" ID="ddlGoodChoice">
-                            <asp:ListItem Value="1">Choice 1</asp:ListItem>
-                            <asp:ListItem Value="2">Choice 2</asp:ListItem>
-                            <asp:ListItem Value="3">Choice 3</asp:ListItem>
-                            <asp:ListItem Value="4">Choice 4</asp:ListItem>
-                            <asp:ListItem Value="5">Choice 5</asp:ListItem>
-                        </asp:DropDownList>
-                    </td>
-                    <td colspan="3">
-                        <span>
-                            <input type="checkbox" runat="server" style="width: 30px" id="chkIsInDayboatForm" /><label
-                                for="chkIsInDayboatForm">InDayboatForm</label></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="8">
-                        Sub-category
-                    </td>
-                </tr>
+    <div class="page-header">
+        <h3>Question group adding</h3>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-1">
+                Priority
+            </div>
+            <div class="col-xs-1">
+                <asp:TextBox runat="server" ID="txtPriority" CssClass="form-control" placeholder="Priority"></asp:TextBox>
+            </div>
+            <div class="col-xs-1">
+                Subject
+            </div>
+            <div class="col-xs-2">
+                <asp:TextBox ID="txtSubject" runat="server" CssClass="form-control" placeholder="Subject"></asp:TextBox>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-2">
+                Selection allowed:
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-1">
+                Selection 1
+            </div>
+            <div class="col-xs-2">
+                <asp:TextBox runat="server" ID="txtSelection1" CssClass="form-control" placeholder="Selection 1"></asp:TextBox>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-1">
+                Selection 2
+            </div>
+            <div class="col-xs-2">
+                <asp:TextBox runat="server" ID="txtSelection2" CssClass="form-control" placeholder="Selection 2"></asp:TextBox>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-1">
+                Selection 3
+            </div>
+            <div class="col-xs-2">
+                <asp:TextBox runat="server" ID="txtSelection3" CssClass="form-control" placeholder="Selection 3"></asp:TextBox>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-1">
+                Selection 4
+            </div>
+            <div class="col-xs-2">
+                <asp:TextBox runat="server" ID="txtSelection4" CssClass="form-control" placeholder="Selection 4"></asp:TextBox>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-1">
+                Selection 5
+            </div>
+            <div class="col-xs-2">
+                <asp:TextBox runat="server" ID="txtSelection5" CssClass="form-control" placeholder="Selection 5"></asp:TextBox>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-1">
+                Good choice
+            </div>
+            <div class="col-xs-2">
+                <asp:DropDownList runat="server" ID="ddlGoodChoice" CssClass="form-control">
+                    <asp:ListItem Value="1">Selection 1</asp:ListItem>
+                    <asp:ListItem Value="2">Selection 2</asp:ListItem>
+                    <asp:ListItem Value="3">Selection 3</asp:ListItem>
+                    <asp:ListItem Value="4">Selection 4</asp:ListItem>
+                    <asp:ListItem Value="5">Selection 5</asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-check">
+                    <label for="chkIsInDayboatForm" style="font-weight: normal">
+                        <input type="checkbox" runat="server" id="chkIsInDayboatForm" />
+                        InDayboatForm</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-1">
+                Sub-category
+            </div>
+            <div class="col-xs-11">
                 <asp:Repeater ID="rptSubCategory" runat="server" OnItemDataBound="rptSubCategory_ItemDataBound">
                     <ItemTemplate>
-                        <tr>
-                            <td>
+                        <div class="form-group">
+                            <div class="col-xs-1">
                                 <asp:HiddenField ID="hiddenId" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "Id") %>' />
                                 Name
-                            </td>
-                            <td>
-                                <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
-                            </td>
-                            <td>
+                            </div>
+                            <div class="col-xs-2">
+                                <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Name"></asp:TextBox>
+                            </div>
+                            <div class="col-xs-1">
                                 Description
-                            </td>
-                            <td colspan="4">
-                                <asp:TextBox ID="txtContent" runat="server" Width="500"></asp:TextBox>
-                            </td>
-                            <td>
-                                <asp:Button ID="btnRemove" runat="server" CssClass="button" Text="Remove" OnClick="btnRemove_Click" />
-                            </td>
-                        </tr>
+                            </div>
+                            <div class="col-xs-5">
+                                <asp:TextBox ID="txtContent" runat="server" CssClass="form-control" TextMode="MultiLine" placeholder="Description"></asp:TextBox>
+                            </div>
+                            <div class="col-xs-2">
+                                <asp:Button ID="btnRemove" runat="server" CssClass="btn btn-primary" Text="Remove" OnClick="btnRemove_Click" />
+                            </div>
+                        </div>
                     </ItemTemplate>
                 </asp:Repeater>
-            </table>
-            <asp:Button ID="btnAdd" runat="server" CssClass="button" Text="Add" OnClick="btnAdd_Click" />
+            </div>
         </div>
-        <asp:Button ID="btnSave" runat="server" CssClass="button" Text="Save" OnClick="btnSave_Click" />
-    </fieldset>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12">
+                <asp:Button ID="btnAddSubCategory" runat="server" CssClass="btn btn-primary" Text="Add Sub-category" OnClick="btnAddSubCategory_Click" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12">
+                  <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary" Text="Save" OnClick="btnSave_Click" />
+            </div>
+        </div>
+    </div>
 </asp:Content>
